@@ -4,58 +4,74 @@
     <meta charset="UTF-8">
     <title> Fitness Center </title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="swap">
-        <div class="form-box">
-            <div class="button-box">
-                <div id="btn"></div>
-                <button type="button" class="toggle-btn" onclick="login()">Log In</button>
-                <button type="button" class="toggle-btn" onclick="register()">Register</button>
-            </div>
 
-            <form id="login" class="input">
-                <input type="text" class="input-field" placeholder="User Id" required>
-                <input type="text" class="input-field" placeholder="Enter Password" required>
-                <input type="checkbox" class="check-box"><span>Remember Password</span>
-                <button type="submit" class="submit-btn">Log in</button>
-            </form>
-            <form id="register" class="input">
-                <input type="text" class="input-field" placeholder="Name" required>
-                <input type="text" class="input-field" placeholder="Surname" required>
-                <input type="text" class="input-field" placeholder="User Id" required>
-                <input type="email" class="input-field" placeholder="Email" required>
-                <input type="text" class="input-field" placeholder="Enter Password" required>
-                <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
-                <button type="submit" class="submit-btn">Register</button>
-                <fieldset>
-                    Pol:
-                    <label for="muski">Muški</label>
-                    <input id="muski" type="radio" name="pol" value="m" checked="checked" />
-                    <label for="zenski">Ženski</label>
-                    <input id="zenski" type="radio" name="pol" value="ž" />
-                    <br/>
-                </fieldset>
-            </form>
+<nav class="navbar">
+    <div class="max-width">
+        <div class="logo"><a href="#"> Port<span>folio.</span></a></div>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
         </div>
     </div>
+</nav>
 
-    <script>
-        var x = document.getElementById("login");
-        var y = document.getElementById("register");
-        var z = document.getElementById("btn")
+<div class="swap">
+    <div class="form-box">
 
-        function register(){
-            x.style.left = "-400px";
-            y.style.left = "50px";
-            z.style.left = "110px";
-        }
+        <div class="register-switch">
+            <input type="radio" name="user-sort" >
+        </div>
 
-        function login(){
-            x.style.left = "50px";
-            y.style.left = "450px";
-            z.style.left = "0";
-        }
-    </script>
+        <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+            <button type="button" class="toggle-btn" onclick="register()">Register</button>
+        </div>
+
+        <form id="login" class="input">
+            <input type="text" class="input-field" placeholder="User Id" required>
+            <input type="text" class="input-field" placeholder="Enter Password" required>
+            <input type="checkbox" class="check-box"><span>Remember Password</span>
+            <button type="submit" class="submit-btn">Log in</button>
+        </form>
+        <form id="register" class="input">
+            <input type="text" class="input-field" placeholder="Name" required>
+            <input type="text" class="input-field" placeholder="Surname" required>
+            <input type="text" class="input-field" placeholder="User Id" required>
+            <input type="email" class="input-field" placeholder="Email" required>
+            <input type="text" class="input-field" placeholder="Enter Password" required>
+            <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+    var z = document.getElementById("btn")
+
+    function register(){
+        x.style.left = "-400px";
+        y.style.left = "50px";
+        z.style.left = "110px";
+    }
+
+    function login(){
+        x.style.left = "50px";
+        y.style.left = "450px";
+        z.style.left = "0";
+    }
+</script>
+<script src="script.js"></script>
 </body>
 </html>
+
