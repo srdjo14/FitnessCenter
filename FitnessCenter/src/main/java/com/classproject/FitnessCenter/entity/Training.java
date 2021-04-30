@@ -1,16 +1,23 @@
 package com.classproject.FitnessCenter.entity;
 
+import javafx.util.Builder;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+enum UserRole{
+    ADMIN, USER, TRAINER
+}
+
 public class Training implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
+
 
     @Column(name = "training_name", unique = true, nullable = false)
     private String name;
@@ -24,11 +31,11 @@ public class Training implements Serializable {
     @Column(name = "length", nullable = false)
     private Integer length;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
