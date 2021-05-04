@@ -2,16 +2,14 @@ package com.classproject.FitnessCenter.entity;
 
 import javafx.util.Builder;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 enum UserRole{
     ADMIN, USER, TRAINER
 }
 
+@Entity
 public class Training implements Serializable {
 
     @Id
@@ -43,9 +41,7 @@ public class Training implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
     public String getAboutTraining() {
         return aboutTraining;
@@ -69,5 +65,13 @@ public class Training implements Serializable {
 
     public void setLength(Integer length) {
         this.length = length;
+    }
+
+    @Override
+    public String toString(){
+        return "Training{" +
+                "id=" + id +
+                ", name=" + name + '\'' +
+                ", type=" + typeOfTraining + '\'';
     }
 }
