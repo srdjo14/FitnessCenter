@@ -7,9 +7,7 @@ import javafx.util.Builder;
 import javax.persistence.*;
 import java.io.Serializable;
 
-    enum UserRole{
-        ADMIN, USER, TRAINER
-    }
+
 
     @Entity
     public class Training implements Serializable {
@@ -30,6 +28,15 @@ import java.io.Serializable;
         @Column(name = "length", nullable = false)
         private Integer length;
 
+        @Column(name = "done", nullable = false)
+        private Boolean doneTraining;
+
+        @Column(name = "logged", nullable = false)
+        private Boolean logTraining;
+
+        /* Automatski postavljeno da nam je nullable=true, tako da moze biti i 0 */
+        @Column(name = "rated")
+        private Integer rated;
 
         public Long getId() {
             return id;
@@ -43,7 +50,9 @@ import java.io.Serializable;
             return name;
         }
 
-        public void setName(String name) { this.name = name; }
+        public void setName(String name) {
+            this.name = name;
+        }
 
         public String getAboutTraining() {
             return aboutTraining;
@@ -67,6 +76,30 @@ import java.io.Serializable;
 
         public void setLength(Integer length) {
             this.length = length;
+        }
+
+        public Boolean getDoneTraining() {
+            return doneTraining;
+        }
+
+        public void setDoneTraining(Boolean doneTraining) {
+            this.doneTraining = doneTraining;
+        }
+
+        public Boolean getLogTraining() {
+            return logTraining;
+        }
+
+        public void setLogTraining(Boolean logTraining) {
+            this.logTraining = logTraining;
+        }
+
+        public Integer getRate() {
+            return rate;
+        }
+
+        public void setRate(Integer rate) {
+            this.rate = rate;
         }
 
         @Override

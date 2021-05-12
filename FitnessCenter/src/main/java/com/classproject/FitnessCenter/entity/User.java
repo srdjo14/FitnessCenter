@@ -1,21 +1,22 @@
 package com.classproject.FitnessCenter.entity;
 
+import com.classproject.FitnessCenter.enumeration.UserRole;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.Date;
 
-public class User implements Serializable {
+public class User<UserRole> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String typeOfUser;
+    @Column(name="role", nullable = false)
+    private UserRole typeOfUser;
 
     @Column(name="username", nullable = false, length = 30, unique = true)
     private String username;
@@ -41,6 +42,14 @@ public class User implements Serializable {
     @Column(name="active")
     private Boolean active;
 
+    public UserRole getTypeOfUser() {
+        return typeOfUser;
+    }
+
+    public void setTypeOfUser(UserRole typeOfUser) {
+        this.typeOfUser = typeOfUser;
+    }
+
     public Long getId() {
         return id;
     }
@@ -49,13 +58,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getTypeOfUser() {
-        return typeOfUser;
-    }
-
-    public void setTypeOfUser(String typeOfUser) {
-        this.typeOfUser = typeOfUser;
-    }
 
     public String getUsername() {
         return username;
@@ -119,5 +121,21 @@ public class User implements Serializable {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", typeOfUser=" + typeOfUser +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", contact=" + contact +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", active=" + active +
+                '}';
     }
 }

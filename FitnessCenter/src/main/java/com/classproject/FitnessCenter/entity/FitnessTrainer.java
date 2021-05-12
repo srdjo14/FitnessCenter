@@ -1,8 +1,6 @@
 package com.classproject.FitnessCenter.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +12,12 @@ public class FitnessTrainer extends User implements Serializable {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-    private List<Training> trainings = new ArrayList<Training>();
+        @OneToOne(fetch = FetchType.EAGER)
+        private User user;
+
+        @Column
+        private Integer mediumRateValue;
+
+        private List<Training> trainings = new ArrayList<Training>();
 
 }
