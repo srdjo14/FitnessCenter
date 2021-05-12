@@ -29,10 +29,10 @@ import java.io.Serializable;
         private Integer length;
 
         @Column(name = "done", nullable = false)
-        private Boolean doneTraining;
+        private Boolean doneTrainingCheck;
 
         @Column(name = "logged", nullable = false)
-        private Boolean logTraining;
+        private Boolean regTrainingCheck;
 
         /* Automatski postavljeno da nam je nullable=true, tako da moze biti i 0 */
         @Column(name = "rated")
@@ -78,28 +78,28 @@ import java.io.Serializable;
             this.length = length;
         }
 
-        public Boolean getDoneTraining() {
-            return doneTraining;
+        public Boolean getDoneTrainingCheck() {
+            return doneTrainingCheck;
         }
 
-        public void setDoneTraining(Boolean doneTraining) {
-            this.doneTraining = doneTraining;
+        public void setDoneTrainingCheck(Boolean doneTrainingCheck) {
+            this.doneTrainingCheck = doneTrainingCheck;
         }
 
-        public Boolean getLogTraining() {
-            return logTraining;
+        public Boolean getRegTrainingCheck() {
+            return regTrainingCheck;
         }
 
-        public void setLogTraining(Boolean logTraining) {
-            this.logTraining = logTraining;
+        public void setRegTrainingCheck(Boolean regTrainingCheck) {
+            this.regTrainingCheck = regTrainingCheck;
         }
 
-        public Integer getRate() {
-            return rate;
+        public Integer getRated() {
+            return rated;
         }
 
-        public void setRate(Integer rate) {
-            this.rate = rate;
+        public void setRated(Integer rated) {
+            this.rated = rated;
         }
 
         @Override

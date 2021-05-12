@@ -1,15 +1,16 @@
 package com.classproject.FitnessCenter.entity;
 
-import com.classproject.FitnessCenter.enumeration.UserRole;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User<UserRole> implements Serializable {
+@Entity
+@Table(name = "user")
+public class User implements Serializable {
+
+    public enum UserRole {
+        ADMIN, USER, TRAINER
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -138,4 +139,5 @@ public class User<UserRole> implements Serializable {
                 ", active=" + active +
                 '}';
     }
+
 }

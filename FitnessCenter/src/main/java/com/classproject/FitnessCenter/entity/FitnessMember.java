@@ -23,5 +23,14 @@ public class FitnessMember extends User implements Serializable {
 
     private List<Training> rateTraining = new ArrayList<Training>();
 
-
+    @Override
+    public String toString() {
+        return "FitnessMember{" +
+                "id=" + id +
+                ", user=" + user+
+                ", doneTraining=" + doneTraining +
+                ", regTraining=" + regTraining +
+                ", rateTraining=" + rateTraining +
+                '}';
+    }
 }
