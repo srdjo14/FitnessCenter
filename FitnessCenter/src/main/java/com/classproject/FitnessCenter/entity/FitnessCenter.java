@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "fit-center")
 public class FitnessCenter implements Serializable {
 
     @Id
@@ -22,9 +21,16 @@ public class FitnessCenter implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    /* Prva strana veze 1:n gdje fitnes centar sadrzi listu svih trenera koji postoje */
     @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Trainer> trainers = new HashSet<>();
 
-    @OneToMany(mappedBy = "fitnesCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Hall> halls = new HashSet<>();
+    /* Prva strana veze 1:n gdje fitnes centar sadrzi listu svih sala koje se nalaze u njemu */
+    @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Hall> hall = new HashSet<>();
+
+    /* Prva strana veze 1:n gdje fitnes centar dobija raspored odnosno listu svih termina zajedno sa cijenama */
+    @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Terms> terms = new HashSet<>();
+
 }

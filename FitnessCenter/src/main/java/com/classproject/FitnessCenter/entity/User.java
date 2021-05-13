@@ -8,7 +8,6 @@ import java.text.DateFormat;
 
 
 @Entity
-@Table(name = "user")
 // ovom anotacijom se naglasava tip mapiranja "jedna tabela po hijerarhiji"
 @Inheritance(strategy=SINGLE_TABLE)
 // ovom anotacijom se navodi diskriminatorska kolona
@@ -20,7 +19,6 @@ public abstract class User implements Serializable {
     private Long id;
 
     @Column(name="role", nullable = false)
-    @Enumerated
     private String typeOfUser;
 
     @Column(name="username", nullable = false, length = 30, unique = true)
