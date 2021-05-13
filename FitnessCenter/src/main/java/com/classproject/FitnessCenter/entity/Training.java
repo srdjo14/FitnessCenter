@@ -64,47 +64,87 @@ public class Training implements Serializable {
         @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
         private RateTraining rateTraining;
 
-        public Long getId() {
-            return id;
-        }
+    public Long getId() {
+        return id;
+    }
 
-        public void setId(Long id) {
-            this.id = id;
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public String getAboutTraining() {
-            return aboutTraining;
-        }
+    public String getAboutTraining() {
+        return aboutTraining;
+    }
 
-        public void setAboutTraining(String aboutTraining) {
-            this.aboutTraining = aboutTraining;
-        }
+    public void setAboutTraining(String aboutTraining) {
+        this.aboutTraining = aboutTraining;
+    }
 
-        public Type getTypeOfTraining() {
-            return typeOfTraining;
-        }
+    public Type getTypeOfTraining() {
+        return typeOfTraining;
+    }
 
-        public void setTypeOfTraining(Type typeOfTraining) {
-            this.typeOfTraining = typeOfTraining;
-        }
+    public void setTypeOfTraining(Type typeOfTraining) {
+        this.typeOfTraining = typeOfTraining;
+    }
 
-        public Integer getLength() {
-            return length;
-        }
+    public Integer getLength() {
+        return length;
+    }
 
-        public void setLength(Integer length) {
-            this.length = length;
-        }
+    public void setLength(Integer length) {
+        this.length = length;
+    }
 
-        @Override
+    public Trainer getFitnessTrainer() {
+        return fitnessTrainer;
+    }
+
+    public void setFitnessTrainer(Trainer fitnessTrainer) {
+        this.fitnessTrainer = fitnessTrainer;
+    }
+
+    public Terms getTerms() {
+        return terms;
+    }
+
+    public void setTerms(Terms terms) {
+        this.terms = terms;
+    }
+
+    public Set<Member> getMember1() {
+        return member1;
+    }
+
+    public void setMember1(Set<Member> member1) {
+        this.member1 = member1;
+    }
+
+    public Set<Member> getMember2() {
+        return member2;
+    }
+
+    public void setMember2(Set<Member> member2) {
+        this.member2 = member2;
+    }
+
+    public RateTraining getRateTraining() {
+        return rateTraining;
+    }
+
+    public void setRateTraining(RateTraining rateTraining) {
+        this.rateTraining = rateTraining;
+    }
+
+    @Override
         public String toString(){
             return "Training{" +
                     "id=" + id +

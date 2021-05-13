@@ -34,4 +34,59 @@ public class Terms implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private FitnessCenter fitnessCenter;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Date getTrainingDay() {
+        return trainingDay;
+    }
+
+    public void setTrainingDay(Date trainingDay) {
+        this.trainingDay = trainingDay;
+    }
+
+    public Integer getNumberCheckedUser() {
+        return numberCheckedUser;
+    }
+
+    public void setNumberCheckedUser(Integer numberCheckedUser) {
+        this.numberCheckedUser = numberCheckedUser;
+    }
+
+    public Set<Hall> getHall() {
+        return hall;
+    }
+
+    public void setHall(Set<Hall> hall) {
+        this.hall = hall;
+    }
+
+    public Set<Training> getTraining() {
+        return training;
+    }
+
+    public void setTraining(Set<Training> training) {
+        this.training = training;
+    }
+
+    public FitnessCenter getFitnessCenter() {
+        return fitnessCenter;
+    }
+
+    public void setFitnessCenter(FitnessCenter fitnessCenter) {
+        this.fitnessCenter = fitnessCenter;
+    }
 }

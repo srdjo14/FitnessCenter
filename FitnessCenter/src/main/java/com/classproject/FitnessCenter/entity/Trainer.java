@@ -26,6 +26,39 @@ public class Trainer extends User implements Serializable {
         private FitnessCenter fitnessCenter;
 
         /* Prosjecna ocjena */
+        private Double mediumRate;
 
+        @Override
+        public Long getId() {
+                return id;
+        }
 
+        @Override
+        public void setId(Long id) {
+                this.id = id;
+        }
+
+        public Set<Training> getMyTrainings() {
+                return MyTrainings;
+        }
+
+        public void setMyTrainings(Set<Training> myTrainings) {
+                MyTrainings = myTrainings;
+        }
+
+        public FitnessCenter getFitnessCenter() {
+                return fitnessCenter;
+        }
+
+        public void setFitnessCenter(FitnessCenter fitnessCenter) {
+                this.fitnessCenter = fitnessCenter;
+        }
+
+        public Double getMediumRate() {
+                return mediumRate;
+        }
+
+        public void setMediumRate(Double mediumRate) {
+                this.mediumRate = mediumRate;
+        }
 }

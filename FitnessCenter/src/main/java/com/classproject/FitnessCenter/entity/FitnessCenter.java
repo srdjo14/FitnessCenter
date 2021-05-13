@@ -33,4 +33,59 @@ public class FitnessCenter implements Serializable {
     @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Terms> terms = new HashSet<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(Integer contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Trainer> getTrainers() {
+        return trainers;
+    }
+
+    public void setTrainers(Set<Trainer> trainers) {
+        this.trainers = trainers;
+    }
+
+    public Set<Hall> getHall() {
+        return hall;
+    }
+
+    public void setHall(Set<Hall> hall) {
+        this.hall = hall;
+    }
+
+    public Set<Terms> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(Set<Terms> terms) {
+        this.terms = terms;
+    }
 }
