@@ -2,15 +2,11 @@ package com.classproject.FitnessCenter.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import javafx.util.Builder;
-
-import javax.persistence.*;
-import java.io.Serializable;
 
 
-
-    @Entity
-    public class Training implements Serializable {
+@Entity
+@Table(name = "training")
+public class Training implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,15 +24,8 @@ import java.io.Serializable;
         @Column(name = "length", nullable = false)
         private Integer length;
 
-        @Column(name = "done", nullable = false)
-        private Boolean doneTrainingCheck;
-
-        @Column(name = "logged", nullable = false)
-        private Boolean regTrainingCheck;
-
-        /* Automatski postavljeno da nam je nullable=true, tako da moze biti i 0 */
-        @Column(name = "rated")
-        private Integer rated;
+        @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        private Trainer fitnessTrainer;
 
         public Long getId() {
             return id;
@@ -76,30 +65,6 @@ import java.io.Serializable;
 
         public void setLength(Integer length) {
             this.length = length;
-        }
-
-        public Boolean getDoneTrainingCheck() {
-            return doneTrainingCheck;
-        }
-
-        public void setDoneTrainingCheck(Boolean doneTrainingCheck) {
-            this.doneTrainingCheck = doneTrainingCheck;
-        }
-
-        public Boolean getRegTrainingCheck() {
-            return regTrainingCheck;
-        }
-
-        public void setRegTrainingCheck(Boolean regTrainingCheck) {
-            this.regTrainingCheck = regTrainingCheck;
-        }
-
-        public Integer getRated() {
-            return rated;
-        }
-
-        public void setRated(Integer rated) {
-            this.rated = rated;
         }
 
         @Override

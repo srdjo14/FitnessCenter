@@ -1,10 +1,9 @@
 package com.classproject.FitnessCenter.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "hall")
 public class Hall {
 
 
@@ -18,5 +17,7 @@ public class Hall {
     @Column
     private Integer numberOfHall;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private FitnessCenter fitnessCenter;
 
 }

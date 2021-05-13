@@ -1,28 +1,32 @@
 package com.classproject.FitnessCenter.entity;
 
+import static javax.persistence.DiscriminatorType.STRING;
+import static javax.persistence.InheritanceType.SINGLE_TABLE;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.text.DateFormat;
+
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
-
-    public enum UserRole {
-        ADMIN, USER, TRAINER
-    }
+// ovom anotacijom se naglasava tip mapiranja "jedna tabela po hijerarhiji"
+@Inheritance(strategy=SINGLE_TABLE)
+// ovom anotacijom se navodi diskriminatorska kolona
+@DiscriminatorColumn(name="type", discriminatorType=STRING)
+public abstract class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="role", nullable = false)
-    private UserRole typeOfUser;
+    @Enumerated
+    private String typeOfUser;
 
     @Column(name="username", nullable = false, length = 30, unique = true)
     private String username;
 
-    @Column(name="password", nullable = false)
+    @Column(name="password", nullable = false, length = 30)
     private String password;
 
     @Column(name="first_name", nullable = false, length = 25)
@@ -38,16 +42,16 @@ public class User implements Serializable {
     private String email;
 
     @Column(name="birth_date")
-    private Date birthDate;
+    private DateFormat birthDate;
 
     @Column(name="active")
     private Boolean active;
 
-    public UserRole getTypeOfUser() {
+    public String getTypeOfUser() {
         return typeOfUser;
     }
 
-    public void setTypeOfUser(UserRole typeOfUser) {
+    public void setTypeOfUser(String typeOfUser) {
         this.typeOfUser = typeOfUser;
     }
 
@@ -58,7 +62,6 @@ public class User implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getUsername() {
         return username;
@@ -108,11 +111,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Date getBirthDate() {
+    public DateFormat getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(DateFormat birthDate) {
         this.birthDate = birthDate;
     }
 
