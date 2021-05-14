@@ -13,13 +13,13 @@ public class Terms implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private Double price;
 
-    @Column
+    @Column(nullable = false)
     private Date trainingDay;
 
-    @Column
+    @Column(nullable = false)
     private Integer numberCheckedUser;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
@@ -27,8 +27,8 @@ public class Terms implements Serializable {
     private Set<Hall> hall = new HashSet<>();
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
-    @OneToMany(mappedBy = "terms", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Training> training = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Training training;
 
     /* Druga strana veze 1:n gdje fitnes centar dobija raspored odnosno listu svih termina zajedno sa cijenama */
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -74,11 +74,11 @@ public class Terms implements Serializable {
         this.hall = hall;
     }
 
-    public Set<Training> getTraining() {
+    public Training getTraining() {
         return training;
     }
 
-    public void setTraining(Set<Training> training) {
+    public void setTraining(Training training) {
         this.training = training;
     }
 
@@ -88,5 +88,18 @@ public class Terms implements Serializable {
 
     public void setFitnessCenter(FitnessCenter fitnessCenter) {
         this.fitnessCenter = fitnessCenter;
+    }
+
+    @Override
+    public String toString() {
+        return "Terms{" +
+                "id=" + id +
+                ", price=" + price +
+                ", trainingDay=" + trainingDay +
+                ", numberCheckedUser=" + numberCheckedUser +
+                ", hall=" + hall +
+                ", training=" + training +
+                ", fitnessCenter=" + fitnessCenter +
+                '}';
     }
 }

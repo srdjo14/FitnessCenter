@@ -2,7 +2,9 @@ package com.classproject.FitnessCenter.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,17 +15,20 @@ public class FitnessCenter implements Serializable {
     private Long id;
 
     @Column(nullable = false)
+    private String naziv;
+
+    @Column(nullable = false)
     private String address;
 
     @Column(nullable = false, unique = true)
-    private Integer contactPhone;
+    private String contactPhone;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     /* Prva strana veze 1:n gdje fitnes centar sadrzi listu svih trenera koji postoje */
     @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Trainer> trainers = new HashSet<>();
+    private List<Trainer> trainers = new ArrayList<>();
 
     /* Prva strana veze 1:n gdje fitnes centar sadrzi listu svih sala koje se nalaze u njemu */
     @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -31,7 +36,7 @@ public class FitnessCenter implements Serializable {
 
     /* Prva strana veze 1:n gdje fitnes centar dobija raspored odnosno listu svih termina zajedno sa cijenama */
     @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Terms> terms = new HashSet<>();
+    private List<Terms> terms = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -39,6 +44,14 @@ public class FitnessCenter implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
     }
 
     public String getAddress() {
@@ -49,11 +62,11 @@ public class FitnessCenter implements Serializable {
         this.address = address;
     }
 
-    public Integer getContactPhone() {
+    public String getContactPhone() {
         return contactPhone;
     }
 
-    public void setContactPhone(Integer contactPhone) {
+    public void setContactPhone(String contactPhone) {
         this.contactPhone = contactPhone;
     }
 
@@ -65,11 +78,11 @@ public class FitnessCenter implements Serializable {
         this.email = email;
     }
 
-    public Set<Trainer> getTrainers() {
+    public List<Trainer> getTrainers() {
         return trainers;
     }
 
-    public void setTrainers(Set<Trainer> trainers) {
+    public void setTrainers(List<Trainer> trainers) {
         this.trainers = trainers;
     }
 
@@ -81,11 +94,11 @@ public class FitnessCenter implements Serializable {
         this.hall = hall;
     }
 
-    public Set<Terms> getTerms() {
+    public List<Terms> getTerms() {
         return terms;
     }
 
-    public void setTerms(Set<Terms> terms) {
+    public void setTerms(List<Terms> terms) {
         this.terms = terms;
     }
 }

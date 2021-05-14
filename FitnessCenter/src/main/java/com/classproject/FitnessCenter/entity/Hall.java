@@ -1,6 +1,7 @@
 package com.classproject.FitnessCenter.entity;
 
 import javax.persistence.*;
+import javax.print.DocFlavor;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class Hall implements Serializable {
     private Integer capacity;
 
     @Column
-    private Integer numberOfHall;
+    private String numberOfHall;
 
     /* Druga strana veze 1:n gdje fitnes centar sadrzi listu svih sala koje se nalaze u njemu */
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -42,11 +43,11 @@ public class Hall implements Serializable {
         this.capacity = capacity;
     }
 
-    public Integer getNumberOfHall() {
+    public String getNumberOfHall() {
         return numberOfHall;
     }
 
-    public void setNumberOfHall(Integer numberOfHall) {
+    public void setNumberOfHall(String numberOfHall) {
         this.numberOfHall = numberOfHall;
     }
 

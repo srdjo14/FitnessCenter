@@ -2,7 +2,6 @@ package com.classproject.FitnessCenter.entity;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity

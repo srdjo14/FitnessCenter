@@ -16,12 +16,12 @@ public class RateTraining implements Serializable {
     private Integer grade;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Termina pomocu nove klase Ocjene */
-    @OneToMany(mappedBy = "rateTraining", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Member> members = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Member members;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Termina pomocu nove klase Ocjene */
-    @OneToMany(mappedBy = "rateTraining", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Training> trainings = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Training trainings;
 
     public Long getId() {
         return id;
@@ -39,19 +39,19 @@ public class RateTraining implements Serializable {
         this.grade = grade;
     }
 
-    public Set<Member> getMembers() {
+    public Member getMembers() {
         return members;
     }
 
-    public void setMembers(Set<Member> members) {
+    public void setMembers(Member members) {
         this.members = members;
     }
 
-    public Set<Training> getTrainings() {
+    public Training getTrainings() {
         return trainings;
     }
 
-    public void setTrainings(Set<Training> trainings) {
+    public void setTrainings(Training trainings) {
         this.trainings = trainings;
     }
 }

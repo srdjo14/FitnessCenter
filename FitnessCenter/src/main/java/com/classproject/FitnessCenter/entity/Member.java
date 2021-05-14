@@ -21,26 +21,21 @@ public class Member extends User implements Serializable {
      pomocu pomocne klase RateTraining.
      Jedan clan moze da ima vise ocijenjenih treninga, a jedan trening moze da ocjeni vise clanova.
     */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private RateTraining rateTraining;
+    @OneToMany(mappedBy="members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<RateTraining> rateTraining = new ArrayList<>();
 
     /* -- LISTA PRIJAVLJENIH TRENINGA --
         Koristenje direktne MTM veze.
     */
-    @ManyToMany
-    @JoinTable(name = "checked-in",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "training_id", referencedColumnName = "id"))
-    private Set<Training> training1 = new HashSet<>();
+    @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CheckTraining> checkTraining = new ArrayList<>();
 
     /* -- LISTA ODRADJENIH TRENINGA --
-        Koristenje direktne MTM veze.
+        Druga strana 1:n veze izmedju odradjenih treninga i clana.
     */
-    @ManyToMany
-    @JoinTable(name = "finished",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "training_id", referencedColumnName = "id"))
-    private Set<Training> training2 = new HashSet<>();
+    @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CheckTraining> doneTraining = new ArrayList<>();
+
 
     @Override
     public Long getId() {
@@ -52,27 +47,27 @@ public class Member extends User implements Serializable {
         this.id = id;
     }
 
-    public RateTraining getRateTraining() {
+    public List<RateTraining> getRateTraining() {
         return rateTraining;
     }
 
-    public void setRateTraining(RateTraining rateTraining) {
+    public void setRateTraining(List<RateTraining> rateTraining) {
         this.rateTraining = rateTraining;
     }
 
-    public Set<Training> getTraining1() {
-        return training1;
+    public List<CheckTraining> getCheckTraining() {
+        return checkTraining;
     }
 
-    public void setTraining1(Set<Training> training1) {
-        this.training1 = training1;
+    public void setCheckTraining(List<CheckTraining> checkTraining) {
+        this.checkTraining = checkTraining;
     }
 
-    public Set<Training> getTraining2() {
-        return training2;
+    public List<CheckTraining> getDoneTraining() {
+        return doneTraining;
     }
 
-    public void setTraining2(Set<Training> training2) {
-        this.training2 = training2;
+    public void setDoneTraining(List<CheckTraining> doneTraining) {
+        this.doneTraining = doneTraining;
     }
 }

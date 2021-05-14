@@ -1,22 +1,21 @@
-INSERT INTO ADMINISTRATOR(ACTIVE, USERNAME, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, CONTACT_PHONE, DATE_OF_BIRTH)
-VALUES(TRUE, 'milica14', 'Milica', 'Milic', 'protic78223@gmail.com', 'fitness123', '0654384326', '2000-07-30')
+INSERT INTO USER(role, username, password, first_name, last_name, phone, email, birth_date, active, type) VALUES('USER', 'srdjo14', 'fitness1', 'Srdjan', 'Protic', '0651384326', 'protic783@gmail.com', '2000-4-14', TRUE, 'MEMBER')
 
-INSERT INTO MEMBER(ACTIVE, USERNAME, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, CONTACT_PHONE, DATE_OF_BIRTH)
-VALUES(TRUE, 'srdjo14', 'Srdjan', 'Protic', 'protic783@gmail.com', 'fitness', '0651384326', '2000-04-14')
+INSERT INTO USER(role, username, password, first_name, last_name, phone, email, birth_date, active, type) VALUES('USER', 'srdjo114', 'fitne2ss1', 'Srdjadan', 'Proticdd', '065138432644', 'proticcds783@gmail.com', '2000-4-24', TRUE, 'ADMIN')
 
-INSERT INTO TRAINER(ACTIVE, USERNAME, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, CONTACT_PHONE, DATE_OF_BIRTH, AVG_GRADE)
-VALUES(TRUE, 'fit14', 'Marko', 'Markovic', 'markovic134@gmail.com', 'fitnesss', '065784321', '1996-01-26', '4.50')
+INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Teret','Aaaaa', '06546254239', 'protic@gmail.com')
+INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Teretnn','Aaasdaaa', '04356546254239', 'prdsfotic@gmail.com')
 
-INSERT INTO TRAINING(NAME, TYPE, ABOUT_TRAINING, DURATION, TRAINER_ID)
-VALUES('Trening za odraz', 'Plyometric', 'Medium-Hard', 35, 2)
+INSERT INTO USER(role, username, password, first_name, last_name, phone, email, birth_date, active, medium_rate, fitness_center_id, type) VALUES('USER', 'srdjo3314', 'fitnedsfss1', 'Srdjasdsan', 'Protdsdic', '0653321384326', 'protfsadfic783@gmail.com', '2000-4-14', TRUE, 4.0, 1, 'TRAINER')
 
-INSERT INTO FITNESS_CENTER(ADDRESS, EMAIL, NAME, PHONE_NUMBER)
-VALUES('Bulevar Cara Lazara 110', 'bull@gmail.com', 'Bull', 021456398)
+INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('SKOCNI', 'Plyometric', 'Medium-Hard', 35, 1)
 
-INSERT INTO HALL(CAPACITY, LABEL, FITNESS_CENTER_ID)
-VALUES('10', 'h1', 1)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, training_id) VALUES(4, 300, '2021-5-19', 2, 1)
 
-INSERT INTO TERMS(PRICE, START_TRAINING, HALL_ID, TRAINER_ID, TRAINING_ID)
-VALUES(250, '2021-16-5 17:20:00', 2, 3, 1)
+INSERT INTO HALL(capacity, number_of_hall, fitness_center_id, terms_id) VALUES (12, 'h4', 1, 1)
+
+INSERT INTO RATE_TRAINING(grade, members_id, trainings_id) VALUES (5, 1, 1)
+
+INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(1,1)
+INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(1,1)
 
 

@@ -61,4 +61,14 @@ public class Trainer extends User implements Serializable {
         public void setMediumRate(Double mediumRate) {
                 this.mediumRate = mediumRate;
         }
+
+        @Override
+        public String toString() {
+                return "Trainer{" +
+                        "id=" + id +
+                        ", MyTrainings=" + MyTrainings +
+                        ", fitnessCenter=" + fitnessCenter +
+                        ", mediumRate=" + mediumRate +
+                        '}';
+        }
 }

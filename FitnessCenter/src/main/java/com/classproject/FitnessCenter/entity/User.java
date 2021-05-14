@@ -5,6 +5,7 @@ import static javax.persistence.InheritanceType.SINGLE_TABLE;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.util.Date;
 
 
 @Entity
@@ -12,7 +13,7 @@ import java.text.DateFormat;
 @Inheritance(strategy=SINGLE_TABLE)
 // ovom anotacijom se navodi diskriminatorska kolona
 @DiscriminatorColumn(name="type", discriminatorType=STRING)
-public abstract class User implements Serializable {
+public abstract class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,13 +35,13 @@ public abstract class User implements Serializable {
     private String lastName;
 
     @Column(name="phone", unique = true)
-    private Integer contact;
+    private String contact;
 
     @Column(name="email", nullable = false, unique = true)
     private String email;
 
     @Column(name="birth_date")
-    private DateFormat birthDate;
+    private Date birthDate;
 
     @Column(name="active")
     private Boolean active;
@@ -93,11 +94,11 @@ public abstract class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public Integer getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setContact(Integer contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 
@@ -109,11 +110,11 @@ public abstract class User implements Serializable {
         this.email = email;
     }
 
-    public DateFormat getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(DateFormat birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

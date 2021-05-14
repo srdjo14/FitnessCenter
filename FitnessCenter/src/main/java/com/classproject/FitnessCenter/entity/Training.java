@@ -1,5 +1,5 @@
 package com.classproject.FitnessCenter.entity;
-
+import static javax.persistence.InheritanceType.TABLE_PER_CLASS;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,22 +7,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static javax.persistence.DiscriminatorType.STRING;
-import static javax.persistence.InheritanceType.SINGLE_TABLE;
-
-enum Type {Continuous,
-            Fartlek,
-            Circuit,
-            Interval,
-            Plyometric,
-            Flexibility,
-            Weight;
-          }
 @Entity
-
 public class Training implements Serializable {
 
-        @Id
+    @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
@@ -33,8 +21,7 @@ public class Training implements Serializable {
         private String aboutTraining;
 
         @Column(name = "type", nullable = false)
-        @Enumerated
-        private Type typeOfTraining;
+        private String typeOfTraining;
 
         @Column(name = "length", nullable = false)
         private Integer length;
@@ -44,25 +31,25 @@ public class Training implements Serializable {
         private Trainer fitnessTrainer;
 
         /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina*/
-        @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        private Terms terms;
-
-        /* Druga strana n:n veze za listu prijavljenih treninga */
-        @ManyToMany(mappedBy = "training1")
-        private Set<Member> member1 = new HashSet<>();
-
-        /* Druga strana n:n veze za listu odradjenih treninga */
-        @ManyToMany(mappedBy = "training1")
-        private Set<Member> member2 = new HashSet<>();
+        @OneToMany(mappedBy = "training", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        private Set<Terms> terms = new HashSet<>();
 
         /*
         -- LISTA OCJENA ZA ODRADJENE TRENINGE --
-        Razbijanje ManyToMany(CLan-Trening) zbog liste ocjena za odradjene treninge,
+        Razbijanje ManyToMany(Clan-Trening) zbog liste ocjena za odradjene treninge,
         pomocu pomocne klase RateTraining.
         Jedan clan moze da ima vise ocijenjenih treninga, a jedan trening moze da ocjeni vise clanova.
         */
-        @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        private RateTraining rateTraining;
+    @OneToMany(mappedBy="members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<RateTraining> rateTraining = new ArrayList<>();
+
+        /* -- LISTA PRIJAVLJENIH TRENINGA -- */
+        @OneToMany(mappedBy = "training", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        private Set<CheckTraining> checkTraining = new HashSet<>();
+
+        /* -- LISTA ODRADJENIH TRENINGA -- */
+        @OneToMany(mappedBy = "training", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        private Set<DoneTraining> doneTraining = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -88,11 +75,11 @@ public class Training implements Serializable {
         this.aboutTraining = aboutTraining;
     }
 
-    public Type getTypeOfTraining() {
+    public String getTypeOfTraining() {
         return typeOfTraining;
     }
 
-    public void setTypeOfTraining(Type typeOfTraining) {
+    public void setTypeOfTraining(String typeOfTraining) {
         this.typeOfTraining = typeOfTraining;
     }
 
@@ -112,36 +99,36 @@ public class Training implements Serializable {
         this.fitnessTrainer = fitnessTrainer;
     }
 
-    public Terms getTerms() {
+    public Set<Terms> getTerms() {
         return terms;
     }
 
-    public void setTerms(Terms terms) {
+    public void setTerms(Set<Terms> terms) {
         this.terms = terms;
     }
 
-    public Set<Member> getMember1() {
-        return member1;
-    }
-
-    public void setMember1(Set<Member> member1) {
-        this.member1 = member1;
-    }
-
-    public Set<Member> getMember2() {
-        return member2;
-    }
-
-    public void setMember2(Set<Member> member2) {
-        this.member2 = member2;
-    }
-
-    public RateTraining getRateTraining() {
+    public List<RateTraining> getRateTraining() {
         return rateTraining;
     }
 
-    public void setRateTraining(RateTraining rateTraining) {
+    public void setRateTraining(List<RateTraining> rateTraining) {
         this.rateTraining = rateTraining;
+    }
+
+    public Set<CheckTraining> getCheckTraining() {
+        return checkTraining;
+    }
+
+    public void setCheckTraining(Set<CheckTraining> checkTraining) {
+        this.checkTraining = checkTraining;
+    }
+
+    public Set<DoneTraining> getDoneTraining() {
+        return doneTraining;
+    }
+
+    public void setDoneTraining(Set<DoneTraining> doneTraining) {
+        this.doneTraining = doneTraining;
     }
 
     @Override
