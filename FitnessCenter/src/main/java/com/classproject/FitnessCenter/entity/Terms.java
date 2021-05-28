@@ -23,8 +23,8 @@ public class Terms implements Serializable {
     private Integer numberCheckedUser;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
-    @OneToMany(mappedBy = "terms", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Hall> hall = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Hall hall;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -65,15 +65,7 @@ public class Terms implements Serializable {
     public void setNumberCheckedUser(Integer numberCheckedUser) {
         this.numberCheckedUser = numberCheckedUser;
     }
-
-    public Set<Hall> getHall() {
-        return hall;
-    }
-
-    public void setHall(Set<Hall> hall) {
-        this.hall = hall;
-    }
-
+    
     public Training getTraining() {
         return training;
     }

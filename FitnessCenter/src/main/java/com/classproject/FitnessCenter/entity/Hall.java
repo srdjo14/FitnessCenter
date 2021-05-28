@@ -24,8 +24,8 @@ public class Hall implements Serializable {
     private FitnessCenter fitnessCenter;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Terms terms;
+    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Terms> terms = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -59,11 +59,4 @@ public class Hall implements Serializable {
         this.fitnessCenter = fitnessCenter;
     }
 
-    public Terms getTerms() {
-        return terms;
-    }
-
-    public void setTerms(Terms terms) {
-        this.terms = terms;
-    }
 }
