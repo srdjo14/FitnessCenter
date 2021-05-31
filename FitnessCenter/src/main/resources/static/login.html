@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel = "stylesheet" href="css/login.css">
+    <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
-<div class="wrapper">
-    <div class="title">
-        Login Form
-    </div>
-    <form action="#">
-        <div class="field">
-            <input type="text" required>
-            <label>Email Address</label>
-        </div>
-        <div class="field">
-            <input type="password" required>
-            <label>Password</label>
-        </div>
-        <div class="content">
-            <div class="checkbox">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">Remember me</label>
+
+    <div class="login">
+    <div class="form-box">
+
+        <div class="header"><i>Log In</i></div>
+
+        <form class="input" id="login">
+            <input type="text" class="input-field" placeholder="User Id" required>
+            <input type="password" class="input-field" placeholder="Enter Password" required>
+            <input type="checkbox" class="check-box"><span>Remember Password</span>
+            <button type="submit" class="submit-btn">Log in</button></br></br>
+            <div id="user">
+                Not a user?
             </div>
-        </div>
-        <div class="field">
-            <input type="submit" value="Login">
-        </div>
-    </form>
-</div>
+            <div class="member">
+                <div><a href="register-user.html">Register as member</a></div> 
+                <div><a href="register-trainer.html">Register as trainer</a></div>
+            </div>
+        </form>
+
+
+    </div>
+    </div>
 </body>
 </html>

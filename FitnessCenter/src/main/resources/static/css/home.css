@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.max-width {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin:auto;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 15px 0;
+    background: rgba(158, 45, 45, 0.678);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .logo a{
+    color:rgb(185, 185, 185);
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.navbar .menu li {
+    list-style: none;
+    display: inline-block;
+}
+.navbar .menu li a {
+    color: rgb(185, 185, 185);
+    font-size: 18px;
+    font-weight: 800;
+    margin-left: 25px;
+    transition: color 0.5s ease;
+}
+
+.home{
+    display: flex;
+    background: url("images/cool.jpg") no-repeat center;
+    height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+}

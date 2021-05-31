@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Titan+One);
+@import url(https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap);
+
+*{
+    margin-left: 0;
+    margin-right: 0;
+    text-decoration: none;
+}
+
+.register{
+    height: 100%;
+    width: 100%;
+    margin-top: -8px;
+    background-color: indianred;
+    background-image: url("images/btuq.png");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box{
+    width: 380px;
+    height: 750px;
+    position: relative;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 4%;
+}
+
+.header{
+    margin: 2% auto;
+    font-size: 40px; 
+    text-align: center;
+    font-family: 'Sigmar One', cursive;   
+    text-shadow: 1px 2px 1px  rgba(8, 141, 218, 0.801);
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+.button-box{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 1px #00CED1;
+    border-radius: 30px;
+}
+
+
+.input{
+    top: 80px;
+    position:absolute;
+    width: 280px;
+    transition: .5s;
+}
+
+
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 2px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.submit-btn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #0d547c, #00CED1);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    text-shadow: #333;
+}
+
+.check-box{
+    margin: 10px 10px 30px 0;
+}
+
+#register{
+    left:50px;
+}
+
+span{
+    color: #777;
+    font-size: 15px;
+    bottom: 150px;
+    position: absolute;
+}
+
+#user{
+    text-align: center;
+    font-family: 'Sigmar One', cursive;   
+    text-shadow: 1px 2px 1px  rgb(1, 26, 41);
+    -webkit-text-fill-color: transparent;
+}
+.member{
+    text-align: center;
+    font-family: 'Sigmar One', cursive;   
+    text-shadow: 1px 2px 1px  rgb(16, 146, 221);
+    -webkit-text-fill-color: transparent;
+}
+
+
+
