@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Register Trainer Form</title>
-    <link rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title> Fitness Center </title>
+        <link rel="stylesheet" href="css/register.css">
+        <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
 
 <body>
-    <form method="post" enctype="multipart/form-data">
+<div class="register">
+    <div class="form-box">
+
+        <div class="header"><i>Registration</i></div>
+
+        <form id="register" class="input">
             <input type="text" class="input-field" placeholder="User Role" required><br/><br/>
             <input type="text" class="input-field" placeholder="Name" required><br/><br/>
             <input type="text" class="input-field" placeholder="Surname" required><br/><br/>
             <input type="text" class="input-field" placeholder="User Id" required><br/><br/>
             <input type="email" class="input-field" placeholder="Email" required><br/><br/>
             <input type="tel"  class="input-field" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Contact phone" required><br/><br/>
-                 <input type="text" class="input-field" pattern="" placeholder="Date of Birth" onfocus="(this.type='date')" required><br/><br/>
-                 <!-- Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:-->
+            <input type="text" class="input-field" pattern="" placeholder="Date of Birth" onfocus="(this.type='date')" required><br/><br/>
+            <!-- Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:-->
             <input type="password" class="input-field" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" placeholder="Enter Password" required><br/><br/>
             <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span><br/><br/>
-            <button type="submit" class="submit-btn">Register</button>
-    </form>
+            <button type="submit" class="submit-btn">Register</button></br>
+            <div id="user">
+                Already member?
+            </div>
+            <div class="member">
+                <div><a href="login.html">Log In</a></div>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

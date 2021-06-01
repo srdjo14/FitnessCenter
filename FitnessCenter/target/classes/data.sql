@@ -19,6 +19,7 @@ INSERT INTO HALL(capacity, number_of_hall, fitness_center_id, terms_id) VALUES (
 INSERT INTO RATE_TRAINING(grade, members_id, trainings_id) VALUES (5, 1, 1)
 
 INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(1,1)
+
 INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(1,1)
 
 

@@ -36,7 +36,6 @@ public class Member extends User implements Serializable {
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CheckTraining> doneTraining = new ArrayList<>();
 
-
     @Override
     public Long getId() {
         return id;
