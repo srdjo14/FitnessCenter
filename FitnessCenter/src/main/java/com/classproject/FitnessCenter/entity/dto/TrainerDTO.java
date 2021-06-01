@@ -1,24 +1,32 @@
+
 package com.classproject.FitnessCenter.entity.dto;
 
-import com.classproject.FitnessCenter.entity.FitnessCenter;
+import java.util.Date;
 
 public class TrainerDTO {
+
     private Long id;
+    private String typeOfUser;
     private String firstName;
     private String lastName;
     private String username;
-    private FitnessCenter fitnessCenter;
-    private Double mediumRate;
+    private String password;
+    private String email;
+    private String contact;
+    private Date birthDate;
 
     public TrainerDTO() {}
 
-    public TrainerDTO(Long id, String firstName, String lastName, String username, FitnessCenter fitnessCenter, Double mediumRate) {
+    public TrainerDTO(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
         this.id = id;
+        this.typeOfUser = typeOfUser;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-        this.fitnessCenter = fitnessCenter;
-        this.mediumRate = mediumRate;
+        this.password = password;
+        this.email = email;
+        this.contact = contact;
+        this.birthDate = birthDate;
     }
 
     public Long getId() {
@@ -27,6 +35,14 @@ public class TrainerDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTypeOfUser() {
+        return typeOfUser;
+    }
+
+    public void setTypeOfUser(String typeOfUser) {
+        this.typeOfUser = typeOfUser;
     }
 
     public String getFirstName() {
@@ -53,19 +69,35 @@ public class TrainerDTO {
         this.username = username;
     }
 
-    public Double getMediumRate() {
-        return mediumRate;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMediumRate(Double mediumRate) {
-        this.mediumRate = mediumRate;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public FitnessCenter getFitnessCenter() {
-        return fitnessCenter;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFitnessCenter(FitnessCenter fitnessCenter) {
-        this.fitnessCenter = fitnessCenter;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 }

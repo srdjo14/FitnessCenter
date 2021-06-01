@@ -2,10 +2,7 @@ package com.classproject.FitnessCenter.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @DiscriminatorValue("USER")
@@ -35,6 +32,10 @@ public class Member extends User implements Serializable {
     */
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CheckTraining> doneTraining = new ArrayList<>();
+
+    public Member(Long id, String firstName, String lastName, String username, String password, String contact, String email, Date birthDate, String typeOfUser) {
+        super();
+    }
 
     @Override
     public Long getId() {

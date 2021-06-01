@@ -2,7 +2,7 @@ package com.classproject.FitnessCenter.entity.dto;
 
 import java.util.Date;
 
-public class MemberDTO {
+public class UserDTO {
 
     private Long id;
     private String typeOfUser;
@@ -15,9 +15,9 @@ public class MemberDTO {
     private Date birthDate;
 
 
-    public MemberDTO() {}
+    public UserDTO() {}
 
-    public MemberDTO(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
+    public UserDTO(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
         this.id = id;
         this.typeOfUser = typeOfUser;
         this.firstName = firstName;

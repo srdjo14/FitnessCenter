@@ -1,40 +1,17 @@
 package com.classproject.FitnessCenter.controller;
 
-import com.classproject.FitnessCenter.Service.MemberService;
 import com.classproject.FitnessCenter.entity.Member;
 import com.classproject.FitnessCenter.entity.dto.MemberDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-@RestController
-@RequestMapping(value = "/api/member")
-public class MemberController {
-    private final MemberService memberService;
-
-    /* Constructor-based dependency injection */
-    @Autowired
-    public MemberController(MemberService memberService) {this.memberService = memberService; }
-
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MemberDTO> getMember(@PathVariable("id") Long id){
-
-        Member member = this.memberService.findOne(id);
-
-        MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setId(member.getId());
-        memberDTO.setFirstName(member.getFirstName());
-        memberDTO.setLastName(member.getLastName());
-        memberDTO.setUsername(member.getUsername());
-
-        return new ResponseEntity<>(memberDTO, HttpStatus.OK);
-    }
-
+public class TrainerController {
     /* Metoda za registraciju novog clana fitnes centra */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
-                 produces = MediaType.APPLICATION_JSON_VALUE)
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MemberDTO> createMember(@RequestBody MemberDTO memberDTO) throws Exception {
         Member member = new Member(memberDTO.getId(), memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getUsername(),
                 memberDTO.getPassword(), memberDTO.getContact(), memberDTO.getEmail(), memberDTO.getBirthDate(),
@@ -48,5 +25,4 @@ public class MemberController {
 
         return new ResponseEntity<>(newMemberDTO, HttpStatus.CREATED);
     }
-
 }

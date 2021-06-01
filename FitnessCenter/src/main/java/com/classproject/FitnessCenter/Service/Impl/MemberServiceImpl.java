@@ -19,4 +19,16 @@ public class MemberServiceImpl implements MemberService {
         Member member = this.memberRepository.getOne(id);
         return member;
     }
+
+    @Override
+    public Member create(Member member) throws Exception {
+        if (member.getId() != null) {
+            throw new Exception("ID must be null!");
+        }
+
+        Member newMember = this.memberRepository.save(member);
+        return newMember;
+    }
+
+
 }

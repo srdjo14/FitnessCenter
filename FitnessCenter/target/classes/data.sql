@@ -11,10 +11,11 @@ INSERT INTO USER(role, username, password, first_name, last_name, phone, email, 
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Skok', 'Plyometric', 'Medium-Hard', 35, 1)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Kardio', 'HIIT', 'Medium', 45, 2)
 
-INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, training_id) VALUES(4, 300, '2021-5-19', 2, 1)
-INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, training_id) VALUES(9, 270, '2021-5-21', 1, 1)
+INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (12, 'h4', 1)
+INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (13, 'h5', 2)
 
-INSERT INTO HALL(capacity, number_of_hall, fitness_center_id, terms_id) VALUES (12, 'h4', 1, 1)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(4, 300, '2021-5-19', 2, 1, 1)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 270, '2021-5-21', 1, 2, 1)
 
 INSERT INTO RATE_TRAINING(grade, members_id, trainings_id) VALUES (5, 1, 1)
 
