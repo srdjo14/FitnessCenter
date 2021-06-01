@@ -38,6 +38,15 @@ public class FitnessCenter implements Serializable {
     @OneToMany(mappedBy = "fitnessCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Terms> terms = new ArrayList<>();
 
+    public FitnessCenter() {}
+
+    public FitnessCenter(String naziv, String address, String contactPhone, String email) {
+        this.naziv = naziv;
+        this.address = address;
+        this.contactPhone = contactPhone;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }
