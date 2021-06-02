@@ -2,10 +2,7 @@ package com.classproject.FitnessCenter.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 //ovom anotacijom se navodi vrednost diskriminatorske kolone koja vazi za
@@ -27,6 +24,10 @@ public class Trainer extends User implements Serializable {
 
         /* Prosjecna ocjena */
         private Double mediumRate;
+
+        public Trainer(Long id, String firstName, String lastName, String username, String password, String contact, String email, Date birthDate, String typeOfUser) {
+                super();
+        }
 
         @Override
         public Long getId() {
