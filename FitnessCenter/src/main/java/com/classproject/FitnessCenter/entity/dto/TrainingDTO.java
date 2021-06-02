@@ -1,9 +1,5 @@
 package com.classproject.FitnessCenter.entity.dto;
 
-import com.classproject.FitnessCenter.entity.Training;
-
-import javax.persistence.Column;
-
 public class TrainingDTO {
 
     private Long id;
@@ -11,8 +7,6 @@ public class TrainingDTO {
     private String aboutTraining;
     private String typeOfTraining;
     private Integer length;
-
-    public TrainingDTO() {}
 
     public TrainingDTO(Long id, String name, String aboutTraining, String typeOfTraining, Integer length) {
         this.id = id;

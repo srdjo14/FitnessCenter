@@ -44,7 +44,11 @@
 
 .home{
     display: flex;
-    background: url("images/cool.jpg") no-repeat center;
+    background: url("images/blg.jpg") no-repeat center;
     height: 100vh;
     font-family: 'Ubuntu', sans-serif;
+}
+
+span{
+    color: black;
 }

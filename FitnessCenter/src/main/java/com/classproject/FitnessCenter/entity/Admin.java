@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Entity
-@DiscriminatorValue("ADMIN")
+@DiscriminatorValue("admin")
 public class Admin extends User implements Serializable {
+
+    public Admin() {
+        super();
+    }
 }

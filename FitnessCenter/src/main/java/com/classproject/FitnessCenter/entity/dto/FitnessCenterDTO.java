@@ -1,20 +1,12 @@
 package com.classproject.FitnessCenter.entity.dto;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class FitnessCenterDTO {
-
 
     private Long id;
     private String naziv;
     private String address;
     private String contactPhone;
     private String email;
-
-    private FitnessCenterDTO() {}
 
     public FitnessCenterDTO(Long id, String naziv, String address, String contactPhone, String email) {
         this.id = id;

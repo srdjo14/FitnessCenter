@@ -1,6 +1,7 @@
 package com.classproject.FitnessCenter.entity;
 
 import static javax.persistence.DiscriminatorType.STRING;
+import static javax.persistence.InheritanceType.JOINED;
 import static javax.persistence.InheritanceType.SINGLE_TABLE;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,8 +12,7 @@ import java.util.Date;
 @Entity
 // ovom anotacijom se naglasava tip mapiranja "jedna tabela po hijerarhiji"
 @Inheritance(strategy=SINGLE_TABLE)
-// ovom anotacijom se navodi diskriminatorska kolona
-@DiscriminatorColumn(name="type", discriminatorType=STRING)
+@DiscriminatorColumn(name="type", discriminatorType = STRING)
 public abstract class User{
 
     @Id
@@ -43,8 +43,33 @@ public abstract class User{
     @Column(name="birth_date")
     private Date birthDate;
 
+    @Column(name="position")
+    private Position position;
+
     @Column(name="active")
     private Boolean active;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(Long id, String typeOfUser, String username, String password, String firstName, String lastName, String contact, String email, Date birthDate, Boolean active) {
+        this.id = id;
+        this.typeOfUser = typeOfUser;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.contact = contact;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.active = active;
+    }
+
+    public User() {
+
+    }
 
     public String getTypeOfUser() {
         return typeOfUser;

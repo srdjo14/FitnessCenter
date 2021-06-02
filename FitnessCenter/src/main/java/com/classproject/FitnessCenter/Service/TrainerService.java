@@ -6,7 +6,4 @@ import java.util.List;
 
 public interface TrainerService {
 
-    Trainer create(Trainer employee) throws Exception;
-
-
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-@DiscriminatorValue("USER")
+@DiscriminatorValue("member")
 public class Member extends User implements Serializable {
 
     @Id
@@ -33,9 +33,14 @@ public class Member extends User implements Serializable {
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CheckTraining> doneTraining = new ArrayList<>();
 
-    public Member(Long id, String firstName, String lastName, String username, String password, String contact, String email, Date birthDate, String typeOfUser) {
+    public Member() {
+
+    }
+
+    public Member(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
         super();
     }
+
 
     @Override
     public Long getId() {

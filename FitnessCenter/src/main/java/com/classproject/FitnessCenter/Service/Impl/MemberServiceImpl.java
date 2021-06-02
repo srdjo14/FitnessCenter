@@ -14,11 +14,6 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {this.memberRepository = memberRepository; }
 
-    @Override
-    public Member findOne(Long id){
-        Member member = this.memberRepository.getOne(id);
-        return member;
-    }
 
     @Override
     public Member create(Member member) throws Exception {
@@ -29,6 +24,4 @@ public class MemberServiceImpl implements MemberService {
         Member newMember = this.memberRepository.save(member);
         return newMember;
     }
-
-
 }
