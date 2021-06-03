@@ -27,7 +27,7 @@ public class TrainingController {
         this.trainingService = trainingService;
     }
 
-    /* Pregled svih treninga koji su u ponudi */
+    /* Dobavaljanje svih treninga koji su u ponudi */
     @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TrainingDTO>> getTraining() {
         // Pozivanjem metode servisa dobavljamo sve treninge

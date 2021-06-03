@@ -1,4 +1,4 @@
-// Kreiranje novog korisnika
+// Kreiranje novog clana
 $(document).on("submit", "#addMemberForm", function (event) {
     event.preventDefault();
 

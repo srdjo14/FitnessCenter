@@ -8,6 +8,7 @@ public class TrainingDTO {
     private String typeOfTraining;
     private Integer length;
 
+    public TrainingDTO(){}
     public TrainingDTO(Long id, String name, String aboutTraining, String typeOfTraining, Integer length) {
         this.id = id;
         this.name = name;

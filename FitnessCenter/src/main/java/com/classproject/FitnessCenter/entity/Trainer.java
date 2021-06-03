@@ -33,6 +33,10 @@ public class Trainer extends User implements Serializable{
         public Trainer() {
         }
 
+        public Trainer(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
+                super();
+        }
+
         @Override
         public Long getId() {
                 return id;

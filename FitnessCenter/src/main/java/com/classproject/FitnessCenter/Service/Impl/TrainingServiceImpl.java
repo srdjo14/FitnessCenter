@@ -19,6 +19,7 @@ public class TrainingServiceImpl implements TrainingService {
         this.trainingRepository = trainingRepository;
     }
 
+    /* Prikaz svih treninga */
     @Override
     public List<Training> findAll() {
         List<Training> trainings = this.trainingRepository.findAll();
