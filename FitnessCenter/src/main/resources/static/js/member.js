@@ -3,23 +3,23 @@ $(document).on("submit", "#addMemberForm", function (event) {
     event.preventDefault();
 
     let email =     $("#email").val();
-    let ime =       $("#name").val();
-    let prezime =   $("#surname").val();
-    let telefon =   $("#contact").val();
+    let firstName =       $("#name").val();
+    let lastName =   $("#surname").val();
+    let contact =   $("#contact").val();
     let password =  $("#password").val();
     let username =  $("#username").val();
-    let datum =     $("#birth").val();
+    let  birthDate =  $("#birth").val();
 
     let newMember = {
         email,
-        ime,
-        telefon,
-        prezime,
+        firstName,
+        contact,
+        lastName,
         password,
         username,
-        datum,
+        birthDate,
         position: 0,
-        aktivan: true
+        active: 1
     }
 
     $.ajax({

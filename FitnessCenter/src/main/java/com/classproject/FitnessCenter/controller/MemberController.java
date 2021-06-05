@@ -14,24 +14,27 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/member")
 public class MemberController {
 
-    MemberService memberService;
+    private MemberService memberService;
 
     /* Constructor-based dependency injection */
     @Autowired
-    public MemberController(MemberService memberService) {this.memberService = memberService; }
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService; }
 
     /* Metoda za registraciju novog clana fitnes centra */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MemberDTO> createMember(@RequestBody MemberDTO memberDTO) throws Exception {
-        Member member = new Member(memberDTO.getPosition(), memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getUsername(),
-                memberDTO.getPassword(), memberDTO.getEmail(), memberDTO.getBirthDate(), memberDTO.getContact());
+        Member member = new Member(memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getUsername(),
+                memberDTO.getPassword(), memberDTO.getEmail(),  memberDTO.getContact(), memberDTO.getBirthDate());
 
         Member newMember = memberService.create(member);
 
-        MemberDTO newMemberDTO = new MemberDTO(newMember.getId(), newMember.getPosition(), newMember.getFirstName(), newMember.getLastName(),
-                newMember.getUsername(), newMember.getPassword(),  newMember.getEmail(),  newMember.getContact(), newMember.getBirthDate());
+        MemberDTO newMemberDTO = new MemberDTO(newMember.getId(), newMember.getFirstName(), newMember.getLastName(),
+                newMember.getUsername(), newMember.getPassword(),  newMember.getEmail(), newMember.getContact(), newMember.getBirthDate());
 
         return new ResponseEntity<>(newMemberDTO, HttpStatus.CREATED);
-    }
-}
+
+    }}
+
+

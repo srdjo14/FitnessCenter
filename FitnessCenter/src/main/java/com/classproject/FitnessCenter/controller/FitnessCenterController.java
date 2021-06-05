@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "api/fit-center")
 public class FitnessCenterController {
 
-    FitnessCenterService fitnessCenterService;
+    private FitnessCenterService fitnessCenterService;
     @Autowired
     public FitnessCenterController(FitnessCenterService fitnessCenterService) {
         this.fitnessCenterService = fitnessCenterService;
@@ -24,8 +24,8 @@ public class FitnessCenterController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FitnessCenterDTO> createFitnessCenter(@RequestBody FitnessCenterDTO fitnessCenterDTO) throws Exception {
-        FitnessCenter fitnessCenter = new FitnessCenter(fitnessCenterDTO.getNaziv(), fitnessCenterDTO.getAddress(), fitnessCenterDTO.getEmail(),
-                fitnessCenterDTO.getContactPhone());
+        FitnessCenter fitnessCenter = new FitnessCenter(fitnessCenterDTO.getNaziv(), fitnessCenterDTO.getAddress(),
+                fitnessCenterDTO.getContactPhone(), fitnessCenterDTO.getEmail());
 
         FitnessCenter newFitnessCenter = fitnessCenterService.create(fitnessCenter);
 

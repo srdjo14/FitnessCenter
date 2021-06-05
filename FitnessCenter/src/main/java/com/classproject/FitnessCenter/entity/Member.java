@@ -31,14 +31,13 @@ public class Member extends User{
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CheckTraining> doneTraining = new ArrayList<>();
 
-    public Member() {}
-    public Member(Long id, Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
-
+    public Member(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
+        super();
     }
 
-    public Member(Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
-    }
+    public Member() {
 
+    }
 
     public List<RateTraining> getRateTraining() {
         return rateTraining;
