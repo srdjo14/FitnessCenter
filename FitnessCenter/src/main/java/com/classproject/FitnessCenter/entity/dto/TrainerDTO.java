@@ -2,12 +2,14 @@
 package com.classproject.FitnessCenter.entity.dto;
 
 
+import com.classproject.FitnessCenter.entity.Position;
+
 import java.util.Date;
 
 public class TrainerDTO {
 
     private Long id;
-    private String typeOfUser;
+    private Position position;
     private String firstName;
     private String lastName;
     private String username;
@@ -16,9 +18,9 @@ public class TrainerDTO {
     private String contact;
     private Date birthDate;
 
-    public TrainerDTO(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
+    public TrainerDTO(Long id, Position position, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
         this.id = id;
-        this.typeOfUser = typeOfUser;
+        this.position = position;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -36,12 +38,12 @@ public class TrainerDTO {
         this.id = id;
     }
 
-    public String getTypeOfUser() {
-        return typeOfUser;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setTypeOfUser(String typeOfUser) {
-        this.typeOfUser = typeOfUser;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public String getFirstName() {

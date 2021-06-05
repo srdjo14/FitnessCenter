@@ -1,5 +1,7 @@
 package com.classproject.FitnessCenter.entity.dto;
 
+import com.classproject.FitnessCenter.entity.Trainer;
+
 public class TrainingDTO {
 
     private Long id;
@@ -7,14 +9,16 @@ public class TrainingDTO {
     private String aboutTraining;
     private String typeOfTraining;
     private Integer length;
+    private Trainer fitnessTrainer;
 
     public TrainingDTO(){}
-    public TrainingDTO(Long id, String name, String aboutTraining, String typeOfTraining, Integer length) {
+    public TrainingDTO(Long id, String name, String aboutTraining, String typeOfTraining, Integer length, Trainer fitnessTrainer) {
         this.id = id;
         this.name = name;
         this.aboutTraining = aboutTraining;
         this.typeOfTraining = typeOfTraining;
         this.length = length;
+        this.fitnessTrainer = fitnessTrainer;
     }
 
     public Long getId() {
@@ -55,5 +59,13 @@ public class TrainingDTO {
 
     public void setLength(Integer length) {
         this.length = length;
+    }
+
+    public Trainer getFitnessTrainer() {
+        return fitnessTrainer;
+    }
+
+    public void setFitnessTrainer(Trainer fitnessTrainer) {
+        this.fitnessTrainer = fitnessTrainer;
     }
 }

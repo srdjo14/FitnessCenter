@@ -24,14 +24,13 @@ public class MemberController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MemberDTO> createMember(@RequestBody MemberDTO memberDTO) throws Exception {
-        Member member = new Member(memberDTO.getId(), memberDTO.getTypeOfUser(), memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getUsername(),
+        Member member = new Member(memberDTO.getId(), memberDTO.getPosition(), memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getUsername(),
                 memberDTO.getPassword(), memberDTO.getEmail(), memberDTO.getBirthDate(), memberDTO.getContact());
 
         Member newMember = memberService.create(member);
 
-        MemberDTO newMemberDTO = new MemberDTO(newMember.getId(), newMember.getFirstName(), newMember.getLastName(),
-                newMember.getEmail(), newMember.getUsername(), newMember.getPassword(), newMember.getContact(), newMember.getTypeOfUser(),
-                newMember.getBirthDate());
+        MemberDTO newMemberDTO = new MemberDTO(newMember.getId(), newMember.getPosition(), newMember.getFirstName(), newMember.getLastName(),
+                newMember.getUsername(), newMember.getPassword(),  newMember.getEmail(),  newMember.getContact(), newMember.getBirthDate());
 
         return new ResponseEntity<>(newMemberDTO, HttpStatus.CREATED);
     }

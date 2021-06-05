@@ -1,16 +1,14 @@
 package com.classproject.FitnessCenter.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @DiscriminatorValue("member")
-public class Member extends User implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Member extends User{
 
     /*
      -- LISTA OCJENA ZA ODRADJENE TRENINGE --
@@ -33,24 +31,12 @@ public class Member extends User implements Serializable {
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CheckTraining> doneTraining = new ArrayList<>();
 
-    public Member() {
+    public Member() {}
+    public Member(Long id, Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
 
     }
 
-    public Member(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
-        super();
-    }
 
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public List<RateTraining> getRateTraining() {
         return rateTraining;
@@ -75,4 +61,5 @@ public class Member extends User implements Serializable {
     public void setDoneTraining(List<CheckTraining> doneTraining) {
         this.doneTraining = doneTraining;
     }
+
 }

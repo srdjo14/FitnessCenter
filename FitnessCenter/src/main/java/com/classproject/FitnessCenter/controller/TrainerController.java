@@ -28,13 +28,13 @@ public class TrainerController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TrainerDTO> createTrainer(@RequestBody TrainerDTO trainerDTO) throws Exception {
-        Trainer trainer = new Trainer(trainerDTO.getId(), trainerDTO.getTypeOfUser(), trainerDTO.getFirstName(), trainerDTO.getLastName(), trainerDTO.getUsername(),
-                trainerDTO.getPassword(), trainerDTO.getEmail(), trainerDTO.getBirthDate(), trainerDTO.getContact());
+        Trainer trainer = new Trainer(trainerDTO.getId(), trainerDTO.getPosition(), trainerDTO.getFirstName(), trainerDTO.getLastName(), trainerDTO.getUsername(),
+                trainerDTO.getPassword(), trainerDTO.getEmail(), trainerDTO.getBirthDate(), trainerDTO.getContact() );
 
         Trainer newTrainer = trainerService.create(trainer);
 
-        TrainerDTO newTrainerDTO = new TrainerDTO(newTrainer.getId(), newTrainer.getFirstName(), newTrainer.getLastName(),
-                newTrainer.getEmail(), newTrainer.getUsername(), newTrainer.getPassword(), newTrainer.getContact(), newTrainer.getTypeOfUser(),
+        TrainerDTO newTrainerDTO = new TrainerDTO(newTrainer.getId(), newTrainer.getPosition(), newTrainer.getFirstName(), newTrainer.getLastName(),
+                newTrainer.getEmail(), newTrainer.getUsername(), newTrainer.getPassword(), newTrainer.getContact(),
                 newTrainer.getBirthDate());
 
         return new ResponseEntity<>(newTrainerDTO, HttpStatus.CREATED);

@@ -8,19 +8,12 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-//ovom anotacijom se navodi vrednost diskriminatorske kolone koja vazi za
-//objekte ove klase
 @DiscriminatorValue("trainer")
 public class Trainer extends User implements Serializable{
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
 
         /* Prva strana veze 1:n gdje svaki trener ima listu treninga koju drzi */
         @OneToMany(mappedBy = "fitnessTrainer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         private Set<Training> MyTrainings = new HashSet<>();
-
 
         /* Druga strana veze 1:n gdje fitnes centar sadrzi listu svih trenera koji postoje */
         @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -29,22 +22,14 @@ public class Trainer extends User implements Serializable{
         /* Prosjecna ocjena */
         private Double mediumRate;
 
-
         public Trainer() {
         }
 
-        public Trainer(Long id, String typeOfUser, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
+        public Trainer(Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
                 super();
         }
 
-        @Override
-        public Long getId() {
-                return id;
-        }
-
-        @Override
-        public void setId(Long id) {
-                this.id = id;
+        public Trainer(Long id, Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
         }
 
         public Set<Training> getMyTrainings() {
@@ -74,7 +59,6 @@ public class Trainer extends User implements Serializable{
         @Override
         public String toString() {
                 return "Trainer{" +
-                        "id=" + id +
                         ", MyTrainings=" + MyTrainings +
                         ", fitnessCenter=" + fitnessCenter +
                         ", mediumRate=" + mediumRate +

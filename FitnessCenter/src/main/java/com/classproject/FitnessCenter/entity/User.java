@@ -8,19 +8,14 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;
 
-
 @Entity
-// ovom anotacijom se naglasava tip mapiranja "jedna tabela po hijerarhiji"
-@Inheritance(strategy=SINGLE_TABLE)
-@DiscriminatorColumn(name="type", discriminatorType = STRING)
-public abstract class User{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type")
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name="role", nullable = false)
-    private String typeOfUser;
 
     @Column(name="username", nullable = false, length = 30, unique = true)
     private String username;
@@ -54,9 +49,8 @@ public abstract class User{
         this.password = password;
     }
 
-    public User(Long id, String typeOfUser, String username, String password, String firstName, String lastName, String contact, String email, Date birthDate, Boolean active) {
+    public User(Long id, String username, String password, String firstName, String lastName, String contact, String email, Date birthDate, Position position, Boolean active) {
         this.id = id;
-        this.typeOfUser = typeOfUser;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -64,6 +58,7 @@ public abstract class User{
         this.contact = contact;
         this.email = email;
         this.birthDate = birthDate;
+        this.position = position;
         this.active = active;
     }
 
@@ -71,12 +66,12 @@ public abstract class User{
 
     }
 
-    public String getTypeOfUser() {
-        return typeOfUser;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setTypeOfUser(String typeOfUser) {
-        this.typeOfUser = typeOfUser;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public Long getId() {
@@ -155,16 +150,15 @@ public abstract class User{
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", typeOfUser=" + typeOfUser +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", contact=" + contact +
+                ", contact='" + contact + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +
+                ", position=" + position +
                 ", active=" + active +
                 '}';
     }
-
 }

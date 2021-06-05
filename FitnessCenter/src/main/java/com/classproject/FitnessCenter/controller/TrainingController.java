@@ -19,7 +19,6 @@ import java.util.List;
 @RequestMapping(value = "/api/training")
 public class TrainingController {
 
-
     private final TrainingService trainingService;
 
     @Autowired
@@ -37,7 +36,7 @@ public class TrainingController {
 
         for (Training training : trainingList) {
             TrainingDTO trainingDTO = new TrainingDTO(training.getId(), training.getName(), training.getAboutTraining(),
-                    training.getTypeOfTraining(), training.getLength());
+                    training.getTypeOfTraining(), training.getLength(), training.getFitnessTrainer());
             trainingDTOS.add(trainingDTO);
         }
 
