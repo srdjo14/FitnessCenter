@@ -14,16 +14,16 @@ public class FitnessCenter implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String naziv;
 
-    @Column(nullable = false)
+    @Column
     private String address;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String contactPhone;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
 
     /* Prva strana veze 1:n gdje fitnes centar sadrzi listu svih trenera koji postoje */

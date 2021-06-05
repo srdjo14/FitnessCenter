@@ -36,7 +36,7 @@ public class TrainingController {
 
         for (Training training : trainingList) {
             TrainingDTO trainingDTO = new TrainingDTO(training.getId(), training.getName(), training.getAboutTraining(),
-                    training.getTypeOfTraining(), training.getLength(), training.getFitnessTrainer());
+                    training.getTypeOfTraining(), training.getLength());
             trainingDTOS.add(trainingDTO);
         }
 

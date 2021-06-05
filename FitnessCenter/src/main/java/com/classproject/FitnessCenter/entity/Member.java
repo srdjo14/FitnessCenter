@@ -36,6 +36,8 @@ public class Member extends User{
 
     }
 
+    public Member(Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
+    }
 
 
     public List<RateTraining> getRateTraining() {

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/member")
 public class MemberController {
 
-    private final MemberService memberService;
+    MemberService memberService;
 
     /* Constructor-based dependency injection */
     @Autowired
@@ -24,7 +24,7 @@ public class MemberController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MemberDTO> createMember(@RequestBody MemberDTO memberDTO) throws Exception {
-        Member member = new Member(memberDTO.getId(), memberDTO.getPosition(), memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getUsername(),
+        Member member = new Member(memberDTO.getPosition(), memberDTO.getFirstName(), memberDTO.getLastName(), memberDTO.getUsername(),
                 memberDTO.getPassword(), memberDTO.getEmail(), memberDTO.getBirthDate(), memberDTO.getContact());
 
         Member newMember = memberService.create(member);

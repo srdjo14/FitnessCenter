@@ -5,8 +5,9 @@ $(document).on("submit", "#addFitCentForm", function (event) {     // kada je su
     // preuzimamo vrednosti unete u formi
     let naziv = $("#Name").val();
     let address = $("#address").val();
-    let email = $("#email").val();
     let contactPhone = $("#contact").val();
+    let email = $("#email").val();
+
 
     // kreiramo objekat zaposlenog
     // nazivi svih atributa moraju se poklapati sa nazivima na backend-u
@@ -28,7 +29,7 @@ $(document).on("submit", "#addFitCentForm", function (event) {     // kada je su
         success: function (response) {                              // ova f-ja se izvršava posle uspešnog zahteva
             console.log(response);                                  // ispisujemo u konzoli povratnu vrednost radi provere
 
-            alert("Radnik " + response.id + " je uspešno kreiran!");// prikazujemo poruku uspeha korisniku
+            alert("Novi fitnes centar " + response.id + " je uspešno kreiran!");// prikazujemo poruku uspeha korisniku
             window.location.href = "index.html";                // redirektujemo ga na employees.html stranicu
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva

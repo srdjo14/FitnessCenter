@@ -5,8 +5,9 @@ public class FitnessCenterDTO {
     private Long id;
     private String naziv;
     private String address;
-    private String contactPhone;
     private String email;
+    private String contactPhone;
+
 
     public FitnessCenterDTO(Long id, String naziv, String address, String contactPhone, String email) {
         this.id = id;
@@ -15,6 +16,8 @@ public class FitnessCenterDTO {
         this.contactPhone = contactPhone;
         this.email = email;
     }
+
+    public FitnessCenterDTO() {}
 
     public Long getId() {
         return id;

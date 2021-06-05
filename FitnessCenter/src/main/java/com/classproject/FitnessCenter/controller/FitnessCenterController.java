@@ -21,15 +21,16 @@ public class FitnessCenterController {
     }
 
     /* Dodavanje novog fitnes centra */
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FitnessCenterDTO> createFitnessCenter(@RequestBody FitnessCenterDTO fitnessCenterDTO) throws Exception {
         FitnessCenter fitnessCenter = new FitnessCenter(fitnessCenterDTO.getNaziv(), fitnessCenterDTO.getAddress(), fitnessCenterDTO.getEmail(),
                 fitnessCenterDTO.getContactPhone());
 
         FitnessCenter newFitnessCenter = fitnessCenterService.create(fitnessCenter);
 
-        FitnessCenterDTO newFitnessCenterDTO = new FitnessCenterDTO(newFitnessCenter.getId(), newFitnessCenter.getNaziv(), newFitnessCenter.getEmail(),
-                newFitnessCenter.getAddress(), newFitnessCenter.getContactPhone());
+        FitnessCenterDTO newFitnessCenterDTO = new FitnessCenterDTO(newFitnessCenter.getId(), newFitnessCenter.getNaziv(),
+                newFitnessCenter.getAddress(), newFitnessCenter.getContactPhone(), newFitnessCenter.getEmail());
 
         return new ResponseEntity<>(newFitnessCenterDTO, HttpStatus.CREATED);
     }
