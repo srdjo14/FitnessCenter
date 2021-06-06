@@ -1,15 +1,12 @@
-
 package com.classproject.FitnessCenter.entity.dto;
 
-
-import com.classproject.FitnessCenter.entity.Position;
+import com.classproject.FitnessCenter.entity.FitnessCenter;
 
 import java.util.Date;
 
 public class TrainerDTO {
 
     private Long id;
-    private Position position;
     private String firstName;
     private String lastName;
     private String username;
@@ -17,10 +14,12 @@ public class TrainerDTO {
     private String email;
     private String contact;
     private Date birthDate;
+    private Boolean active;
+    private Double mediumRate;
+    private FitnessCenter fitnessCenter;
 
-    public TrainerDTO(Long id, Position position, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
+    public TrainerDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, Double mediumRate, FitnessCenter fitnessCenter) {
         this.id = id;
-        this.position = position;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -28,6 +27,38 @@ public class TrainerDTO {
         this.email = email;
         this.contact = contact;
         this.birthDate = birthDate;
+        this.active = active;
+        this.mediumRate = mediumRate;
+        this.fitnessCenter = fitnessCenter;
+    }
+
+    public TrainerDTO() {
+    }
+
+    public TrainerDTO(Long id, String firstName, String lastName, String username, String contact, String email, Boolean active) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.contact = contact;
+        this.email = email;
+        this.active = active;
+    }
+
+    public Double getMediumRate() {
+        return mediumRate;
+    }
+
+    public void setMediumRate(Double mediumRate) {
+        this.mediumRate = mediumRate;
+    }
+
+    public FitnessCenter getFitnessCenter() {
+        return fitnessCenter;
+    }
+
+    public void setFitnessCenter(FitnessCenter fitnessCenter) {
+        this.fitnessCenter = fitnessCenter;
     }
 
     public Long getId() {
@@ -36,14 +67,6 @@ public class TrainerDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     public String getFirstName() {
@@ -100,5 +123,13 @@ public class TrainerDTO {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

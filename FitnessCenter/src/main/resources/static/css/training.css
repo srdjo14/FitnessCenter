@@ -1,34 +1,38 @@
-#table {
-    width: 100%;
-}
-
-h1 {
-    color: #4CAF50;
+body {
+    height: 100vh;
+    background: url("images/walp-all.jpg") no-repeat center;
 }
 
 h3 {
-    color: #4CAF50;
+    color: #777777;
 }
-
+#trainings {
+    margin-left: 400px;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 1000px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
 #trainings th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: #262626;
+    color: #ffffff;
     text-align: left;
-    background-color: #4CAF50;
-    color: white;
 }
 
 #trainings td, #trainings th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
 }
 
 #trainings tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #dddddd;
 }
 
 #trainings tr:hover {
-    background-color: #ddd;
+    background-color: #f2f2f2;
 }
 
 .card {

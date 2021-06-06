@@ -1,9 +1,8 @@
 package com.classproject.FitnessCenter.Service;
 
-
 import com.classproject.FitnessCenter.entity.User;
 
-public interface UserService {
+public interface AuthenticationService {
 
-    User create(User user) throws Exception;
+    Boolean isLoggedIn(User user) throws Exception;
 }

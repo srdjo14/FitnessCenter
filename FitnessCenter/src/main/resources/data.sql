@@ -1,16 +1,21 @@
 
 INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Ozzy','Heroja Pinkija 11', '06546254239', 'ozzy@gmail.com')
+INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active)  VALUES('member',  'milos112', 'fitnedsfss1', 'Milos', 'Protic', '0653321384326', 'pro3mmm@gmail.com', '2003-4-14', TRUE)
+INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active, medium_rate, fitness_center_id) VALUES('trainer',  'markovic12', 'fitnes1sddd', 'Milos', 'Markovic', '0654324344326', 'markovic@gmail.com', '1999-8-14', FALSE, 3.0, 1)
+INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, medium_rate, fitness_center_id) VALUES('trainer', 'markovic123', 'fitnes1sdadd', 'Milofsads', 'Markovic', '065423454326', 'markovi15c@gmail.com', '1999-8-14', FALSE, 3.0, 1)
+INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, medium_rate, fitness_center_id) VALUES('trainer', 'markovic121', 'fitnes1sddssd', 'Milosadfs', 'Markovic', '06543246326', 'markovichhhh @gmail.com', '1999-8-14', FALSE, 3.0, 1)
 
 INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Gladiator','Cara Lazara 21', '06598754239', 'gladiator@gmail.com')
 INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Hard','Stratimiroviceva 44', '06546345539', 'hard@gmail.com')
-
-INSERT INTO USER( type, position, username, password, first_name, last_name, phone, email, birth_date, active)  VALUES('member', 0, 'milos112', 'fitnedsfss1', 'Milos', 'Protic', '0653321384326', 'pro3mmm@gmail.com', '2003-4-14', TRUE)
-INSERT INTO USER( type, position, username, password, first_name, last_name, phone, email, birth_date, active, medium_rate, fitness_center_id) VALUES('trainer', 1, 'markovic12', 'fitnes1sddd', 'Milos', 'Markovic', '0654324344326', 'markovic@gmail.com', '1999-8-14', TRUE, 3.0, 2)
 
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Kardio', 'HIIT', 'Medium', 30, 2)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Skok', 'Plyometric', 'Medium-Hard', 20, 2)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Ledja', 'Back', 'Medium', 45, 2)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Ramena', 'Full-strength', 'Hard', 65, 2)
+INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Ruke', 'Back', 'Medium', 30, 2)
+INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Noge', 'Plyometric', 'Medium-Hard', 20, 2)
+INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Stomak', 'Back', 'Medium', 45, 2)
+INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Grudi', 'Full-strength', 'Hard', 65, 2)
 
 INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (12, 'h4', 1)
 INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (13, 'h5', 2)

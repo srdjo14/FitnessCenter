@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Titan+One);
+@import url(https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap);
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +9,7 @@
 }
 
 .max-width {
-    max-width: 1300px;
+    max-width: 1400px;
     padding: 0 80px;
     margin:auto;
 }
@@ -15,19 +18,29 @@
     position: fixed;
     width: 100%;
     padding: 15px 0;
-    background: rgba(158, 45, 45, 0.678);
     font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s ease;
 }
 
+.navbar.sticky{
+    padding: 15px 0;
+    background: #ffffff;
+}
 .navbar .max-width {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .navbar .logo a{
-    color:rgb(185, 185, 185);
-    font-size: 35px;
+    font-family: 'Sigmar One', cursive;
+    text-shadow: 1px 2px 1px  rgb(16, 146, 221);
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
     font-weight: 600;
+}
+
+.navbar.sticky .logo a span {
+    color: #fff;
 }
 
 .navbar .menu li {
@@ -35,20 +48,175 @@
     display: inline-block;
 }
 .navbar .menu li a {
-    color: rgb(185, 185, 185);
-    font-size: 18px;
+    font-family: 'Sigmar One', cursive;
+    text-shadow: 1px 2px 1px  rgb(16, 146, 221);
+    -webkit-text-fill-color: transparent;
+    font-size: 24px;
     font-weight: 800;
     margin-left: 25px;
     transition: color 0.5s ease;
 }
+.navbar .menu li a:hover{
+    color: #777777;
+}
 
+.navbar.sticky .menu li a:hover{
+    color: #fff;
+}
+span{
+    font-size: 45px;
+    font-family: 'Sigmar One', cursive;
+    text-shadow: 1px 2px 1px  rgb(16, 146, 221);
+    -webkit-text-fill-color: transparent;
+}
 .home{
     display: flex;
-    background: url("images/blg.jpg") no-repeat center;
+    background: url("images/walp-all.jpg") no-repeat center;
     height: 100vh;
+    color: #ffffff;
     font-family: 'Ubuntu', sans-serif;
 }
 
-span{
-    color: black;
+.home .max-width {
+    margin: auto 0 auto 40px;
 }
+
+.home .home-content {
+    font-family:'Ubuntu', sans-serif;
+}
+
+.home .home-content .text-1 {
+    font-size: 35px;
+}
+
+.home .home-content .text-2 {
+    font-size: 55px;
+    font-weight: 600;
+    margin-left: -3px;
+    transition: all 0.6s ease;
+}
+
+.home .home-content .text-3 {
+    font-size: 35px;
+    margin: 5px 0;
+    transition: all 0.6s ease;
+}
+
+.home .home-content .text-3 span {
+    color: crimson;
+    font-weight: 500;
+}
+
+.home .home-content a {
+    display: inline-block;
+    background: #0d547c;
+    color:#fff;
+    font-size: 25px;
+    padding: 12px 36px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 2px solid blue;
+    transition: all 0.6s ease;
+}
+
+.home .home-content a:hover {
+    color: #ffffff;
+    background:none;
+}
+
+section{
+    padding: 100px 0;
+}
+.about{
+    font-family: 'Poppins', sans-serif;
+    margin-left: -8px;
+}
+
+.about .title{
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+}
+
+.about .title::before{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    background: #111;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+}
+
+.about .title::after{
+    content: "who we are";
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    padding: 5px;
+    font-size: 20px;
+    color: #00CED1;
+    background: #fff;
+    transform: translateX(-50%);
+}
+
+.about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.about .about-content .left {
+    width: 45%;
+}
+.about .about-content .left img{
+    background: url("images/room.jpg") no-repeat center;
+    height: 400px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border-color: #111;
+}
+
+.about .about-content .right {
+    width: 55%;
+    text-align:justify;
+}
+
+.about .about-content .right .text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #00CED1;
+}
+
+.about .about-content .right .text span {
+    color: crimson;
+}
+
+.about .about-content .right a {
+    display: inline-block;
+    background: crimson;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 24px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 2px solid salmon;
+    transition: all 0.6s ease;
+}
+
+.about .about-content .right a:hover{
+    color:crimson;
+    background:none;
+}
+
+

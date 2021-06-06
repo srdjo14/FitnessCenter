@@ -12,7 +12,7 @@
     width: 100%;
     margin-top: -8px;
     background-color: indianred;
-    background-image: url("images/btuq.png");
+    background-image: url("images/walp-all.jpg");
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -55,6 +55,7 @@
     position:absolute;
     width: 280px;
     transition: .5s;
+    margin: 45px;
 }
 
 

@@ -18,8 +18,7 @@ $(document).on("submit", "#addMemberForm", function (event) {
         password,
         username,
         birthDate,
-        position: 0,
-        active: 1
+        active : true
     }
 
     $.ajax({

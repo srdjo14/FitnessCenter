@@ -38,9 +38,6 @@ public class User{
     @Column(name="birth_date")
     private Date birthDate;
 
-    @Column(name="position")
-    private Position position;
-
     @Column(name="active")
     private Boolean active;
 
@@ -49,7 +46,7 @@ public class User{
         this.password = password;
     }
 
-    public User(Long id, String username, String password, String firstName, String lastName, String contact, String email, Date birthDate, Position position, Boolean active) {
+    public User(Long id, String username, String password, String firstName, String lastName, String contact, String email, Date birthDate, Boolean active) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -58,7 +55,6 @@ public class User{
         this.contact = contact;
         this.email = email;
         this.birthDate = birthDate;
-        this.position = position;
         this.active = active;
     }
 
@@ -66,12 +62,15 @@ public class User{
 
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
+    public User(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.contact = contact;
+        this.birthDate = birthDate;
+        this.active = active;
     }
 
     public Long getId() {
@@ -157,7 +156,6 @@ public class User{
                 ", contact='" + contact + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +
-                ", position=" + position +
                 ", active=" + active +
                 '}';
     }

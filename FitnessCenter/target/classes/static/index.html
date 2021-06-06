@@ -14,20 +14,54 @@
     <!-- Navigation bar -->
     <nav class="navbar">
 		<div class="max-width">
-			<div class="logo"><a href="#"> Stay<span> Fit</span></a></div>
+			<div class="logo"><a href="#"> Stay Fit</a></div>
 			<ul class="menu">
 				<li><a href="index.html">Home</a></li>
 				<li><a href="about.html">About</a></li>
-				<li><a href="fitness-center.html">Fitness Center</a></li>
-                <li><a href="contact.html">Contact</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="home">
-        
+    <section class="home" id="home">
+        <div class="max-width">
+            <div class="home-content">
+                <div class="text-1">Hello, are you want to stay fit? </div>
+                <div class="text-2">If you want, log in and choose fitness center </div>
+                <div class="text-3">Do this for <span> Healthy life! </span></div>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
     </section>
+
+    <!-- About section start -->
+    <section class="about" id="about">
+        <div class="max-width">
+            <h2 class="title">About us</h2>
+            <div class="about-content">
+                <div class="column left">
+                    <img alt="">
+                </div>
+                <div class="column right">
+                    <div class="text">We are fitness center community.</div>
+                    <p> Keep your muscles strong, adrenaline pumping, body nourished, and mind inspired. Our services offer professional group training and certified personal training in well equipped studios to enhance your own training routines. Every day, we work to ensure you have the tools and resources to reach your fitness goals. We are here to help you get moving and power your results.  Best Fitness Center Community!</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function () {
+                if (this.scrollY > 20) {
+                    $('.navbar').addClass("sticky");
+                } else {
+                    $('.navbar').removeClass("sticky");
+                }
+            })
+        });
+    </script>
 
 </body>
 </html>

@@ -6,7 +6,13 @@
     <title>Log In</title>
     <link rel = "stylesheet" href="css/login.css">
     <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 1. Ukljucivanje jQuery biblioteke -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 2. Ukljucivanje jQuery Validate biblioteke za validaciju polja forme (opciono).
+            O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
+    <script src="js/jquery.validate.min.js"></script>
+    <!-- 3. Ukljucivanje naseg JS fajla -->
+    <script src="js/login.js"></script>
 </head>
 
 <body>
@@ -16,9 +22,9 @@
 
         <div class="header"><i>Log In</i></div>
 
-        <form class="input" id="login">
-            <input type="text" class="input-field" placeholder="User Id" required>
-            <input type="password" class="input-field" placeholder="Enter Password" required>
+        <form class="input" id="loginUser">
+            <input id="username" type="text" class="input-field" placeholder="Username" required>
+            <input id="password" type="password" class="input-field" placeholder="Enter Password" required>
             <input type="checkbox" class="check-box"><span>Remember Password</span>
             <button type="submit" class="submit-btn">Log in</button></br></br>
             <div id="user">

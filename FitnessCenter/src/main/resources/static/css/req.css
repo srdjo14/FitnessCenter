@@ -1,0 +1,28 @@
+#table {
+    width: 100%;
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+h3 {
+    color: #4CAF50;
+}
+
+#requests th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#requests td, #requests th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#requests tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

@@ -12,10 +12,11 @@ public class MemberDTO {
     private String email;
     private String contact;
     private Date birthDate;
+    private Boolean active;
 
     public MemberDTO() {}
 
-    public MemberDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate) {
+    public MemberDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,6 +25,15 @@ public class MemberDTO {
         this.email = email;
         this.contact = contact;
         this.birthDate = birthDate;
+        this.active = active;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Long getId() {

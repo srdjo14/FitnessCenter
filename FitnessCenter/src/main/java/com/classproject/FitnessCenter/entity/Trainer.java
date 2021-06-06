@@ -25,14 +25,14 @@ public class Trainer extends User implements Serializable{
         public Trainer() {
         }
 
-        public Trainer(Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
-                super();
-        }
+    public Trainer(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, Double mediumRate, FitnessCenter fitnessCenter) {
+        super(firstName, lastName, username, password, email, contact, birthDate, active);
+        this.mediumRate = mediumRate;
+        this.fitnessCenter = fitnessCenter;
+    }
 
-        public Trainer(Long id, Position position, String firstName, String lastName, String username, String password, String email, Date birthDate, String contact) {
-        }
 
-        public Set<Training> getMyTrainings() {
+    public Set<Training> getMyTrainings() {
                 return MyTrainings;
         }
 

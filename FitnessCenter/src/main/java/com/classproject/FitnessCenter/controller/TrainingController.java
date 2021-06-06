@@ -19,14 +19,14 @@ import java.util.List;
 @RequestMapping(value = "/api/training")
 public class TrainingController {
 
-    private final TrainingService trainingService;
+   /* private final TrainingService trainingService;
 
     @Autowired
     public TrainingController(TrainingService trainingService) {
         this.trainingService = trainingService;
     }
 
-    /* Dobavaljanje svih treninga koji su u ponudi */
+    /* Dobavaljanje svih treninga koji su u ponudi
     @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TrainingDTO>> getTraining() {
         // Pozivanjem metode servisa dobavljamo sve treninge
@@ -42,5 +42,5 @@ public class TrainingController {
 
         // Vraćamo odgovor 200 OK, a kroz body odgovora šaljemo podatke o pronađenim zaposlenima
         return new ResponseEntity<>(trainingDTOS, HttpStatus.OK);
-    }
+    }*/
 }

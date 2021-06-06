@@ -1,25 +1,24 @@
-// Kreiranje novog trenera
+// Kreiranje novog clana
 $(document).on("submit", "#addTrainerForm", function (event) {
     event.preventDefault();
 
     let email =     $("#email").val();
-    let ime =       $("#name").val();
-    let prezime =   $("#surname").val();
-    let telefon =   $("#contact").val();
+    let firstName =       $("#name").val();
+    let lastName =   $("#surname").val();
+    let contact =   $("#contact").val();
     let password =  $("#password").val();
     let username =  $("#username").val();
-    let datum =     $("#birth").val();
+    let  birthDate =  $("#birth").val();
 
-    let newMember = {
+    let newTrainer = {
         email,
-        ime,
-        telefon,
-        prezime,
+        firstName,
+        contact,
+        lastName,
         password,
         username,
-        datum,
-        position: 1,
-        aktivan: true
+        birthDate,
+        active : true
     }
 
     $.ajax({
@@ -27,7 +26,7 @@ $(document).on("submit", "#addTrainerForm", function (event) {
         url: "http://localhost:8080/api/trainer",
         dataType: "json",
         contentType: "application/json",
-        data: JSON.stringify(newMember),
+        data: JSON.stringify(newTrainer),
         success: function (response) {
             console.log("SUCCES S:\n", response);
 
