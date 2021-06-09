@@ -74,17 +74,30 @@ public class UserController {
     }
 
     @GetMapping(value = "/terms", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TermsDTO>> getTerms(){
+    public ResponseEntity<List<TrainingDTO>> getTerms(){
 
-        List<Terms> termsList = this.termsService.findAll();
-        List<TermsDTO> termsDTOS = new ArrayList<>();
+        List<Training> trainingList = this.trainingService.findAll();
+        List<TrainingDTO> trainingDTOS = new ArrayList<>();
 
-        for (Terms terms : termsList) {
-            TermsDTO termsDTO = new TermsDTO(terms.getId(), terms.getTraining().getName(), terms.getTraining().getAboutTraining(), terms.getTraining().getTypeOfTraining(), terms.getPrice(), terms.getTrainingDay());
-            termsDTOS.add(termsDTO);
+        for (Training training : trainingList) {
+		    TrainingDTO trainingDTO = new TrainingDTO();
+            trainingDTO.setId(training.getId());
+            trainingDTO.setName(training.getName());
+            trainingDTO.setAboutTraining(training.getAboutTraining());
+            trainingDTO.setTypeOfTraining(training.getTypeOfTraining());
+            trainingDTO.setLength(training.getLength());
+            List<TermsDTO> listTermsDTO = new ArrayList<>();
+            for(Terms terms : training.getTerms()){
+               TermsDTO termsDTO = new TermsDTO();
+               termsDTO.setId(terms.getId());
+               termsDTO.setPrice(terms.getPrice());
+               termsDTO.setTrainingDay(terms.getTrainingDay());
+               listTermsDTO.add(termsDTO);
+            }
+            trainingDTO.setTermsList(listTermsDTO);
+            trainingDTOS.add(trainingDTO);
         }
-
-        return new ResponseEntity<>(termsDTOS, HttpStatus.OK);
+        return new ResponseEntity<>(trainingDTOS, HttpStatus.OK);
     }
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE,

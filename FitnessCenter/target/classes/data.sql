@@ -22,7 +22,10 @@ INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (12, 'h4', 
 INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (13, 'h5', 2)
 
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(4, 300, '2021-5-19', 2, 1, 1)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 270, '2021-5-21', 1, 2, 2)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 450, '2021-5-24', 1, 2, 3)
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 270, '2021-5-21', 1, 2, 1)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 230, '2021-7-21', 1, 2, 4)
 
 INSERT INTO RATE_TRAINING(grade, members_id, trainings_id) VALUES (5, 1, 1)
 

@@ -1,6 +1,11 @@
 package com.classproject.FitnessCenter.entity.dto;
 
+import com.classproject.FitnessCenter.entity.Terms;
 import com.classproject.FitnessCenter.entity.Trainer;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class TrainingDTO {
 
@@ -9,8 +14,19 @@ public class TrainingDTO {
     private String aboutTraining;
     private String typeOfTraining;
     private Integer length;
+    private List<TermsDTO> termsList;
 
-    public TrainingDTO(){}
+    public TrainingDTO(Long id, String name, String aboutTraining, String typeOfTraining, Integer length, List<TermsDTO> termsList) {
+        this.id = id;
+        this.name = name;
+        this.aboutTraining = aboutTraining;
+        this.typeOfTraining = typeOfTraining;
+        this.length = length;
+        this.termsList = termsList;
+    }
+
+    public TrainingDTO() {}
+
     public TrainingDTO(Long id, String name, String aboutTraining, String typeOfTraining, Integer length) {
         this.id = id;
         this.name = name;
@@ -59,4 +75,11 @@ public class TrainingDTO {
         this.length = length;
     }
 
+    public List<TermsDTO> getTermsList() {
+        return termsList;
+    }
+
+    public void setTermsList(List<TermsDTO> termsList) {
+        this.termsList = termsList;
+    }
 }
