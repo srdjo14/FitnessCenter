@@ -6,6 +6,11 @@ body {
 h3 {
     color: #777777;
 }
+
+#sort{
+    margin-left: 460px;
+    width: 1000px;
+}
 #trainings {
     margin-left: 400px;
     border-collapse: collapse;
