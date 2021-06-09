@@ -1,10 +1,13 @@
 package com.classproject.FitnessCenter.controller;
 
 import com.classproject.FitnessCenter.Service.AuthenticationService;
+import com.classproject.FitnessCenter.Service.TermsService;
 import com.classproject.FitnessCenter.Service.TrainingService;
 import com.classproject.FitnessCenter.Service.UserService;
+import com.classproject.FitnessCenter.entity.Terms;
 import com.classproject.FitnessCenter.entity.Training;
 import com.classproject.FitnessCenter.entity.User;
+import com.classproject.FitnessCenter.entity.dto.TermsDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +31,28 @@ public class UserController {
     private final UserService userService;
     private final TrainingService trainingService;
     private final AuthenticationService authenticationService;
-    private Object Exception = "Nije prijavljen korisnik";
+    private final TermsService termsService;
 
     @Autowired
-    public UserController(UserService userService, TrainingService trainingService, AuthenticationService authenticationService){
+    public UserController(UserService userService, TrainingService trainingService, AuthenticationService authenticationService, TermsService termsService){
         this.userService = userService;
         this.trainingService = trainingService;
         this.authenticationService = authenticationService;
+        this.termsService = termsService;
     }
+    @GetMapping(value = "/training/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TrainingDTO> getOneTraining(@PathVariable("id") Long id){
+        Training training = this.trainingService.findOne(id);
 
+        TrainingDTO trainingDTO = new TrainingDTO();
+        trainingDTO.setId(training.getId());
+        trainingDTO.setName(training.getName());
+        trainingDTO.setAboutTraining(training.getAboutTraining());
+        trainingDTO.setTypeOfTraining(training.getTypeOfTraining());
+        trainingDTO.setLength(training.getLength());
+
+        return new ResponseEntity<>(trainingDTO, HttpStatus.OK);
+    }
     @GetMapping(value = "/training", produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TrainingDTO>> getTraining() {
 
@@ -57,16 +73,29 @@ public class UserController {
 
     }
 
+    @GetMapping(value = "/terms", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TermsDTO>> getTerms(){
+
+        List<Terms> termsList = this.termsService.findAll();
+        List<TermsDTO> termsDTOS = new ArrayList<>();
+
+        for (Terms terms : termsList) {
+            TermsDTO termsDTO = new TermsDTO(terms.getId(), terms.getTraining().getName(), terms.getTraining().getAboutTraining(), terms.getTraining().getTypeOfTraining(), terms.getPrice(), terms.getTrainingDay());
+            termsDTOS.add(termsDTO);
+        }
+
+        return new ResponseEntity<>(termsDTOS, HttpStatus.OK);
+    }
+
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) throws Exception {
         User user = new User(userDTO.getUsername(), userDTO.getPassword());
 
-        User newUser = userService.create(user);
+        User newUser = userService.loginUser(user);
 
         UserDTO newUserDTO = new UserDTO(newUser.getUsername(), newUser.getPassword());
 
         return new ResponseEntity<>(newUserDTO, HttpStatus.CREATED);
     }
-
 }

@@ -16,7 +16,7 @@ public class TrainerDTO {
     private Date birthDate;
     private Boolean active;
     private String position = "trainer";
-    private Double mediumRate;
+    private Double mediumRate = 0.0;
     private FitnessCenter fitnessCenter;
 
     public TrainerDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, String position, Double mediumRate, FitnessCenter fitnessCenter) {

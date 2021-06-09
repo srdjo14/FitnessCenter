@@ -25,4 +25,10 @@ public class TrainingServiceImpl implements TrainingService {
         List<Training> trainings = this.trainingRepository.findAll();
         return trainings;
     }
+
+    @Override
+    public Training findOne(Long id) {
+        Training training = this.trainingRepository.getOne(id);
+        return training;
+    }
 }

@@ -16,25 +16,24 @@
 
 <body>
 
-<form id="search-books">
-  <label for="search">Search:</label>
-  <input type="text" name="search" id="search">
-  <button name="search_btn">Search</button>
-  <button name="reset" type="reset">Reset</button>
-</form>
 <div id="app"></div>
 
+
 <div id="allTrainings">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Search about..">
+<input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search for type..">
+<input type="text" id="myInput3" onkeyup="myFunction3()" placeholder="Search for length..">
 
   <!--<button onclick="location.href = 'add-employee.html'">Add new training</button>-->
   <br><br>
   <div class="container">
     <table id="trainings">
-      <tr>
-        <th onclick="sortTable(0)">Naziv</th>
-        <th onclick="sortTable(1)">Opis</th>
-        <th onclick="sortTable(2)">Tip</th>
-        <th onclick="sortTable(3)">Trajanje</th>
+      <tr id="myTR">
+        <th id="name" onclick="sortTable(0)">Naziv</th>
+        <th id="about" onclick="sortTable(1)">Opis</th>
+        <th id="tip" onclick="sortTable(2)">Tip</th>
+        <th id="tra" onclick="sortTable(3)">Trajanje</th>
       </tr>
     </table>
   </div>
@@ -84,21 +83,26 @@
     }
   }
 
-  let render = function (data){
-    let app = document.getElementById('app');
-    let trainingHTML = '<ul>' +
-            data.map(function (training){
-              return  '<li>' + '<strong> Name: </strong>' + training.name + '<br/>' +
-                    '<strong>Subtitle: </strong>' + training.aboutTraining + '<br/>' +
-                    '<strong>Author: </strong>' + training.typeOfTraining + '<br/>' +
-                    '<strong>Category: </strong>' + training.length + '<br/>' +
-                    '</li>';
-            }).join('');
-    + '</ul>';
+  function myFunction() {
+  // Declare variables
+  let input, filter, tr, th, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  tr = document.getElementById("myTR");
+  th = document.getElementById("name");
 
-    app.innerHTML = trainingHTML;
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < th.length; i++) {
+    a = th[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      th[i].style.display = "";
+    } else {
+      th[i].style.display = "none";
+    }
   }
-  render()
+}
+
 </script>
 
 </body>

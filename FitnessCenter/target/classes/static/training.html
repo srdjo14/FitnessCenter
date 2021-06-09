@@ -16,17 +16,24 @@
 
 <body>
 
+<div id="app"></div>
+
+
 <div id="allTrainings">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Search about..">
+<input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search for type..">
+<input type="text" id="myInput3" onkeyup="myFunction3()" placeholder="Search for length..">
 
   <!--<button onclick="location.href = 'add-employee.html'">Add new training</button>-->
   <br><br>
   <div class="container">
     <table id="trainings">
-      <tr>
-        <th onclick="sortTable(0)">Naziv</th>
-        <th onclick="sortTable(1)">Opis</th>
-        <th onclick="sortTable(2)">Tip</th>
-        <th onclick="sortTable(3)">Trajanje</th>
+      <tr id="myTR">
+        <th id="name" onclick="sortTable(0)">Naziv</th>
+        <th id="about" onclick="sortTable(1)">Opis</th>
+        <th id="tip" onclick="sortTable(2)">Tip</th>
+        <th id="tra" onclick="sortTable(3)">Trajanje</th>
       </tr>
     </table>
   </div>
@@ -39,45 +46,33 @@
     let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("trainings");
     switching = true;
-    // Set the sorting direction to ascending:
+
     dir = "asc";
-    /* Make a loop that will continue until
-    no switching has been done: */
+
     while (switching) {
-      // Start by saying: no switching is done:
+
       switching = false;
       rows = table.rows;
-      /* Loop through all table rows (except the
-      first, which contains table headers): */
+
       for (i = 1; i < (rows.length - 1); i++) {
-        // Start by saying there should be no switching:
         shouldSwitch = false;
-        /* Get the two elements you want to compare,
-        one from current row and one from the next: */
         x = rows[i].getElementsByTagName("TD")[n];
         y = rows[i + 1].getElementsByTagName("TD")[n];
-        /* Check if the two rows should switch place,
-        based on the direction, asc or desc: */
         if (dir == "asc") {
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            // If so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
           }
         } else if (dir == "desc") {
           if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-            // If so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
           }
         }
       }
       if (shouldSwitch) {
-        /* If a switch has been marked, make the switch
-        and mark that a switch has been done: */
         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
-        // Each time a switch is done, increase this count by 1:
         switchcount ++;
       } else {
         if (switchcount == 0 && dir == "asc") {
@@ -87,6 +82,27 @@
       }
     }
   }
+
+  function myFunction() {
+  // Declare variables
+  let input, filter, tr, th, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  tr = document.getElementById("myTR");
+  th = document.getElementById("name");
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < th.length; i++) {
+    a = th[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      th[i].style.display = "";
+    } else {
+      th[i].style.display = "none";
+    }
+  }
+}
+
 </script>
 
 </body>

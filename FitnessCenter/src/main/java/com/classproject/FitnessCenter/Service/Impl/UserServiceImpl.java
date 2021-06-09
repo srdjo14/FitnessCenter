@@ -19,16 +19,18 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    /*
+     U ovoj metodi provjeravamo da li postoji korisnik sa tim korisnickim imenom
+     kao i da li unesena sifra postoji u bazi.
+    */
     @Override
-    public User create(User user) throws Exception {
-        if(user.getId() != null){
-            throw new Exception("ID must be null");
-        }
-
-        user.getUsername()
-
-        User newUser = this.userRepository.save(user);
-        return newUser;
+    public User loginUser(User user) throws Exception {
+        if(userRepository.existsUserByUsername(user.getUsername())){
+            User user1 = userRepository.findUserByUsername(user.getUsername());
+            if(user1.getActive() && user1.getPassword().equals(user.getPassword())){
+                return user1;
+            }
+        } return null;
     }
 
     @Override

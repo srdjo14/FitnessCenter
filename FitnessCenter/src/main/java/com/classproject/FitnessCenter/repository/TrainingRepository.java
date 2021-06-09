@@ -7,14 +7,12 @@ import java.util.List;
 
 public interface TrainingRepository extends JpaRepository<Training, Long> {
 
-    List<Training> findAllByName(String name);
-
-    List<Training> findByLength(String length);
+    List<Training> findAllByNameContaining(String name);
 
     List<Training> findByName(String name);
 
-    List<Training> findByAboutTraining(String about);
+    List<Training> findAllByAboutTrainingContaining(String about);
 
-    List<Training> findByTypeOfTraining(String typeOfTraining);
+    List<Training> findAllByTypeOfTrainingContaining(String typeOfTraining);
 }
 

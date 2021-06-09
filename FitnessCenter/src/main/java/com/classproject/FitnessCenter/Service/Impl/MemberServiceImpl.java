@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member checkUsername(Member member) throws Exception {
-        return memberRepository.existsByUsername(true);
+    public Boolean checkUsername(Member member) {
+        return memberRepository.existsByUsername(member.getUsername());
     }
 }

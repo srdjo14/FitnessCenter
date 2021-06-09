@@ -9,4 +9,5 @@ import java.util.List;
 public interface TrainingService {
 
     List<Training> findAll();
+    Training findOne(Long id);
 }

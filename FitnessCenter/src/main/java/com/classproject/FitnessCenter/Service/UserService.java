@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface UserService {
 
-    User create(User user) throws Exception;
+    User loginUser(User user) throws Exception;
     List<User> getActiveUser();
 }
