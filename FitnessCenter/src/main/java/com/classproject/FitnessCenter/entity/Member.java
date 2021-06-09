@@ -31,8 +31,8 @@ public class Member extends User{
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CheckTraining> doneTraining = new ArrayList<>();
 
-    public Member(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active) {
-        super(firstName, lastName, username, password, email, contact, birthDate, active);
+    public Member(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, String position) {
+        super(firstName, lastName, username, password, email, contact, birthDate, active, position);
     }
 
     public Member() {

@@ -13,10 +13,11 @@ public class MemberDTO {
     private String contact;
     private Date birthDate;
     private Boolean active;
+    private String position = "member";
 
     public MemberDTO() {}
 
-    public MemberDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active) {
+    public MemberDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, String position) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,6 +27,15 @@ public class MemberDTO {
         this.contact = contact;
         this.birthDate = birthDate;
         this.active = active;
+        this.position = position;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public Boolean getActive() {

@@ -21,20 +21,18 @@ public class TrainerController {
     @Autowired
     public TrainerController(TrainerService trainerService) {this.trainerService = trainerService; }
 
-    /* Metoda za dobavljanje trenera iz baze */
+    /* Metoda za dobavljanje trenera iz baze koji su neaktivni jer nisu registrovani */
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TrainerDTO>> getTrainer(){
-        List<Trainer> trainerList = this.trainerService.findAll();
+
+        List<Trainer> trainerList = this.trainerService.getUnactive();
 
         List<TrainerDTO> trainerDTOList = new ArrayList<>();
 
-
         for(Trainer trainer : trainerList){
-
                 TrainerDTO trainerDTO = new TrainerDTO(trainer.getId(), trainer.getFirstName(), trainer.getLastName(), trainer.getUsername(),
                         trainer.getContact(), trainer.getEmail(), trainer.getActive());
                 trainerDTOList.add(trainerDTO);
-
         }
         return new ResponseEntity<>(trainerDTOList, HttpStatus.OK);
     }
@@ -43,15 +41,27 @@ public class TrainerController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TrainerDTO> createTrainer(@RequestBody TrainerDTO trainerDTO) throws Exception {
             Trainer trainer = new Trainer(trainerDTO.getFirstName(), trainerDTO.getLastName(), trainerDTO.getUsername(),
-                    trainerDTO.getPassword(), trainerDTO.getEmail(), trainerDTO.getContact(), trainerDTO.getBirthDate(), trainerDTO.getActive(), trainerDTO.getMediumRate(),
-                    trainerDTO.getFitnessCenter());
+                                trainerDTO.getPassword(), trainerDTO.getEmail(), trainerDTO.getContact(), trainerDTO.getBirthDate(), trainerDTO.getActive(), trainerDTO.getMediumRate(), trainerDTO.getFitnessCenter(),
+                    trainerDTO.getPosition());
 
             Trainer newTrainer = trainerService.create(trainer);
 
             TrainerDTO newTrainerDTO = new TrainerDTO(newTrainer.getId(), newTrainer.getFirstName(), newTrainer.getLastName(),
                     newTrainer.getEmail(), newTrainer.getUsername(), newTrainer.getPassword(), newTrainer.getContact(),
-                    newTrainer.getBirthDate(), newTrainer.getActive(), newTrainer.getMediumRate(), newTrainer.getFitnessCenter());
+                    newTrainer.getBirthDate(), newTrainer.getActive(), newTrainer.getPosition(), newTrainer.getMediumRate(), newTrainer.getFitnessCenter());
 
             return new ResponseEntity<>(newTrainerDTO, HttpStatus.CREATED);
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TrainerDTO> updateTrainer(@RequestBody TrainerDTO trainerDTO) throws Exception {
+
+        Trainer trainer = new Trainer(trainerDTO.getFirstName(), trainerDTO.getLastName(), trainerDTO.getUsername(),
+                trainerDTO.getContact(), trainerDTO.getEmail(), trainerDTO.getActive());
+
+        Trainer updatedTr = trainerService.update(trainer);
+
+        return null;
     }
 }

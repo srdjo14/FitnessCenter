@@ -29,8 +29,21 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
     });
 });
 
-$(document).on(types: "submit", selector: "#allTrainings", data: function (event){
-    event.preventDefault();
+$(document).ready(function () {
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/api/trainer",
+        dataType: "json",
+        success: function(response){
+            console.log("SUCCESS:\n", response);
 
-    let firstName
-}
+            let log = document.getElementById('active');
+            document.onclick = change;
+
+            function change(){
+                log.textContent = "true";
+            }
+
+        }
+    })
+});

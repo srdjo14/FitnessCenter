@@ -26,6 +26,19 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
+    public Trainer update(Trainer trainer) throws Exception {
+        Trainer trainerToUpdate = this.trainerRepository.getOne(trainer.getId());
+        if(trainerToUpdate == null){
+            throw new Exception("Trener ne postoji!");
+        }
+
+        trainerToUpdate.setActive(trainer.getActive());
+
+        Trainer savedEm = this.trainerRepository.save(trainerToUpdate);
+        return savedEm;
+    }
+
+    @Override
     public Trainer create(Trainer trainer) throws Exception {
         if (trainer.getId() != null) {
             throw new Exception("ID must be null!");
@@ -33,5 +46,10 @@ public class TrainerServiceImpl implements TrainerService {
 
         Trainer newTrainer = this.trainerRepository.save(trainer);
         return newTrainer;
+    }
+
+    @Override
+    public List<Trainer> getUnactive() {
+        return trainerRepository.getAllByActive(false);
     }
 }

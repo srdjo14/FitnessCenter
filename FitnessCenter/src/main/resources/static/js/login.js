@@ -24,8 +24,8 @@ $(document).on("submit", "#loginUser", function (event) {     // kada je submit-
         success: function (response) {                              // ova f-ja se izvršava posle uspešnog zahteva
             console.log(response);                                  // ispisujemo u konzoli povratnu vrednost radi provere
 
-            alert("Uspesno ste se prijavili!" + response.id + " je uspešno kreiran!");// prikazujemo poruku uspeha korisniku
-            window.location.href = "index.html";                // redirektujemo ga na employees.html stranicu
+            alert("Uspesno ste se prijavili!");// prikazujemo poruku uspeha korisniku
+            window.location.href = "pocetna.html";                // redirektujemo ga na employees.html stranicu
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva
             alert("Greška prilikom dodavanja zaposlenog!");

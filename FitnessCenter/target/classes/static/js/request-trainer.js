@@ -28,3 +28,22 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
         }
     });
 });
+
+$(document).ready(function () {
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/api/trainer",
+        dataType: "json",
+        success: function(response){
+            console.log("SUCCESS:\n", response);
+
+            let log = document.getElementById('active');
+            document.onclick = change;
+
+            function change(){
+                log.textContent = "true";
+            }
+
+        }
+    })
+});

@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping(value = "/api/training")
 public class TrainingController {
 
-   /* private final TrainingService trainingService;
+    private final TrainingService trainingService;
 
     @Autowired
     public TrainingController(TrainingService trainingService) {

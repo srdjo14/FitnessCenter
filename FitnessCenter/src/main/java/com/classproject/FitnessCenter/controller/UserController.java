@@ -3,10 +3,8 @@ package com.classproject.FitnessCenter.controller;
 import com.classproject.FitnessCenter.Service.AuthenticationService;
 import com.classproject.FitnessCenter.Service.TrainingService;
 import com.classproject.FitnessCenter.Service.UserService;
-import com.classproject.FitnessCenter.entity.Member;
 import com.classproject.FitnessCenter.entity.Training;
 import com.classproject.FitnessCenter.entity.User;
-import com.classproject.FitnessCenter.entity.dto.MemberDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,17 +37,15 @@ public class UserController {
         this.authenticationService = authenticationService;
     }
 
-    /* Dobavaljanje svih treninga koji su u ponudi */
-    @GetMapping(value = "/trainings", produces= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TrainingDTO>> getTraining() throws Exception {
-        // Pozivanjem metode servisa dobavljamo sve treninge
-        List<Training> trainingList = this.trainingService.findAll();
+    @GetMapping(value = "/training", produces= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TrainingDTO>> getTraining() {
 
-        List<TrainingDTO> trainingDTOS = new ArrayList<>();
 
-        User user = new User();
+            // Pozivanjem metode servisa dobavljamo sve treninge
+            List<Training> trainingList = this.trainingService.findAll();
 
-        if (authenticationService.isLoggedIn(user) == true) {
+            List<TrainingDTO> trainingDTOS = new ArrayList<>();
+
             for (Training training : trainingList) {
                 TrainingDTO trainingDTO = new TrainingDTO(training.getId(), training.getName(), training.getAboutTraining(),
                         training.getTypeOfTraining(), training.getLength());
@@ -58,10 +54,9 @@ public class UserController {
 
             // Vraćamo odgovor 200 OK, a kroz body odgovora šaljemo podatke o pronađenim zaposlenima
             return new ResponseEntity<>(trainingDTOS, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
+
     }
+
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) throws Exception {

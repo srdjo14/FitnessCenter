@@ -24,4 +24,9 @@ public class MemberServiceImpl implements MemberService {
         Member newMember = this.memberRepository.save(member);
         return newMember;
     }
+
+    @Override
+    public Member checkUsername(Member member) throws Exception {
+        return memberRepository.existsByUsername(true);
+    }
 }

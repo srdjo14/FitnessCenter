@@ -15,10 +15,11 @@ public class TrainerDTO {
     private String contact;
     private Date birthDate;
     private Boolean active;
+    private String position = "trainer";
     private Double mediumRate;
     private FitnessCenter fitnessCenter;
 
-    public TrainerDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, Double mediumRate, FitnessCenter fitnessCenter) {
+    public TrainerDTO(Long id, String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, String position, Double mediumRate, FitnessCenter fitnessCenter) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,6 +29,7 @@ public class TrainerDTO {
         this.contact = contact;
         this.birthDate = birthDate;
         this.active = active;
+        this.position = position;
         this.mediumRate = mediumRate;
         this.fitnessCenter = fitnessCenter;
     }
@@ -43,6 +45,14 @@ public class TrainerDTO {
         this.contact = contact;
         this.email = email;
         this.active = active;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public Double getMediumRate() {

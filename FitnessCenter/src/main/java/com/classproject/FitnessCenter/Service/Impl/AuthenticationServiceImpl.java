@@ -17,6 +17,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public Boolean isLoggedIn(User user) throws Exception {
-        return user.getActive();
+        User userToCheck = this.userRepository.getOne(user.getId());
+
+        if(!userToCheck.getActive()){
+            throw new Exception("Korisnik ne postoji!");
+        }
+        return true;
     }
 }

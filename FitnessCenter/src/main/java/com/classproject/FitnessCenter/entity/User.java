@@ -41,12 +41,15 @@ public class User{
     @Column(name="active")
     private Boolean active;
 
+    @Column(name="position")
+    private String position;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public User(Long id, String username, String password, String firstName, String lastName, String contact, String email, Date birthDate, Boolean active) {
+    public User(Long id, String username, String password, String firstName, String lastName, String contact, String email, Date birthDate, Boolean active, String position) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -56,10 +59,23 @@ public class User{
         this.email = email;
         this.birthDate = birthDate;
         this.active = active;
+        this.position = position;
     }
 
     public User() {
 
+    }
+
+    public User(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, String position) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.contact = contact;
+        this.birthDate = birthDate;
+        this.active = active;
+        this.position = position;
     }
 
     public User(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active) {
@@ -145,6 +161,14 @@ public class User{
         this.active = active;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -157,6 +181,7 @@ public class User{
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +
                 ", active=" + active +
+                ", position=" + position +
                 '}';
     }
 }
