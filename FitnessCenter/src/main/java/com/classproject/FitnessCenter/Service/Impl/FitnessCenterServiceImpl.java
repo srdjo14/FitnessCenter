@@ -24,7 +24,7 @@ public class FitnessCenterServiceImpl implements FitnessCenterService {
         if (fitnessCenter.getId() != null){
             throw new Exception("ID must be null");
         }
-        User user = userRepository.findUserByPosition();
+
 
         FitnessCenter newFitnessCenter = this.fitnessCenterRepository.save(fitnessCenter);
         return newFitnessCenter;
