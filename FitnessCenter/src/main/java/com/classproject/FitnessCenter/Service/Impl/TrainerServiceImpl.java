@@ -52,4 +52,9 @@ public class TrainerServiceImpl implements TrainerService {
     public List<Trainer> getUnactive() {
         return trainerRepository.getAllByActive(false);
     }
+
+    @Override
+    public void delete(Long id) {
+        this.trainerRepository.deleteById(id);
+    }
 }

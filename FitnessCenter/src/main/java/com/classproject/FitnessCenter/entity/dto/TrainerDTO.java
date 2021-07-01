@@ -47,6 +47,19 @@ public class TrainerDTO {
         this.active = active;
     }
 
+    public TrainerDTO(Long id, String firstName, String lastName, FitnessCenter fitnessCenter) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fitnessCenter = fitnessCenter;
+    }
+
+    public TrainerDTO(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getPosition() {
         return position;
     }

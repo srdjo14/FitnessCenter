@@ -20,3 +20,4 @@ public class CheckTraining implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Training training;
 }
+

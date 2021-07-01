@@ -21,6 +21,17 @@ public class TrainerController {
     @Autowired
     public TrainerController(TrainerService trainerService) {this.trainerService = trainerService; }
 
+    @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TrainerDTO>> getTrainerAll(){
+        List<Trainer> trainerList = this.trainerService.findAll();
+        List<TrainerDTO> trainerDTOList = new ArrayList<>();
+
+        for(Trainer trainer : trainerList){
+            TrainerDTO trainerDTO = new TrainerDTO(trainer.getId(), trainer.getFirstName(), trainer.getLastName());
+            trainerDTOList.add(trainerDTO);
+        }
+        return new ResponseEntity<>(trainerDTOList, HttpStatus.OK);
+    }
     /* Metoda za dobavljanje trenera iz baze koji su neaktivni jer nisu registrovani */
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TrainerDTO>> getTrainer(){
@@ -63,5 +74,14 @@ public class TrainerController {
         Trainer updatedTr = trainerService.update(trainer);
 
         return null;
+    }
+
+    /* Brisanje fitnes centra */
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteTrainer(@PathVariable Long id){
+        // Brisemo fitnes centar po ID-ju
+        this.trainerService.delete(id);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -11,4 +11,6 @@ public interface TrainerService {
     Trainer update(Trainer trainer) throws Exception;
     Trainer create(Trainer trainer) throws Exception;
     List<Trainer> getUnactive();
+
+    void delete(Long id);
 }
