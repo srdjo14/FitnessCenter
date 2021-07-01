@@ -8,6 +8,8 @@ import com.classproject.FitnessCenter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FitnessCenterServiceImpl implements FitnessCenterService {
 
@@ -20,11 +22,16 @@ public class FitnessCenterServiceImpl implements FitnessCenterService {
     }
 
     @Override
+    public List<FitnessCenter> findAll() {
+        List<FitnessCenter> fitnessCenters = this.fitnessCenterRepository.findAll();
+        return fitnessCenters;
+    }
+
+    @Override
     public FitnessCenter create(FitnessCenter fitnessCenter) throws Exception {
         if (fitnessCenter.getId() != null){
             throw new Exception("ID must be null");
         }
-
 
         FitnessCenter newFitnessCenter = this.fitnessCenterRepository.save(fitnessCenter);
         return newFitnessCenter;
