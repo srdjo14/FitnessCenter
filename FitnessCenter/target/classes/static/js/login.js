@@ -26,6 +26,8 @@ $(document).on("submit", "#loginUser", function (event) {
 
             alert("Uspesno ste se prijavili!");// prikazujemo poruku uspeha korisniku
             window.localStorage.setItem("ID", response.id);
+
+
             window.location.href = "pocetna.html";
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva
