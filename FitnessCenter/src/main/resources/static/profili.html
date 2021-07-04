@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Employees</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/employees.css" />
+    <!-- 1. Ukljucivanje jQuery biblioteke -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 2. Ukljucivanje jQuery Validate biblioteke za validaciju polja forme (opciono).
+            O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
+    <script src="js/jquery.validate.min.js"></script>
+    <!-- 3. Ukljucivanje naseg JS fajla -->
+    <script src="js/employees.js"></script>
+</head>
+
+<body>
+
+<div id="allEmployees">
+    <h1>Employees</h1>
+    <button onclick="location.href = 'add-employee.html'">Add new employee</button>
+    <br><br>
+    <div class="container">
+        <table id="employees">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Position</th>
+                <th>Details</th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="oneEmployee" hidden>
+    <h2 style="text-align:center">Employee Profile</h2>
+    <div class="card">
+        <img alt="User" src="/images/user.png" />
+        <h1 id="firstName"></h1>
+        <h1 id="lastName"></h1>
+        <p class="title" id="position"></p>
+        <br>
+    </div>
+</div>
+
+</body>
+
+</html>
