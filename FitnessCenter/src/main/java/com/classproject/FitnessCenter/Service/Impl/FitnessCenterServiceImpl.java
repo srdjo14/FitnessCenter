@@ -58,4 +58,6 @@ public class FitnessCenterServiceImpl implements FitnessCenterService {
     public void delete(Long id) {
         this.fitnessCenterRepository.deleteById(id);
     }
+
+
 }

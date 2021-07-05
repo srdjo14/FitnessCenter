@@ -37,7 +37,7 @@ $(document).on("submit", "#addFitCentForm", function (event) {
     });
 });
 
-// Pregled svih treninga
+// Pregled svih fitnes centara
 $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Object Model) učitan da bi JS mogao sa njim da manipuliše.
     // ajax poziv za dobavljanje svih zaposlenih sa backend-a i prikaz u tabeli
     $.ajax({
@@ -67,6 +67,8 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
         }
     });
 });
+
+
 $(document).on('click', '.btnDelete', function () {
     let fitId = this.dataset.id;
 

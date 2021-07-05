@@ -11,3 +11,4 @@ public interface TrainingService {
     List<Training> findAll();
     Training findOne(Long id);
 }
+

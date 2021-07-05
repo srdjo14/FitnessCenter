@@ -76,12 +76,15 @@ public class TrainerController {
         return null;
     }
 
-    /* Brisanje fitnes centra */
+    /*
+        Metoda za brisanje postojećeg zaposlenog
+     */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteTrainer(@PathVariable Long id){
-        // Brisemo fitnes centar po ID-ju
+    public ResponseEntity<Void> deleteEhhmployee(@PathVariable Long id) {
+        // Pozivanjem metode servisa brišemo zaposlenog po ID-ju
         this.trainerService.delete(id);
 
+        // Vraćamo odgovor 204 NO_CONTENT koji signalizira uspešno brisanje
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

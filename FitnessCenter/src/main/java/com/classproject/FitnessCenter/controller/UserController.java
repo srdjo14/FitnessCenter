@@ -1,9 +1,6 @@
 package com.classproject.FitnessCenter.controller;
 
-import com.classproject.FitnessCenter.Service.AuthenticationService;
-import com.classproject.FitnessCenter.Service.TermsService;
-import com.classproject.FitnessCenter.Service.TrainingService;
-import com.classproject.FitnessCenter.Service.UserService;
+import com.classproject.FitnessCenter.Service.*;
 import com.classproject.FitnessCenter.entity.Terms;
 import com.classproject.FitnessCenter.entity.Training;
 import com.classproject.FitnessCenter.entity.User;
@@ -32,13 +29,15 @@ public class UserController {
     private final TrainingService trainingService;
     private final AuthenticationService authenticationService;
     private final TermsService termsService;
+    private final TrainerService trainerService;
 
     @Autowired
-    public UserController(UserService userService, TrainingService trainingService, AuthenticationService authenticationService, TermsService termsService){
+    public UserController(UserService userService, TrainingService trainingService, AuthenticationService authenticationService, TermsService termsService, TrainerService trainerService){
         this.userService = userService;
         this.trainingService = trainingService;
         this.authenticationService = authenticationService;
         this.termsService = termsService;
+        this.trainerService = trainerService;
     }
     @GetMapping(value = "/training/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TrainingDTO> getOneTraining(@PathVariable("id") Long id){
@@ -111,4 +110,5 @@ public class UserController {
 
         return new ResponseEntity<>(newUserDTO, HttpStatus.CREATED);
     }
+
 }
