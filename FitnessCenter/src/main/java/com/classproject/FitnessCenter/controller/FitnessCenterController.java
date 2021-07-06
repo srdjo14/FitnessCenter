@@ -2,9 +2,12 @@ package com.classproject.FitnessCenter.controller;
 
 
 import com.classproject.FitnessCenter.Service.FitnessCenterService;
+import com.classproject.FitnessCenter.Service.HallService;
 import com.classproject.FitnessCenter.entity.FitnessCenter;
+import com.classproject.FitnessCenter.entity.Hall;
 import com.classproject.FitnessCenter.entity.Training;
 import com.classproject.FitnessCenter.entity.dto.FitnessCenterDTO;
+import com.classproject.FitnessCenter.entity.dto.HallDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +23,11 @@ import java.util.List;
 public class FitnessCenterController {
 
     private FitnessCenterService fitnessCenterService;
+    private HallService hallService;
     @Autowired
-    public FitnessCenterController(FitnessCenterService fitnessCenterService) {
+    public FitnessCenterController(FitnessCenterService fitnessCenterService, HallService hallService) {
         this.fitnessCenterService = fitnessCenterService;
+        this.hallService = hallService;
     }
 
     /* Prikaz svih fitnes centara */
@@ -84,4 +89,42 @@ public class FitnessCenterController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    /* Prikaz svih sala */
+    @GetMapping(value = "/hall", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<FitnessCenterDTO>> getHall(){
+
+        List<FitnessCenter> fitnessCenterList = this.fitnessCenterService.findAll();
+        List<FitnessCenterDTO> fitnessCenterDTOS = new ArrayList<>();
+
+        for(FitnessCenter fitnessCenter : fitnessCenterList){
+            FitnessCenterDTO fitnessCenterDTO = new FitnessCenterDTO();
+            fitnessCenterDTO.setId(fitnessCenter.getId());
+            fitnessCenterDTO.setNaziv(fitnessCenter.getNaziv());
+            fitnessCenterDTO.setAddress(fitnessCenter.getAddress());
+            fitnessCenterDTO.setContactPhone(fitnessCenter.getContactPhone());
+            fitnessCenterDTO.setEmail(fitnessCenter.getEmail());
+            List<HallDTO> hallDTOList = new ArrayList<>();
+            for (Hall hall : fitnessCenter.getHall()){
+                HallDTO hallDTO = new HallDTO();
+                hallDTO.setId(hall.getId());
+                hallDTO.setCapacity(hall.getCapacity());
+                hallDTO.setNumberOfHall(hall.getNumberOfHall());
+                hallDTOList.add(hallDTO);
+            }
+            fitnessCenterDTO.setHallList(hallDTOList);
+            fitnessCenterDTOS.add(fitnessCenterDTO);
+        }
+        return new ResponseEntity<>(fitnessCenterDTOS, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/hall/{id}")
+    public ResponseEntity<Void> deleteHall(@PathVariable Long id){
+        // Brisemo fitnes centar po ID-ju
+        this.hallService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+
 }

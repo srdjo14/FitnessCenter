@@ -19,7 +19,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 
                     row += "<td>" + terms.price + "</td>";
                     row += "<td>" + terms.trainingDay + "</td>";
-                    btn = "<button class='btnCheck' data-id=" + training.id + ">Prijava</button>";
+                    btn = "<button class='btnCheck' data-id=" + training.id + ">Odaberi</button>";
                     row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
@@ -30,5 +30,11 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
         error: function (response) {                                // ova f-ja se izvršava posle neuspešnog zahteva
             console.log("ERROR:\n", response);
         }
+    });
+
+    $(document).on('click', '.btnCheck', function myFunction(event) {
+        event.preventDefault();
+        window.localStorage.setItem('terms', this.id);
+        window.location.href = "termin-odabran.html";
     });
 });

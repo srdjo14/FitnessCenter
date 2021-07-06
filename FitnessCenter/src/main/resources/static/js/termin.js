@@ -19,7 +19,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 
                     row += "<td>" + terms.price + "</td>";
                     row += "<td>" + terms.trainingDay + "</td>";
-
+                    row += "<td>" + <button>Odaberi</button> + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
                     $('#trainings').append(row);                        // ubacujemo kreirani red u tabelu čiji je id = trainings
@@ -31,3 +31,4 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
         }
     });
 });
+

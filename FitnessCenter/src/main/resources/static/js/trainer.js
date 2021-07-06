@@ -55,7 +55,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                 let row = "<tr>";                                // kreiramo red za tabelu
                 row += "<td>" + fitnesss.firstName + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
                 row += "<td>" + fitnesss.lastName + "</td>";
-                btn = "<button class='btnDel' data-id=" + fitnesss.id + ">Delete</button>";
+                btn = "<button class='btnDel'>Delete</button>";
                 row += "<td>" + btn + "</td>";
                 row += "</tr>";                                     // završavamo kreiranje reda
 

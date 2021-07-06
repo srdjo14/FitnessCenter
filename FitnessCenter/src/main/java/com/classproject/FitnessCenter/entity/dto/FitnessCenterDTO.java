@@ -1,5 +1,9 @@
 package com.classproject.FitnessCenter.entity.dto;
 
+import com.classproject.FitnessCenter.entity.Hall;
+
+import java.util.List;
+
 public class FitnessCenterDTO {
 
     private Long id;
@@ -7,6 +11,7 @@ public class FitnessCenterDTO {
     private String address;
     private String email;
     private String contactPhone;
+    private List<HallDTO> hallList;
 
     public FitnessCenterDTO(){
     }
@@ -17,6 +22,23 @@ public class FitnessCenterDTO {
         this.address = address;
         this.contactPhone = contactPhone;
         this.email = email;
+    }
+
+    public FitnessCenterDTO(Long id, String naziv, String address, String contactPhone, String email, List<HallDTO> hallList) {
+        this.id = id;
+        this.naziv = naziv;
+        this.address = address;
+        this.contactPhone = contactPhone;
+        this.email = email;
+        this.hallList = hallList;
+    }
+
+    public List<HallDTO> getHallList() {
+        return hallList;
+    }
+
+    public void setHallList(List<HallDTO> hallList) {
+        this.hallList = hallList;
     }
 
     public Long getId() {

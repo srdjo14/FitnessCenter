@@ -72,6 +72,7 @@ public class UserController {
 
     }
 
+    /* Dobavljanje svih termina */
     @GetMapping(value = "/terms", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TrainingDTO>> getTerms(){
 
