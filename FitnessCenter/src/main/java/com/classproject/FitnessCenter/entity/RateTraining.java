@@ -16,11 +16,11 @@ public class RateTraining implements Serializable {
     private Integer grade;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Termina pomocu nove klase Ocjene */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Member members;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Termina pomocu nove klase Ocjene */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Training trainings;
 
     public Long getId() {

@@ -16,7 +16,7 @@ public class Trainer extends User implements Serializable{
         private Set<Training> MyTrainings = new HashSet<>();
 
         /* Druga strana veze 1:n gdje fitnes centar sadrzi listu svih trenera koji postoje */
-        @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        @ManyToOne(fetch = FetchType.EAGER)
         private FitnessCenter fitnessCenter;
 
         /* Prosjecna ocjena */

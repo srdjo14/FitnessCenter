@@ -23,15 +23,15 @@ public class Terms implements Serializable {
     private Integer numberCheckedUser;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Hall hall;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Training training;
 
     /* Druga strana veze 1:n gdje fitnes centar dobija raspored odnosno listu svih termina zajedno sa cijenama */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCenter fitnessCenter;
 
     public Long getId() {

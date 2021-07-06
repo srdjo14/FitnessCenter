@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Fitness Center </title>
+  <link rel="stylesheet" href="css/register.css">
+  <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
+  <!-- 1. Ukljucivanje jQuery biblioteke -->
+  <script src="js/jquery.min.js"></script>
+  <!-- 2. Ukljucivanje jQuery Validate biblioteke za validaciju polja forme (opciono).
+          O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
+  <script src="js/jquery.validate.min.js"></script>
+  <!-- 3. Ukljucivanje naseg JS fajla -->
+  <script src="js/hall.js"></script>
+</head>
+<body>
+
+<form action="#" method="post">
+  <p>Kapacitet: </p>
+  <input type="number" name="fname" placeholder="Kapacitet" id ="kapacitet" required>
+  <p>Oznaka: </p>
+  <input type="number" name="lname" placeholder="Oznaka" id="oznaka" required>
+  <p>FitnesCentar ID: </p>
+  <input type="number" name="username" placeholder="Unesite id Fitnes Centra" id="idCentra" required>
+  <button type="submit" id="dugmeRegistruj">Dodaj</button>
+</form>
+
+</body>
+</html>

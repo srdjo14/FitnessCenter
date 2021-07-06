@@ -13,11 +13,11 @@ public class CheckTraining implements Serializable {
     private Long id;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Treninga pomocu nove klase Check */
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Member members;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Treninga pomocu nove klase Check */
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Training training;
 }
 

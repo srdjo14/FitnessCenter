@@ -20,11 +20,11 @@ public class Hall implements Serializable {
     private String numberOfHall;
 
     /* Druga strana veze 1:n gdje fitnes centar sadrzi listu svih sala koje se nalaze u njemu */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCenter fitnessCenter;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
-    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hall", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Terms> terms = new HashSet<>();
 
     public Long getId() {
@@ -59,4 +59,11 @@ public class Hall implements Serializable {
         this.fitnessCenter = fitnessCenter;
     }
 
+    public Set<Terms> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(Set<Terms> terms) {
+        this.terms = terms;
+    }
 }

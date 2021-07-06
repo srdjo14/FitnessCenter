@@ -75,7 +75,7 @@ $(document).on('click', '.btnDel', function () {
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/user/delete/" + idFc,
+        url: "http://localhost:8080/api/trainer/delete/" + idFc,
         success: function (response) {
             console.log(response);
             $('[data-id="' + idFc + '"]').parent().parent().remove();

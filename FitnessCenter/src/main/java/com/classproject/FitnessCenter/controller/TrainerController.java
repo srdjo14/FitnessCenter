@@ -76,5 +76,11 @@ public class TrainerController {
         return null;
     }
 
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteTrainer(@PathVariable Long id){
+        trainerService.delete(id);
+        return new ResponseEntity(HttpStatus.ACCEPTED);
+    }
+
 
 }

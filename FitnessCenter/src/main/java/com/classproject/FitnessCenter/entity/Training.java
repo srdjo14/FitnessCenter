@@ -27,7 +27,7 @@ public class Training implements Serializable {
         private Integer length;
 
         /* Druga strana veze 1:n gdje svaki trener ima listu treninga koju drzi */
-        @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        @ManyToOne(fetch = FetchType.EAGER)
         private Trainer fitnessTrainer;
 
         /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina*/

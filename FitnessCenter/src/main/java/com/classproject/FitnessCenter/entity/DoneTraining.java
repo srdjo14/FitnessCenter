@@ -13,10 +13,10 @@ public class DoneTraining implements Serializable {
     private Long id;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Treninga pomocu nove klase Check */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Member members;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Treninga pomocu nove klase Check */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Training training;
 }
