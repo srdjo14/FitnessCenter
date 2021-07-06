@@ -47,6 +47,14 @@ public class FitnessCenter implements Serializable {
         this.email = email;
     }
 
+    public FitnessCenter(Long id, String naziv, String address, String email, String contactPhone) {
+        this.id = id;
+        this.naziv = naziv;
+        this.address = address;
+        this.contactPhone = contactPhone;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }

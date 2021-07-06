@@ -55,7 +55,7 @@ public class TrainerServiceImpl implements TrainerService {
 
     @Override
     public void delete(Long id) {
-        trainerRepository.deleteById(id);
+        this.trainerRepository.deleteById(id);
     }
 
 }

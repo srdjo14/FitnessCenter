@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FitnessCenterServiceImpl implements FitnessCenterService {
@@ -39,19 +40,7 @@ public class FitnessCenterServiceImpl implements FitnessCenterService {
 
     @Override
     public FitnessCenter update(FitnessCenter fitnessCenter) throws Exception {
-        FitnessCenter fitnessCenterToUpdate = this.fitnessCenterRepository.getOne(fitnessCenter.getId());
-        if (fitnessCenterToUpdate == null) {
-            throw new Exception("Fitness centar ne postoji!");
-        }
-
-        fitnessCenterToUpdate.setNaziv(fitnessCenter.getNaziv());
-        fitnessCenterToUpdate.setAddress(fitnessCenter.getAddress());
-        fitnessCenterToUpdate.setEmail(fitnessCenter.getEmail());
-        fitnessCenterToUpdate.setContactPhone(fitnessCenter.getContactPhone());
-
-        // Cuvanje u bazi
-        FitnessCenter savedFc = this.fitnessCenterRepository.save(fitnessCenterToUpdate);
-        return savedFc;
+        return fitnessCenterRepository.save(fitnessCenter);
     }
 
     @Override
@@ -59,5 +48,8 @@ public class FitnessCenterServiceImpl implements FitnessCenterService {
         this.fitnessCenterRepository.deleteById(id);
     }
 
-
+    @Override
+    public Optional<FitnessCenter> findOne(Long id) {
+        return fitnessCenterRepository.findById(id);
+    }
 }

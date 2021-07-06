@@ -55,7 +55,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                 let row = "<tr>";                                // kreiramo red za tabelu
                 row += "<td>" + fitnesss.firstName + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
                 row += "<td>" + fitnesss.lastName + "</td>";
-                btn = "<button class='btnDel'>Delete</button>";
+                btn = "<button class='btnDel' data-id=" + fitnesss.id + ">Delete</button>";
                 row += "<td>" + btn + "</td>";
                 row += "</tr>";                                     // završavamo kreiranje reda
 
@@ -69,21 +69,23 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 });
 
 $(document).on('click', '.btnDel', function () {
-    let fitId = this.dataset.id;
+
+    // preuzimamo vrednosti unete u formi
+    let idFc = this.dataset.id;
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/trainer/" + fitId,
-        dataType: "json",
-        success: function () {
-            console.log("SUCCESS");
-            $('[data-id="' + fitId + '"]').parent().parent().remove();  // ukloni red tabele u kom se nalazi element sa data-id atributom = employeeId
-            aler("Uspjesno obrisan!");
+        url: "http://localhost:8080/api/user/delete/" + idFc,
+        success: function (response) {
+            console.log(response);
+            $('[data-id="' + idFc + '"]').parent().parent().remove();
         },
         error: function () {
-            alert("Greška prilikom brisanja zaposlenog!");
+            console.log("usao sam u error");
+            // window.location.href = "adminHomePage.html";
         }
     });
 });
+
 
 

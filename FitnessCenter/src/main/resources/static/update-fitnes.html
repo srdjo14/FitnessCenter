@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Update </title>
+  <link rel="stylesheet" href="css/register.css">
+  <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
+  <!-- 1. Ukljucivanje jQuery biblioteke -->
+  <script src="js/jquery.min.js"></script>
+  <!-- 2. Ukljucivanje jQuery Validate biblioteke za validaciju polja forme (opciono).
+          O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
+  <script src="js/jquery.validate.min.js"></script>
+  <!-- 3. Ukljucivanje naseg JS fajla -->
+  <script src="js/fitcenter.js"></script>
+</head>
+
+<body>
+<div class = "fitnessCenterForm" id = "reg">
+  <h1>Update Fitness Centar</h1>
+  <form action="#" method="post">
+    <p>ID: </p>
+    <input type="number" name="id" placeholder="ID" id ="id" required>
+    <p>Name: </p>
+    <input type="text" name="fname" placeholder="Name" id ="ime" required>
+    <p>Address: </p>
+    <input type="text" name="lname" placeholder="Address" id="adresa" required>
+    <p>Contact: </p>
+    <input type="text" name="username" placeholder="Contact" id="kontakt" required>
+    <p>Email: </p>
+    <input type="email" name="email" placeholder="Email" id="email" required>
+    <button type="submit" id="potvrdi">Update</button>
+  </form>
+</div>
+</body>
+</html>

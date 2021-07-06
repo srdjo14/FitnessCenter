@@ -13,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "api/fit-center")
@@ -52,7 +54,7 @@ public class FitnessCenterController {
     }
 
     /* Dodavanje novog fitnes centra */
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(value="/add", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FitnessCenterDTO> createFitnessCenter(@RequestBody FitnessCenterDTO fitnessCenterDTO) throws Exception {
         FitnessCenter fitnessCenter = new FitnessCenter(fitnessCenterDTO.getNaziv(), fitnessCenterDTO.getAddress(),
@@ -64,30 +66,6 @@ public class FitnessCenterController {
                 newFitnessCenter.getAddress(), newFitnessCenter.getContactPhone(), newFitnessCenter.getEmail());
 
         return new ResponseEntity<>(newFitnessCenterDTO, HttpStatus.CREATED);
-    }
-
-    /* Izmjena postojeceg fitnes centra */
-    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<FitnessCenterDTO> updateFitnessCenter(@PathVariable Long id, @RequestBody FitnessCenterDTO fitnessCenterDTO) throws Exception {
-        FitnessCenter fitnessCenter = new FitnessCenter(fitnessCenterDTO.getNaziv(), fitnessCenterDTO.getAddress(), fitnessCenterDTO.getEmail(),
-                fitnessCenterDTO.getContactPhone());
-
-        fitnessCenter.setId(id);
-
-        FitnessCenter updatedFc = fitnessCenterService.update(fitnessCenter);
-
-        FitnessCenterDTO updatedFcDTO = new FitnessCenterDTO(updatedFc.getId(), updatedFc.getNaziv(), updatedFc.getEmail(), updatedFc.getAddress(), updatedFc.getContactPhone());
-
-        return new ResponseEntity<>(updatedFcDTO, HttpStatus.OK);
-    }
-
-    /* Brisanje fitnes centra */
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteFitnessCenter(@PathVariable Long id){
-        // Brisemo fitnes centar po ID-ju
-        this.fitnessCenterService.delete(id);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     /* Prikaz svih sala */
@@ -118,13 +96,27 @@ public class FitnessCenterController {
         return new ResponseEntity<>(fitnessCenterDTOS, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/hall/{id}")
-    public ResponseEntity<Void> deleteHall(@PathVariable Long id){
-        // Brisemo fitnes centar po ID-ju
-        this.hallService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    /* Izmjena postojeceg fitnes centra */
+    @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FitnessCenterDTO> updateFitnessCenter(@PathVariable Long id, @Validated @RequestBody FitnessCenterDTO fitnessCenterDTO) throws Exception {
+        Optional<FitnessCenter> f2 = fitnessCenterService.findOne(id);
+        if(!f2.isPresent()){
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        FitnessCenter fitnessCenter = new FitnessCenter(f2.get().getId(), fitnessCenterDTO.getNaziv(), fitnessCenterDTO.getAddress(), fitnessCenterDTO.getEmail(),
+                fitnessCenterDTO.getContactPhone());
+
+        fitnessCenter = fitnessCenterService.update(fitnessCenter);
+
+        fitnessCenterDTO.setId(id);
+        return new ResponseEntity<>(fitnessCenterDTO, HttpStatus.OK);
     }
 
-
-
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteFC(@PathVariable Long id){
+        fitnessCenterService.delete(id);
+        return new ResponseEntity(HttpStatus.ACCEPTED);
+    }
 }

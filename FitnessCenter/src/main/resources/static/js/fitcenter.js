@@ -1,3 +1,4 @@
+
 // Dodavanje novog zaposlenog
 $(document).on("submit", "#addFitCentForm", function (event) {
     event.preventDefault();
@@ -20,7 +21,7 @@ $(document).on("submit", "#addFitCentForm", function (event) {
     // ajax poziv za kreiranje novog fitnes centra
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/fit-center",                 // URL na koji se šalju podaci
+        url: "http://localhost:8080/api/fit-center/add",                 // URL na koji se šalju podaci
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(newFitnessCenter),
@@ -36,6 +37,11 @@ $(document).on("submit", "#addFitCentForm", function (event) {
         }
     });
 });
+
+
+
+
+
 
 // Pregled svih fitnes centara
 $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Object Model) učitan da bi JS mogao sa njim da manipuliše.
@@ -55,7 +61,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                     row += "<td>" + fitness.address + "</td>";
                     row += "<td>" + fitness.contactPhone + "</td>";
                     row += "<td>" + fitness.email + "</td>";
-                btn = "<button class='btnDelete' data-id=" + fitness.id + ">Delete</button>";
+                btn = "<button class='btnDel' data-id=" + fitness.id + ">Delete</button>";
                 row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
@@ -68,20 +74,62 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
     });
 });
 
+$(document).on("submit", "#reg", function (event) {
+    event.preventDefault();
 
-$(document).on('click', '.btnDelete', function () {
-    let fitId = this.dataset.id;
+    // Preuzimamo vrednosti unijete u formi
+    let id = $("#id").val();
+    let naziv = $("#ime").val();
+    let address = $("#adresa").val();
+    let contactPhone = $("#kontakt").val();
+    let email = $("#email").val();
+
+    // Kreiramo objekat fitnes centra
+    let newFitnessCenter = {
+        id,
+        naziv,
+        address,
+        contactPhone,
+        email
+    }
+    console.log(newFitnessCenter);
+
+
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/api/fit-center/update/" + id,
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(newFitnessCenter),
+        success: function (response) {
+            console.log(response);
+
+            alert("FitnesCentar" + response.id + " je uspešno updateovan!");
+            window.location.href = "lista-fitnesa.html";
+        },
+        error: function () {
+            alert("Greška prilikom updateovanja fitnes centra!");
+        }
+    });
+});
+
+$(document).on('click', '.btnDel', function () {
+
+    // preuzimamo vrednosti unete u formi
+    let idFc = this.dataset.id;
+
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/fit-center/" + fitId,
-        dataType: "json",
-        success: function () {
-            console.log("SUCCESS");
-            $('[data-id="' + fitId + '"]').parent().parent().remove();  // ukloni red tabele u kom se nalazi element sa data-id atributom = employeeId
+        url: "http://localhost:8080/api/fit-center/delete/"+ idFc,
+        success: function (response) {
+            console.log(response);
+
+            $('[data-id="' + idFc + '"]').parent().parent().remove();
         },
         error: function () {
-            alert("Greška prilikom brisanja zaposlenog!");
+            console.log("usao sam u error");
+            // window.location.href = "adminHomePage.html";
         }
     });
 });
