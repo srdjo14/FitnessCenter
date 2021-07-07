@@ -22,12 +22,9 @@ $(document).on("submit", "#loginUser", function (event) {
         success: function (response) {
             console.log(response);
 
-
-
             alert("Uspesno ste se prijavili!");// prikazujemo poruku uspeha korisniku
             window.localStorage.setItem("ID", response.id);
-
-
+            window.localStorage.setItem("ULOGA", response.position);
             window.location.href = "pocetna.html";
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva
@@ -35,3 +32,4 @@ $(document).on("submit", "#loginUser", function (event) {
         }
     });
 });
+

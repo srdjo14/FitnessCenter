@@ -81,8 +81,7 @@ $(document).on('click', '.btnDel', function () {
             $('[data-id="' + idFc + '"]').parent().parent().remove();
         },
         error: function () {
-            console.log("usao sam u error");
-            // window.location.href = "adminHomePage.html";
+            console.log("Greska!");
         }
     });
 });

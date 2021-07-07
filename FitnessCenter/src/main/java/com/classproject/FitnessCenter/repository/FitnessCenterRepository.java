@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FitnessCenterRepository extends JpaRepository<FitnessCenter, Long> {
 
+    FitnessCenter findOneById(Long id);
 }

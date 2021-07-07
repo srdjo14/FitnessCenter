@@ -9,18 +9,15 @@ public class HallDTO {
     private Long id;
     private Integer capacity;
     private String numberOfHall;
-    private FitnessCenter fitnessCenter;
+    private Long fitnessCenterId;
 
     public HallDTO() {}
 
-    public HallDTO(Long id, Integer capacity, String numberOfHall, FitnessCenter fitnessCenter) {
+    public HallDTO(Long id, Integer capacity, String numberOfHall, Long fitnessCenterId) {
         this.id = id;
         this.capacity = capacity;
         this.numberOfHall = numberOfHall;
-        this.fitnessCenter = fitnessCenter;
-    }
-
-    public HallDTO(Long id, Integer capacity, String numberOfHall, Long id1) {
+        this.fitnessCenterId = fitnessCenterId;
     }
 
     public Long getId() {
@@ -47,11 +44,11 @@ public class HallDTO {
         this.numberOfHall = numberOfHall;
     }
 
-    public FitnessCenter getFitnessCenter() {
-        return fitnessCenter;
+    public Long getFitnessCenterId() {
+        return fitnessCenterId;
     }
 
-    public void setFitnessCenter(FitnessCenter fitnessCenter) {
-        this.fitnessCenter = fitnessCenter;
+    public void setFitnessCenterId(Long fitnessCenterId) {
+        this.fitnessCenterId = fitnessCenterId;
     }
 }

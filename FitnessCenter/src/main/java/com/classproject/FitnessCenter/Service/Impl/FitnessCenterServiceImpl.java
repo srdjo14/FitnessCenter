@@ -52,4 +52,10 @@ public class FitnessCenterServiceImpl implements FitnessCenterService {
     public Optional<FitnessCenter> findOne(Long id) {
         return fitnessCenterRepository.findById(id);
     }
+
+    @Override
+    public FitnessCenter findOneById(Long id) {
+        return fitnessCenterRepository.findOneById(id);
+    }
+
 }

@@ -27,6 +27,15 @@ public class Hall implements Serializable {
     @OneToMany(mappedBy = "hall", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Terms> terms = new HashSet<>();
 
+    public Hall(){}
+
+    public Hall(Long id, Integer capacity, String numberOfHall, FitnessCenter fitnessCenter) {
+        this.id = id;
+        this.capacity = capacity;
+        this.numberOfHall = numberOfHall;
+        this.fitnessCenter = fitnessCenter;
+    }
+
     public Long getId() {
         return id;
     }

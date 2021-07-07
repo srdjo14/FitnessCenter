@@ -20,7 +20,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                     row += "<td>" + hall.capacity + "</td>";
                     row += "<td>" + hall.numberOfHall + "</td>";
 
-                    btn = "<button class='btnDelete' data-id=" + fitness.id + ">Delete</button>";
+                    btn = "<button class='btnDel' data-id=" + fitness.id + ">Delete</button>";
                     row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
@@ -34,44 +34,44 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
     });
 });
 
-$(document).on('click', '.btnDelete', function () {
-    let fitId = this.dataset.id;
+$(document).on('click', '.btnDel', function () {
+
+    // preuzimamo vrednosti unete u formi
+    let idFc = this.dataset.id;
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/fit-center/hall/" + fitId,
-        dataType: "json",
-        success: function () {
-            console.log("SUCCESS");
-            $('[data-id="' + fitId + '"]').parent().parent().remove();  // ukloni red tabele u kom se nalazi element sa data-id atributom = employeeId
-            alert("Obrisana sala!");
+        url: "http://localhost:8080/api/hall/delete/" + idFc,
+        success: function (response) {
+            console.log(response);
+            $('[data-id="' + idFc + '"]').parent().parent().remove();
         },
         error: function () {
-            alert("Greška prilikom brisanja zaposlenog!");
+            console.log("Greska!");
         }
     });
 });
 
-$(document).on("submit", "#registracija", function (event) {
+$(document).on("submit", "#reff", function (event) {
     event.preventDefault();
 
     // preuzimamo vrednosti unete u formi
     let capacity = $("#kapacitet").val();
     let numberOfHall = $("#oznaka").val();
-    let fitnessCenter = $("#idCentra").val();
+    let fitnessCenterId = $("#idFCentra").val();
 
 
     let newFitnesCentar = {
-        kapacitet,
-        oznaka,
-        idCentra
+        capacity,
+        numberOfHall,
+        fitnessCenterId
     }
     console.log(newFitnesCentar);
 
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/Sale/addSala",
+        url: "http://localhost:8080/api/hall/add",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(newFitnesCentar),
@@ -79,10 +79,46 @@ $(document).on("submit", "#registracija", function (event) {
             console.log(response);
 
             alert("Sala" + response.id + " je uspešno kreirana!");
-            window.location.href = "adminHomePage.html";
+            window.location.href = "hall.html";
         },
         error: function () {
             alert("Greška prilikom kreiranja Sale!");
+        }
+    });
+});
+
+$(document).on("submit", "#registracija", function (event) {
+    event.preventDefault();
+
+    // Preuzimamo vrednosti unijete u formi
+    let id = $("#id").val();
+    let capacity = $("#kapacitet").val();
+    let numberOfHall = $("#oznaka").val();
+    let fitnessCenterId = $("#idCentra").val();
+
+    // Kreiramo objekat fitnes centra
+    let newFitnessCenter = {
+        capacity,
+        numberOfHall,
+        fitnessCenterId
+    }
+    console.log(newFitnessCenter);
+
+
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/api/hall/update/" + id,
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(newFitnessCenter),
+        success: function (response) {
+            console.log(response);
+
+            alert("FitnesCentar" + response.id + " je uspešno updateovan!");
+            window.location.href = "hall.html";
+        },
+        error: function () {
+            alert("Greška prilikom updateovanja fitnes centra!");
         }
     });
 });

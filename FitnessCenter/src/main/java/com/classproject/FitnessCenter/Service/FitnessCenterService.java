@@ -12,4 +12,5 @@ public interface FitnessCenterService {
     FitnessCenter update(FitnessCenter fitnessCenter) throws Exception;
     void delete(Long id);
     Optional<FitnessCenter> findOne(Long id);
+    FitnessCenter findOneById(Long id);
 }
