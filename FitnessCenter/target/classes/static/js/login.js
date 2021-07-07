@@ -21,7 +21,7 @@ $(document).on("submit", "#loginUser", function (event) {
         contentType: "application/json",
         data: JSON.stringify(newUser),
         success: function (response) {
-
+            window.localStorage.setItem("username", response.username);
             window.localStorage.setItem("id", response.id);
             window.localStorage.setItem("uloga", response.position);
             if(response.position=="member"){

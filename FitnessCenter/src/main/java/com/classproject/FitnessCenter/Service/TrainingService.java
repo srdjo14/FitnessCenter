@@ -1,6 +1,7 @@
 package com.classproject.FitnessCenter.Service;
 
 import com.classproject.FitnessCenter.controller.TrainingController;
+import com.classproject.FitnessCenter.entity.DoneTraining;
 import com.classproject.FitnessCenter.entity.Training;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import org.springframework.stereotype.Service;
@@ -12,5 +13,6 @@ public interface TrainingService {
     List<Training> findAll();
     Training findOne(Long id);
     Training findOneById(Long trainingId);
+    List<DoneTraining> findSve();
 }
 

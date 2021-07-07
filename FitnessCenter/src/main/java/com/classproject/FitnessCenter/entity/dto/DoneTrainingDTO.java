@@ -10,6 +10,13 @@ public class DoneTrainingDTO {
     public DoneTrainingDTO() {
     }
 
+    public DoneTrainingDTO(Long id, String username, String name, String typeOfTraining) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.typeOfTraining = typeOfTraining;
+    }
+
     public Long getId() {
         return id;
     }
