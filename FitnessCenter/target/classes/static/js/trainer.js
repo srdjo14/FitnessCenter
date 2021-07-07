@@ -1,3 +1,5 @@
+var object = localStorage.getItem('uloga');
+if(object == 'admin') {
 // Kreiranje novog clana
 $(document).on("submit", "#addTrainerForm", function (event) {
     event.preventDefault();
@@ -86,5 +88,8 @@ $(document).on('click', '.btnDel', function () {
     });
 });
 
-
+} else {
+    alert("Korisnik nema pristup ovoj stranici!");
+    window.location.href = "pocetna.html";
+}
 

@@ -19,7 +19,7 @@ public class Terms implements Serializable {
     @Column(nullable = false)
     private Date trainingDay;
 
-    @Column(nullable = false)
+    @Column
     private Integer numberCheckedUser;
 
     /* Razbijanje @ManyToMany veze izmedju Sale i Treninge pomocu nove klase Termina */
@@ -80,6 +80,14 @@ public class Terms implements Serializable {
 
     public void setFitnessCenter(FitnessCenter fitnessCenter) {
         this.fitnessCenter = fitnessCenter;
+    }
+
+    public Hall getHall() {
+        return hall;
+    }
+
+    public void setHall(Hall hall) {
+        this.hall = hall;
     }
 
     @Override

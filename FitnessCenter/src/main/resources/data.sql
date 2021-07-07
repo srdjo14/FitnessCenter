@@ -3,11 +3,12 @@ INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Ozzy',
 INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Gladiator','Cara Lazara 21', '06598754239', 'gladiator@gmail.com')
 INSERT INTO FITNESS_CENTER(naziv, address, contact_phone, email) VALUES ('Hard','Stratimiroviceva 44', '06546345539', 'hard@gmail.com')
 
-INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active, position )  VALUES('member',  'milos11', 'Fitnes0!', 'Milos', 'Protic', '0653321384326', 'pro3mmm@gmail.com', '2003-4-14', TRUE, 'member')
-INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active, position, medium_rate, fitness_center_id) VALUES('trainer',  'jovan11', 'Fitnes1!', 'Jovan', 'Jovanovic', '0654324344326', 'markovic@gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 1)
-INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, position, medium_rate, fitness_center_id) VALUES('trainer', 'markovic123', 'Fitnes12!', 'Milica', 'Markovic', '065423454326', 'markovi15c@gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 1)
-INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, position, medium_rate, fitness_center_id) VALUES('trainer', 'jokic121', 'Fitnes123!', 'Predrag', 'Jokic', '06543246326', 'markovichhhh @gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 2)
-INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, position, medium_rate, fitness_center_id) VALUES('trainer', 'dejana12', 'Fitnes1234!', 'Dejana', 'Ninkovic', '0634543246326', 'markovicashhhh @gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 2)
+INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active, uloga )  VALUES('admin',  'srdjan11', 'Fitnes2!', 'Srdjan', 'Protic', '065344384326', 'pro3m@gmail.com', '2000-4-14', TRUE, 'admin')
+INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active, uloga )  VALUES('member',  'milos11', 'Fitnes0!', 'Milos', 'Protic', '0653321384326', 'pro3mmm@gmail.com', '2003-4-14', TRUE, 'member')
+INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active, uloga, medium_rate, fitness_center_id) VALUES('trainer',  'jovan11', 'Fitnes1!', 'Jovan', 'Jovanovic', '0654324344326', 'markovic@gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 1)
+INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, uloga, medium_rate, fitness_center_id) VALUES('trainer', 'markovic123', 'Fitnes12!', 'Milica', 'Markovic', '065423454326', 'markovi15c@gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 1)
+INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, uloga, medium_rate, fitness_center_id) VALUES('trainer', 'jokic121', 'Fitnes123!', 'Predrag', 'Jokic', '06543246326', 'markovichhhh @gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 2)
+INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, uloga, medium_rate, fitness_center_id) VALUES('trainer', 'dejana12', 'Fitnes1234!', 'Dejana', 'Ninkovic', '0634543246326', 'markovicashhhh @gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 2)
 
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Kardio', 'HIIT', 'Medium', 30, 5)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Skok', 'Plyometric', 'Medium-Hard', 20, 2)
@@ -29,7 +30,12 @@ INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, h
 
 INSERT INTO RATE_TRAINING(grade, members_id, trainings_id) VALUES (5, 1, 1)
 
-INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(1,1)
+INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(2,1)
+INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(2,2)
+INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(2,3)
+INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(2,4)
+INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(2,5)
+INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(2,6)
 
 INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(1,1)
 

@@ -13,6 +13,7 @@ $(document).on("submit", "#loginUser", function (event) {
         password
     }
 
+    console.log(newUser);
     $.ajax({
         type: "POST",                                               // HTTP metoda je POST
         url: "http://localhost:8080/api/user/login",
@@ -20,11 +21,22 @@ $(document).on("submit", "#loginUser", function (event) {
         contentType: "application/json",
         data: JSON.stringify(newUser),
         success: function (response) {
-            console.log(response);
 
-            alert("Uspesno ste se prijavili!");// prikazujemo poruku uspeha korisniku
-            window.localStorage.setItem("ID", response.id);
-            window.localStorage.setItem("ULOGA", response.position);
+            window.localStorage.setItem("id", response.id);
+            window.localStorage.setItem("uloga", response.position);
+            if(response.position=="member"){
+                window.location.href = "pocetnaUser.html";
+                return;
+            }
+            if(response.position=="trainer"){
+                window.location.href = "pocetnaTrener.html";
+                return;
+            }
+            if(response.position=="admin"){
+                window.location.href = "pocetnaAdmin.html";
+                return;
+            }
+
             window.location.href = "pocetna.html";
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva

@@ -4,6 +4,8 @@ import com.classproject.FitnessCenter.Service.UserService;
 
 import com.classproject.FitnessCenter.entity.Trainer;
 import com.classproject.FitnessCenter.entity.User;
+import com.classproject.FitnessCenter.entity.dto.LoginDTO;
+import com.classproject.FitnessCenter.entity.dto.UserDTO;
 import com.classproject.FitnessCenter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,13 +26,12 @@ public class UserServiceImpl implements UserService {
      kao i da li unesena sifra postoji u bazi.
     */
     @Override
-    public User loginUser(User user) throws Exception {
-        if(userRepository.existsUserByUsername(user.getUsername())){
-            User user1 = userRepository.findUserByUsername(user.getUsername());
-            if(user1.getActive() && user1.getPassword().equals(user.getPassword())){
-                return user1;
-            }
-        } return null;
+    public User loginUser(LoginDTO loginDTO) throws Exception {
+        User user = userRepository.findUserByUsername(loginDTO.getUsername());
+        if(user==null || !user.getPassword().equals(loginDTO.getPassword()) || user.getActive()==false){
+            return null;
+        }
+        return user;
     }
 
     @Override

@@ -1,16 +1,17 @@
+var object = localStorage.getItem('uloga');
+if(object == 'trainer') {
+
 // Dodavanje novog zaposlenog
 $(document).on("submit", "#addFitCentForm", function (event) {
     event.preventDefault();
 
     // Preuzimamo vrednosti unijete u formi
-    let naziv = $("#Name").val();
+    let naziv = $("#name").val();
     let about = $("#about").val();
     let tip = $("#tip").val();
     let duration = $("#duration").val();
     let price  = $("#price").val();
     let date = $("#date").val();
-
-
 
     // Kreiramo objekat fitnes centra
     let newFitnessCenter = {
@@ -41,3 +42,7 @@ $(document).on("submit", "#addFitCentForm", function (event) {
         }
     });
 });
+} else {
+    alert("Korisnik nema pristup ovoj stranici!");
+    window.location.href = "index.html";
+}

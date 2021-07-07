@@ -4,6 +4,7 @@ import com.classproject.FitnessCenter.Service.*;
 import com.classproject.FitnessCenter.entity.Terms;
 import com.classproject.FitnessCenter.entity.Training;
 import com.classproject.FitnessCenter.entity.User;
+import com.classproject.FitnessCenter.entity.dto.LoginDTO;
 import com.classproject.FitnessCenter.entity.dto.TermsDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.UserDTO;
@@ -74,44 +75,60 @@ public class UserController {
 
     /* Dobavljanje svih termina */
     @GetMapping(value = "/terms", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TrainingDTO>> getTerms(){
+    public ResponseEntity<List<TermsDTO>> getTerms(){
 
-        List<Training> trainingList = this.trainingService.findAll();
-        List<TrainingDTO> trainingDTOS = new ArrayList<>();
+        List<Terms> termsList = this.termsService.findAll();
+        List<TermsDTO> termsDTOS = new ArrayList<>();
 
-        for (Training training : trainingList) {
-		    TrainingDTO trainingDTO = new TrainingDTO();
-            trainingDTO.setId(training.getId());
-            trainingDTO.setName(training.getName());
-            trainingDTO.setAboutTraining(training.getAboutTraining());
-            trainingDTO.setTypeOfTraining(training.getTypeOfTraining());
-            trainingDTO.setLength(training.getLength());
-            List<TermsDTO> listTermsDTO = new ArrayList<>();
-            for(Terms terms : training.getTerms()){
-               TermsDTO termsDTO = new TermsDTO();
-               termsDTO.setId(terms.getId());
-               termsDTO.setPrice(terms.getPrice());
-               termsDTO.setTrainingDay(terms.getTrainingDay());
-               listTermsDTO.add(termsDTO);
-            }
-            trainingDTO.setTermsList(listTermsDTO);
-            trainingDTOS.add(trainingDTO);
+        for (Terms terms : termsList) {
+            TermsDTO termsDTO = new TermsDTO(
+            terms.getId(),
+            terms.getTrainingDay(),
+            terms.getPrice(),
+            terms.getTraining().getName(),
+            terms.getTraining().getAboutTraining(),
+            terms.getTraining().getTypeOfTraining(),
+            terms.getTraining().getLength()
+            );
+            termsDTOS.add(termsDTO);
         }
-        return new ResponseEntity<>(trainingDTOS, HttpStatus.OK);
+        return new ResponseEntity<>(termsDTOS, HttpStatus.OK);
+    }
+
+    /* Dobavljanje odabranog termina */
+    @GetMapping(value = "/odabran/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TermsDTO> getOdabraniTermin(@PathVariable Long id){
+
+        Terms terms = termsService.findOneById(id);
+        if(terms==null){
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        TermsDTO termsDTO = new TermsDTO(
+                terms.getId(),
+                terms.getTrainingDay(),
+                terms.getPrice(),
+                terms.getTraining().getName(),
+                terms.getTraining().getAboutTraining(),
+                terms.getTraining().getTypeOfTraining(),
+                terms.getTraining().getLength(),
+                terms.getHall().getCapacity()-terms.getNumberCheckedUser()
+        );
+
+        return new ResponseEntity<>(termsDTO,HttpStatus.OK);
     }
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) throws Exception {
-        User user = new User(userDTO.getUsername(), userDTO.getPassword());
+    public ResponseEntity<UserDTO> createUser(@RequestBody LoginDTO loginDTO) throws Exception {
+        User user = userService.loginUser(loginDTO);
+        if(user == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
-        User newUser = userService.loginUser(user);
+        UserDTO userDTO = new UserDTO(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getContact(),
+                user.getEmail(),user.getBirthDate(), user.getActive(), user.getPosition());
 
-        UserDTO newUserDTO = new UserDTO(newUser.getUsername(), newUser.getPassword());
-
-        return new ResponseEntity<>(newUserDTO, HttpStatus.CREATED);
+        return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
     }
-
-
-
 }

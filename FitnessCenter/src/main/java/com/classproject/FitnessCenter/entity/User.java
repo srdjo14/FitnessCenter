@@ -41,7 +41,7 @@ public class User{
     @Column(name="active")
     private Boolean active;
 
-    @Column(name="position")
+    @Column(name="uloga")
     private String position;
 
     public User(String username, String password) {

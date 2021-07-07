@@ -1,4 +1,5 @@
-
+var object = localStorage.getItem('uloga');
+if(object == 'admin') {
 // Dodavanje novog zaposlenog
 $(document).on("submit", "#addFitCentForm", function (event) {
     event.preventDefault();
@@ -133,3 +134,8 @@ $(document).on('click', '.btnDel', function () {
         }
     });
 });
+
+} else {
+    alert("Korisnik nema pristupa ovoj stranici!");
+    window.location.href = "index.html";
+}

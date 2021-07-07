@@ -2,15 +2,15 @@ package com.classproject.FitnessCenter.controller;
 
 
 import com.classproject.FitnessCenter.Service.TrainingService;
+import com.classproject.FitnessCenter.entity.Terms;
 import com.classproject.FitnessCenter.entity.Training;
+import com.classproject.FitnessCenter.entity.dto.TermsDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,4 +43,14 @@ public class TrainingController {
         // Vraćamo odgovor 200 OK, a kroz body odgovora šaljemo podatke o pronađenim zaposlenima
         return new ResponseEntity<>(trainingDTOS, HttpStatus.OK);
     }*/
+   /* @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TrainingDTO> createTer(@RequestBody TrainingDTO trainingDTO) throws Exception {
+        Training training = trainingService.addTerms(trainingDTO);
+        trainingDTO.setId(training.getId());
+        return new ResponseEntity<>(trainingDTO, HttpStatus.CREATED);
+    }*/
+
+    /* Dobavljanje svih odradjenih treninga */
+    @GetMapping(value = "/done", produces = )
 }

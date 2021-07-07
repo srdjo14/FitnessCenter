@@ -9,22 +9,21 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
             // ova f-ja se izvršava posle uspešnog zahteva
             console.log("SUCCESS:\n", response);                    // ispisujemo u konzoli povratnu vrednost radi provere
 
-            for (let training of response) {                        // prolazimo kroz listu svih zaposlenih
-                for(let terms of training.termsList) {
-                    let row = "<tr>";                                   // kreiramo red za tabelu
-                    row += "<td>" + training.name + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
-                    row += "<td>" + training.aboutTraining + "</td>";
-                    row += "<td>" + training.typeOfTraining + "</td>";
-                    row += "<td>" + training.length + "</td>";
-
+            for (let terms of response) {                        // prolazimo kroz listu svih zaposlenih
+                    let row = "<tr>";
+                    row += "<td>" + terms.id + "</td>";
+                    row += "<td>" + terms.name + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
+                    row += "<td>" + terms.aboutTraining + "</td>";
+                    row += "<td>" + terms.typeOfTraining + "</td>";
+                    row += "<td>" + terms.length + "</td>";
                     row += "<td>" + terms.price + "</td>";
                     row += "<td>" + terms.trainingDay + "</td>";
-                    row += "<td>" + <button>Odaberi</button> + "</td>";
+
                     row += "</tr>";                                     // završavamo kreiranje reda
 
                     $('#trainings').append(row);                        // ubacujemo kreirani red u tabelu čiji je id = trainings
                 }
-            }
+
         },
         error: function (response) {                                // ova f-ja se izvršava posle neuspešnog zahteva
             console.log("ERROR:\n", response);
