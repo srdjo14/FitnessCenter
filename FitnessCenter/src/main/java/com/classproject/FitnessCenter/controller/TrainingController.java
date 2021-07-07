@@ -2,9 +2,11 @@ package com.classproject.FitnessCenter.controller;
 
 
 import com.classproject.FitnessCenter.Service.TrainingService;
+import com.classproject.FitnessCenter.entity.CheckTraining;
 import com.classproject.FitnessCenter.entity.DoneTraining;
 import com.classproject.FitnessCenter.entity.Terms;
 import com.classproject.FitnessCenter.entity.Training;
+import com.classproject.FitnessCenter.entity.dto.CheckTrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.TermsDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
@@ -45,5 +47,22 @@ public class TrainingController {
             doneTrainingDTOS.add(doneTrainingDTO);
         }
         return new ResponseEntity<>(doneTrainingDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CheckTrainingDTO>> getCheck(){
+        List<CheckTraining> checkTrainings = this.trainingService.findAllCheck();
+        List<CheckTrainingDTO> checkTrainingDTOS = new ArrayList<>();
+
+        for(CheckTraining checkTraining : checkTrainings){
+            CheckTrainingDTO checkTrainingDTO = new CheckTrainingDTO(
+                    checkTraining.getId(),
+                    checkTraining.getMembers().getUsername(),
+                    checkTraining.getTraining().getName(),
+                    checkTraining.getTraining().getTypeOfTraining()
+            );
+            checkTrainingDTOS.add(checkTrainingDTO);
+        }
+        return new ResponseEntity<>(checkTrainingDTOS, HttpStatus.OK);
     }
 }

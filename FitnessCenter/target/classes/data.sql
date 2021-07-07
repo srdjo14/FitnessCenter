@@ -40,6 +40,12 @@ INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(7,2)
 INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(7,4)
 INSERT INTO DONE_TRAINING(members_id, training_id) VALUES(7,6)
 
+INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(2,4)
 INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(2,1)
+INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(2,2)
+INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(2,6)
+INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(7,2)
+INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(7,3)
+INSERT INTO CHECK_TRAINING(members_id, training_id) VALUES(7,1)
 
 
