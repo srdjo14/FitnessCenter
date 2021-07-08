@@ -20,6 +20,13 @@ public class DoneTraining implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Training training;
 
+    public DoneTraining(String username, String name, String typeOfTraining) {
+    }
+
+    public DoneTraining() {
+
+    }
+
     public Long getId() {
         return id;
     }

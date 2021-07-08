@@ -29,4 +29,9 @@ public class MemberServiceImpl implements MemberService {
     public Boolean checkUsername(Member member) {
         return memberRepository.existsByUsername(member.getUsername());
     }
+
+    @Override
+    public Member findOneById(Long id) {
+        return this.memberRepository.findOneById(id);
+    }
 }

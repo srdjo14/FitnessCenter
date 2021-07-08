@@ -4,6 +4,7 @@ import com.classproject.FitnessCenter.controller.TrainingController;
 import com.classproject.FitnessCenter.entity.CheckTraining;
 import com.classproject.FitnessCenter.entity.DoneTraining;
 import com.classproject.FitnessCenter.entity.Training;
+import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,7 @@ public interface TrainingService {
     Training findOneById(Long trainingId);
     List<DoneTraining> findSve();
     List<CheckTraining> findAllCheck();
+    void delete(Long id);
+
 }
 

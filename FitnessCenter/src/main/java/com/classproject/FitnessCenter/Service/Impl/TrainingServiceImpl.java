@@ -1,12 +1,11 @@
 package com.classproject.FitnessCenter.Service.Impl;
 
+import com.classproject.FitnessCenter.Service.MemberService;
 import com.classproject.FitnessCenter.Service.TermsService;
 import com.classproject.FitnessCenter.Service.TrainingService;
 
-import com.classproject.FitnessCenter.entity.CheckTraining;
-import com.classproject.FitnessCenter.entity.DoneTraining;
-import com.classproject.FitnessCenter.entity.Terms;
-import com.classproject.FitnessCenter.entity.Training;
+import com.classproject.FitnessCenter.entity.*;
+import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import com.classproject.FitnessCenter.repository.CheckTrainingRepository;
 import com.classproject.FitnessCenter.repository.DoneTrainingRepository;
@@ -22,12 +21,14 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingRepository trainingRepository;
     private final DoneTrainingRepository doneTrainingRepository;
     private final CheckTrainingRepository checkTrainingRepository;
+    private final MemberService memberService;
 
     @Autowired
-    public TrainingServiceImpl(TrainingRepository trainingRepository, DoneTrainingRepository doneTrainingRepository, CheckTrainingRepository checkTrainingRepository) {
+    public TrainingServiceImpl(TrainingRepository trainingRepository, DoneTrainingRepository doneTrainingRepository, CheckTrainingRepository checkTrainingRepository, MemberService memberService) {
         this.trainingRepository = trainingRepository;
         this.doneTrainingRepository = doneTrainingRepository;
         this.checkTrainingRepository = checkTrainingRepository;
+        this.memberService = memberService;
     }
 
     /* Prikaz svih treninga */
@@ -59,14 +60,9 @@ public class TrainingServiceImpl implements TrainingService {
         return this.checkTrainingRepository.findAll();
     }
 
-   /* @Override
-    public Training addTerms(TrainingDTO trainingDTO) {
-       Training training = new Training();
-       training.setName(trainingDTO.getName());
-       training.setAboutTraining(trainingDTO.getAboutTraining());
-       training.setTypeOfTraining(trainingDTO.getTypeOfTraining());
-       training.setLength(trainingDTO.getLength());
+    @Override
+    public void delete(Long id) {
+        this.checkTrainingRepository.deleteById(id);
+    }
 
-        return null;
-    }*/
 }

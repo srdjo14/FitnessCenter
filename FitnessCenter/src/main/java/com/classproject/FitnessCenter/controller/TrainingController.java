@@ -48,7 +48,7 @@ public class TrainingController {
         }
         return new ResponseEntity<>(doneTrainingDTOS, HttpStatus.OK);
     }
-
+    
     @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CheckTrainingDTO>> getCheck(){
         List<CheckTraining> checkTrainings = this.trainingService.findAllCheck();
@@ -64,5 +64,11 @@ public class TrainingController {
             checkTrainingDTOS.add(checkTrainingDTO);
         }
         return new ResponseEntity<>(checkTrainingDTOS, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteFC(@PathVariable Long id){
+        trainingService.delete(id);
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }

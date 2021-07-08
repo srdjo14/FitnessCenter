@@ -10,6 +10,7 @@ INSERT INTO USER( type, username, password, first_name, last_name, phone, email,
 INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, uloga, medium_rate, fitness_center_id) VALUES('trainer', 'jokic121', 'Fitnes123!', 'Predrag', 'Jokic', '06543246326', 'markovichhhh @gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 2)
 INSERT INTO USER( type, username, password, first_name, last_name, phone, email, birth_date, active, uloga, medium_rate, fitness_center_id) VALUES('trainer', 'dejana12', 'Fitnes1234!', 'Dejana', 'Ninkovic', '0634543246326', 'markovicashhhh @gmail.com', '1999-8-14', TRUE, 'trainer', 3.0, 2)
 INSERT INTO USER( type,  username, password, first_name, last_name, phone, email, birth_date, active, uloga )  VALUES('member',  'mmilos11', 'Fitnes01!', 'Milosdds', 'Protixc', '065384326', 'pro2mm@gmail.com', '2013-4-14', TRUE, 'member')
+
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Kardio', 'HIIT', 'Medium', 30, 6)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Skok', 'Plyometric', 'Medium-Hard', 20, 3)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Ledja', 'Back', 'Medium', 45, 4)

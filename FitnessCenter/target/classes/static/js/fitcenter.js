@@ -39,11 +39,6 @@ $(document).on("submit", "#addFitCentForm", function (event) {
     });
 });
 
-
-
-
-
-
 // Pregled svih fitnes centara
 $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Object Model) učitan da bi JS mogao sa njim da manipuliše.
     // ajax poziv za dobavljanje svih zaposlenih sa backend-a i prikaz u tabeli
@@ -129,7 +124,7 @@ $(document).on('click', '.btnDel', function () {
             $('[data-id="' + idFc + '"]').parent().parent().remove();
         },
         error: function () {
-            console.log("usao sam u error");
+            console.log("Greska!");
             // window.location.href = "adminHomePage.html";
         }
     });
