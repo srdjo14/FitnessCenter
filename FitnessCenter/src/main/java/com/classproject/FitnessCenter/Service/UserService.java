@@ -12,4 +12,6 @@ public interface UserService {
 
     User loginUser(LoginDTO loginDTO) throws Exception;
     List<User> getActiveUser();
+
+    User findOne(Long id);
 }

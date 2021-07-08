@@ -17,9 +17,13 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                 let row = "<tr>";                                   // kreiramo red za tabelu
                 row += "<td>" + object + "</td>";
                 row += "<td>" + fitness.username + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
-                row += "<td>" + fitness.name + "</td>";
-                row += "<td>" + fitness.typeOfTraining + "</td>";
-                    btn = "<button class='btnCheckk' data-id=" + fitness.id + ">Otkazi</button>";
+                    row += "<td>" + fitness.name + "</td>";
+                    row += "<td>" + fitness.aboutTraining + "</td>";
+                    row += "<td>" + fitness.typeOfTraining + "</td>";
+                    row += "<td>" + fitness.length + "</td>";
+                    row += "<td>" + fitness.price + "</td>";
+                    row += "<td>" + fitness.trainingDay + "</td>";
+                    btn = "<button class='btnCheckk' data-id=" + fitness.id + ">Oceni</button>";
                     row += "<td>" + btn + "</td>";
                 row += "</tr>";                                     // završavamo kreiranje reda
 

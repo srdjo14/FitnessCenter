@@ -31,12 +31,13 @@
     <div class="container">
         <table id="trainings">
             <tr id="myTR">
-                <th onclick="sortTable(0)">Naziv</th>
-                <th onclick="sortTable(1)">Opis</th>
-                <th onclick="sortTable(2)">Tip</th>
-                <th onclick="sortTable(3)">Trajanje</th>
-                <th onclick="sortTable(4)">Cena</th>
-                <th onclick="sortTable(5)">Datum</th>
+                <th onclick="sortTable(0)">#</th>
+                <th onclick="sortTable(1)">Naziv</th>
+                <th onclick="sortTable(2)">Opis</th>
+                <th onclick="sortTable(3)">Tip</th>
+                <th onclick="sortTable(4)">Trajanje</th>
+                <th onclick="sortTable(5)">Cena</th>
+                <th onclick="sortTable(6)">Datum</th>
             </tr>
         </table>
     </div>
@@ -91,7 +92,7 @@
         table = document.getElementById("trainings");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[1];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -110,7 +111,7 @@
         table = document.getElementById("trainings");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
+            td = tr[i].getElementsByTagName("td")[2];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -129,7 +130,7 @@
         table = document.getElementById("trainings");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
+            td = tr[i].getElementsByTagName("td")[3];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -148,7 +149,7 @@
         table = document.getElementById("trainings");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
+            td = tr[i].getElementsByTagName("td")[4];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -167,7 +168,7 @@
         table = document.getElementById("trainings");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[4];
+            td = tr[i].getElementsByTagName("td")[5];
             if (td) {
                 numValue = td.textContent || td.innerText;
                 if (Value.toUpperCase().indexOf(filter) > -1) {
@@ -186,7 +187,7 @@
         table = document.getElementById("trainings");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[5];
+            td = tr[i].getElementsByTagName("td")[6];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {

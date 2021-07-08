@@ -21,7 +21,8 @@
 
 <div id="allTrainings">
   <div id="sort">
-    <input type="search" id="myInput" onkeyup="search()" placeholder="Search for names" aria-label="Search">
+    <input type="search" id="myInput" onkeyup="search
+    ()" placeholder="Search for names" aria-label="Search">
     <input type="search" id="myInput1" onkeyup="search1()" placeholder="Search about" aria-label="Search">
     <input type="search" id="myInput2" onkeyup="search2()" placeholder="Search for type" aria-label="Search">
     <input type="search" id="myInput3" onkeyup="search3()" placeholder="Search for length" aria-label="Search">
@@ -91,14 +92,14 @@
     }
   }
 
-  function search() {
+    function search() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("trainings");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
+      td = tr[i].getElementsByTagName("td")[1];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -117,7 +118,7 @@
     table = document.getElementById("trainings");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1];
+      td = tr[i].getElementsByTagName("td")[2];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -136,7 +137,7 @@
     table = document.getElementById("trainings");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[2];
+      td = tr[i].getElementsByTagName("td")[3];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -155,7 +156,7 @@
     table = document.getElementById("trainings");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[3];
+      td = tr[i].getElementsByTagName("td")[4];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -174,7 +175,7 @@
     table = document.getElementById("trainings");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[4];
+      td = tr[i].getElementsByTagName("td")[5];
       if (td) {
         numValue = td.textContent || td.innerText;
         if (Value.toUpperCase().indexOf(filter) > -1) {
@@ -193,7 +194,7 @@
     table = document.getElementById("trainings");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[5];
+      td = tr[i].getElementsByTagName("td")[6];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -203,7 +204,8 @@
         }
       }
     }
-  }
+
+}
 
 </script>
 </body>

@@ -65,4 +65,9 @@ public class TrainingServiceImpl implements TrainingService {
         this.checkTrainingRepository.deleteById(id);
     }
 
+    @Override
+    public CheckTraining create(CheckTraining checkTraining) {
+        return this.checkTrainingRepository.save(checkTraining);
+    }
+
 }

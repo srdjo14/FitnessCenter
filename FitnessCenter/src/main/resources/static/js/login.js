@@ -22,8 +22,10 @@ $(document).on("submit", "#loginUser", function (event) {
         data: JSON.stringify(newUser),
         success: function (response) {
             window.localStorage.setItem("username", response.username);
+            window.localStorage.setItem("fc", response.fitnessCenterId);
             window.localStorage.setItem("id", response.id);
             window.localStorage.setItem("uloga", response.position);
+
             if(response.position=="member"){
                 window.location.href = "pocetnaUser.html";
                 return;

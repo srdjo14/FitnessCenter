@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService {
     public List<User> getActiveUser() {
         return userRepository.getAllByActive(true);
     }
+
+    @Override
+    public User findOne(Long id) {
+        return this.userRepository.getOne(id);
+    }
 }

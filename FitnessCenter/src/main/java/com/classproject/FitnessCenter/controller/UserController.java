@@ -131,4 +131,17 @@ public class UserController {
 
         return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "jedan/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDTO> getUser(@PathVariable("id") Long id){
+        User user = this.userService.findOne(id);
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setFirstName(user.getFirstName());
+        userDTO.setLastName(user.getLastName());
+        userDTO.setPosition(user.getPosition());
+
+        return new ResponseEntity<>(userDTO, HttpStatus.OK);
+    }
 }

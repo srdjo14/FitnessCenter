@@ -18,7 +18,9 @@ public class CheckTraining implements Serializable {
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Treninga pomocu nove klase Check */
     @ManyToOne(fetch = FetchType.LAZY)
-    private Training training;
+    private Terms terms;
+
+    public CheckTraining() {}
 
     public Long getId() {
         return id;
@@ -36,12 +38,12 @@ public class CheckTraining implements Serializable {
         this.members = members;
     }
 
-    public Training getTraining() {
-        return training;
+    public Terms getTerms() {
+        return terms;
     }
 
-    public void setTraining(Training training) {
-        this.training = training;
+    public void setTerms(Terms terms) {
+        this.terms = terms;
     }
 }
 

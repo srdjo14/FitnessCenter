@@ -34,6 +34,34 @@ public class Terms implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCenter fitnessCenter;
 
+    /* -- LISTA PRIJAVLJENIH TRENINGA -- */
+    @OneToMany(mappedBy = "terms", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<CheckTraining> checkTraining = new HashSet<>();
+
+    /* -- LISTA ODRADJENIH TRENINGA -- */
+    @OneToMany(mappedBy = "terms", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<DoneTraining> doneTraining = new HashSet<>();
+
+    public Terms(Long id, Double price, Date trainingDay, Training training) {
+        this.id = id;
+        this.price = price;
+        this.trainingDay = trainingDay;
+        this.training = training;
+    }
+
+    public Terms(Double price, Date trainingDay) {
+        this.price = price;
+        this.trainingDay = trainingDay;
+    }
+
+    public Set<DoneTraining> getDoneTraining() {
+        return doneTraining;
+    }
+
+    public void setDoneTraining(Set<DoneTraining> doneTraining) {
+        this.doneTraining = doneTraining;
+    }
+
     public Long getId() {
         return id;
     }
@@ -101,5 +129,15 @@ public class Terms implements Serializable {
                 ", training=" + training +
                 ", fitnessCenter=" + fitnessCenter +
                 '}';
+    }
+
+    public Terms() {}
+
+    public Set<CheckTraining> getCheckTraining() {
+        return checkTraining;
+    }
+
+    public void setCheckTraining(Set<CheckTraining> checkTraining) {
+        this.checkTraining = checkTraining;
     }
 }

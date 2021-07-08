@@ -8,6 +8,9 @@ $(document).ready(function () {
         dataType: "json",
         success: function (response) {
 
+                window.localStorage.setItem("naziv", response.name);
+                window.localStorage.setItem("opis", response.aboutTraining);
+
                 let row = "<tr>";
                 row += "<td>" + response.id + "</td>";
                 row += "<td>" + response.name + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
@@ -32,7 +35,7 @@ $(document).ready(function () {
 $(document).on('click', '.prijava', function myFunction(event) {
     event.preventDefault();
     if(kapacitet <= 0){
-        alert("NEMA MJESTA GLUPANDERU");
+        alert("Nema mjesta!");
         window.location.href = "termini.html";
     }
     else {

@@ -19,5 +19,6 @@ public interface TrainingService {
     List<CheckTraining> findAllCheck();
     void delete(Long id);
 
+    CheckTraining create(CheckTraining checkTraining);
 }
 

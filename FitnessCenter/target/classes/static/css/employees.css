@@ -1,0 +1,45 @@
+#table {
+    width: 100%;
+}
+
+h1 {
+    color: #00CED1;
+    font-size: 45px;
+}
+
+h3 {
+    color: #00CED1;
+}
+
+#employees th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #00CED1;
+    color: white;
+}
+
+#employees td, #employees th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#employees tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#employees tr:hover {
+    background-color: #ddd;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    color: darkslateblue;
+    font-size: 30px;
+}

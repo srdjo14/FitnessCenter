@@ -43,14 +43,6 @@ public class Training implements Serializable {
     @OneToMany(mappedBy="members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<RateTraining> rateTraining = new ArrayList<>();
 
-        /* -- LISTA PRIJAVLJENIH TRENINGA -- */
-        @OneToMany(mappedBy = "training", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        private Set<CheckTraining> checkTraining = new HashSet<>();
-
-        /* -- LISTA ODRADJENIH TRENINGA -- */
-        @OneToMany(mappedBy = "training", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        private Set<DoneTraining> doneTraining = new HashSet<>();
-
     public Long getId() {
         return id;
     }
@@ -113,22 +105,6 @@ public class Training implements Serializable {
 
     public void setRateTraining(List<RateTraining> rateTraining) {
         this.rateTraining = rateTraining;
-    }
-
-    public Set<CheckTraining> getCheckTraining() {
-        return checkTraining;
-    }
-
-    public void setCheckTraining(Set<CheckTraining> checkTraining) {
-        this.checkTraining = checkTraining;
-    }
-
-    public Set<DoneTraining> getDoneTraining() {
-        return doneTraining;
-    }
-
-    public void setDoneTraining(Set<DoneTraining> doneTraining) {
-        this.doneTraining = doneTraining;
     }
 
     @Override

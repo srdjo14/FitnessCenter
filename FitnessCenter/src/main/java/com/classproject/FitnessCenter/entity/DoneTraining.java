@@ -17,14 +17,22 @@ public class DoneTraining implements Serializable {
     private Member members;
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Treninga pomocu nove klase Check */
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Training training;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Terms terms;
 
     public DoneTraining(String username, String name, String typeOfTraining) {
     }
 
     public DoneTraining() {
 
+    }
+
+    public Terms getTerms() {
+        return terms;
+    }
+
+    public void setTerms(Terms terms) {
+        this.terms = terms;
     }
 
     public Long getId() {
@@ -43,11 +51,4 @@ public class DoneTraining implements Serializable {
         this.members = members;
     }
 
-    public Training getTraining() {
-        return training;
-    }
-
-    public void setTraining(Training training) {
-        this.training = training;
-    }
 }
