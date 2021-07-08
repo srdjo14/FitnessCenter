@@ -48,11 +48,11 @@ $(document).on('click', '.prijava', function myFunction(event) {
             data: JSON.stringify(),
             success: function (response) {
                 console.log(response);
-                alert("PROSLO SVE OK");
+                alert("Uspjesno!");
             },
             error: function(response) {
-                console.log("NEUSPJESNO: \n", response);
-                alert("PROSLO SVE KAKO TREBA");
+                console.log("Error: \n", response);
+                alert("Nije uspjesno!");
             }
         });
         window.location.href = "korisnikTermin.html";
