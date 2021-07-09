@@ -1,3 +1,6 @@
+var object = localStorage.getItem('uloga');
+if(object == 'member') {
+
 $(document).ready(function () {
 
     let id = localStorage.getItem('done');
@@ -22,8 +25,7 @@ $(document).ready(function () {
             row += "<td>" + response.length + "</td>";
             row += "<td>" + response.price + "</td>";
             row += "<td>" + response.trainingDay + "</td>";
-            let btn = "<input type='number' id='ocena'>";
-            row += "<td>" + btn + "</td>";
+
             row += "<td>" + "<button class='ocena' id=" + response.id + "> Ocijeni </button>" + "</td>";
             row += "</tr>";
             row += "</tr>";                                     // završavamo kreiranje reda
@@ -41,3 +43,8 @@ $(document).ready(function () {
         window.location.href = "dodaj-ocjenu.html";
     });
 });
+
+} else {
+    alert("Korisnik nema pristupa ovoj stranici!");
+    history.back();
+}

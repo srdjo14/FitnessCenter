@@ -1,4 +1,6 @@
-// Pregled svih fitnes centara
+
+var object = localStorage.getItem('uloga');
+if(object == 'member') {
 $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Object Model) učitan da bi JS mogao sa njim da manipuliše.
     // ajax poziv za dobavljanje svih zaposlenih sa backend-a i prikaz u tabeli
     var object = localStorage.getItem('id');
@@ -33,4 +35,9 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
         }
     });
 });
+} else {
+    alert("Korisnik nema pristupa ovoj stranici!");
+    history.back();
+}
+
 

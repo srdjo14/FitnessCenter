@@ -132,5 +132,5 @@ $(document).on('click', '.btnDel', function () {
 
 } else {
     alert("Korisnik nema pristupa ovoj stranici!");
-    window.location.href = "index.html";
+    history.back();
 }

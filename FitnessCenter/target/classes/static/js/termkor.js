@@ -47,7 +47,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 
         } else {
             alert("Korisnik nema pristup ovoj stranici!");
-            window.location.href = "pocetna.html";
+            history.back();
         }
 });
 
