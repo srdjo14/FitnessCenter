@@ -14,7 +14,7 @@ $(document).on("submit", "#addFitCentForm", function (event) {
     let numberCheckedUser = $("#date").val();
 
     // Kreiramo objekat fitnes centra
-    let newFitnessCenter = {
+    let newFitness = {
         price,
         trainingDay,
         fitnessCenter,
@@ -29,12 +29,12 @@ $(document).on("submit", "#addFitCentForm", function (event) {
         url: "http://localhost:8080/api/user/termsSe",                 // URL na koji se šalju podaci
         dataType: "json",
         contentType: "application/json",
-        data: JSON.stringify(newFitnessCenter),
+        data: JSON.stringify(newFitness),
         success: function (response) {                              // ova f-ja se izvršava posle uspješnog zahteva
             console.log(response);
 
             alert("Novi fitnes centar " + response.id + " je uspešno kreiran!");
-            window.location.href = "lista-fitnesa.html";
+            window.location.href = "termini.html";
         },
 
         error: function () {                                        // ova f-ja se izvršava poslije neuspješnog zahteva

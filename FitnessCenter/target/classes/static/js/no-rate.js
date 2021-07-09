@@ -23,6 +23,8 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                     row += "<td>" + fitness.length + "</td>";
                     row += "<td>" + fitness.price + "</td>";
                     row += "<td>" + fitness.trainingDay + "</td>";
+                    btn = "<button class='Check' data-id=" + fitness.id + "> Choose </button>";
+                    row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
                     $('#trainings').append(row);     }                   // ubacujemo kreirani red u tabelu čiji je id = trainings
@@ -32,21 +34,9 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
             console.log("ERROR:\n", response);
         }
     });
-});
-
-$(document).on('click', '.btnCheckk', function () {
-
-    let idFc = this.dataset.id;
-
-    $.ajax({
-        type: "DELETE",
-        url: "http://localhost:8080/api/training/delete/"+ idFc,
-        success: function (response) {
-            console.log(response);
-            $('[data-id="' + idFc + '"]').parent().parent().remove();
-        },
-        error: function () {
-            console.log("Greska!");
-        }
+    $(document).on('click', '.Check', function myFunction(event) {
+        event.preventDefault();
+        window.localStorage.setItem('done', this.dataset.id);
+        window.location.href = "termin-odradjen.html";
     });
 });

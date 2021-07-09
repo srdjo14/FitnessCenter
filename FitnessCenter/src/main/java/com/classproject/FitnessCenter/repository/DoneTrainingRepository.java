@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface DoneTrainingRepository extends JpaRepository<DoneTraining, Long> {
     List<DoneTraining> findAll();
+
+    DoneTraining findOneById(Long id);
 }

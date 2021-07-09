@@ -5,7 +5,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
     var object1 = localStorage.getItem('username');
     $.ajax({
         type: "GET",                                                // HTTP metoda
-        url: "http://localhost:8080/api/training/rate",                 // URL koji se gađa
+        url: "http://localhost:8080/api/training/done",                 // URL koji se gađa
         dataType: "json",                                           // tip povratne vrednosti
         success: function (response) {
             // ova f-ja se izvršava posle uspešnog zahteva
@@ -21,6 +21,13 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                     row += "<td>" + fitness.aboutTraining + "</td>";
                     row += "<td>" + fitness.typeOfTraining + "</td>";
                     row += "<td>" + fitness.trainingDay + "</td>";
+                    if(fitness.grade >= 0){
+                        let btn3 = "<form id='ocenjivanje'> <input type='hidden' value='" + fitness.id + "'> <input type='number' id='ocena'> <input type='submit' value='Oceni'> </form>"
+                        row += "<td>" + btn3 + "</td>";
+                    }
+                    else{
+                        row += "<td>" + fitness.grade + "</td>";
+                    }
                     row += "</tr>";                                     // završavamo kreiranje reda
 
                     $('#trainings').append(row);     }                   // ubacujemo kreirani red u tabelu čiji je id = trainings
@@ -32,19 +39,25 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
     });
 });
 
-$(document).on('click', '.btnCheckk', function () {
+$(document).on('submit','#ocenjivanje',function (e){
+    e.preventDefault();
 
-    let idFc = this.dataset.id;
+    var id = $(this).find('input:hidden').val();
+    var ocena = $(this).find('#ocena').val();
+
 
     $.ajax({
-        type: "DELETE",
-        url: "http://localhost:8080/api/training/delete/"+ idFc,
-        success: function (response) {
-            console.log(response);
-            $('[data-id="' + idFc + '"]').parent().parent().remove();
+        type: "GET",
+        url:"http://localhost:8080/api/training/rate/?id="+id+"&grade="+ocena,
+        dataType: "json",
+        success: function (response){
+            console.log("SUCCESS:\n",response);
+            alert("Prijava je uspešno ocenjena.")
+            location.reload();
         },
-        error: function () {
-            console.log("Greska!");
+        error:function (response){
+            console.log("ERROR:\n", response);
+            alert("Zahtev nije uspešan.")
         }
     });
 });

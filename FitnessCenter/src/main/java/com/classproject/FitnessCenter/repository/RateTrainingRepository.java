@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface RateTrainingRepository extends JpaRepository<RateTraining, Long> {
-    Optional<RateTraining> findOneById(Long id);
+    RateTraining findOneById(Long id);
 }

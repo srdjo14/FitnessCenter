@@ -1,9 +1,5 @@
 package com.classproject.FitnessCenter.entity.dto;
 
-import com.classproject.FitnessCenter.entity.FitnessCenter;
-import com.classproject.FitnessCenter.entity.Hall;
-import com.classproject.FitnessCenter.entity.Training;
-
 import java.util.Date;
 
 public class TermsAddDTO {
@@ -19,16 +15,6 @@ public class TermsAddDTO {
     public TermsAddDTO() {
     }
 
-    public TermsAddDTO(Long id, Double price, Date trainingDay, Long fitnessCenterId, Long hallId, Long trainingId, Integer numberCheckedUser) {
-        this.id = id;
-        this.price = price;
-        this.trainingDay = trainingDay;
-        this.fitnessCenter = fitnessCenterId;
-        this.hall = hallId;
-        this.training = trainingId;
-        this.numberCheckedUser = numberCheckedUser;
-    }
-
     public TermsAddDTO(Long id, Integer numberCheckedUser, Double price, Long fitnessCenter, Long hall, Long training) {
         this.id = id;
         this.numberCheckedUser = numberCheckedUser;
@@ -36,8 +22,6 @@ public class TermsAddDTO {
         this.fitnessCenter = fitnessCenter;
         this.hall = hall;
         this.training = training;
-
-
     }
 
     public Integer getNumberCheckedUser() {

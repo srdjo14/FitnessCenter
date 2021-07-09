@@ -11,22 +11,29 @@
           O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
   <script src="js/jquery.validate.min.js"></script>
   <!-- 3. Ukljucivanje naseg JS fajla -->
-  <script src="js/oceni.js"></script>
-
+  <script src="js/no-rate-chosen.js"></script>
 </head>
 <body>
+
+</div>
+
+<br><br>
 <div class="container">
   <table id="trainings">
-    <tr>
+    <tr id="myTR">
       <th>#</th>
-      <th>Korisnik</th>
-      <th>Naziv</th>
-      <th>Opis</th>
-      <th>Tip</th>
-      <th>Datum</th>
-      <th>Oceni</th>
+      <th onclick="sortTable(0)">Naziv</th>
+      <th onclick="sortTable(1)">Opis</th>
+      <th onclick="sortTable(2)">Tip</th>
+      <th onclick="sortTable(3)">Trajanje</th>
+      <th onclick="sortTable(4)">Cena</th>
+      <th onclick="sortTable(5)">Datum</th>
+      <th></th>
+
     </tr>
   </table>
 </div>
+</div>
+
 </body>
 </html>

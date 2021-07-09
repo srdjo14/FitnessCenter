@@ -58,6 +58,23 @@ public class TrainingController {
         return new ResponseEntity<>(doneTrainingDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/done/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DoneTrainingDTO> getOneDone(@PathVariable("id") Long id){
+        DoneTraining doneTraining = this.trainingService.findOneDone(id);
+
+        DoneTrainingDTO doneTrainingDTO = new DoneTrainingDTO();
+        doneTrainingDTO.setId(doneTraining.getId());
+        doneTrainingDTO.setName(doneTraining.getTerms().getTraining().getName());
+        doneTrainingDTO.setAboutTraining(doneTraining.getTerms().getTraining().getAboutTraining());
+        doneTrainingDTO.setTypeOfTraining(doneTraining.getTerms().getTraining().getTypeOfTraining());
+        doneTrainingDTO.setLength(doneTraining.getTerms().getTraining().getLength());
+        doneTrainingDTO.setPrice(doneTraining.getTerms().getPrice());
+        doneTrainingDTO.setTrainingDay(doneTraining.getTerms().getTrainingDay());
+
+        return new ResponseEntity<>(doneTrainingDTO, HttpStatus.OK);
+    }
+
+
     /* Dobavljanje ocijenjenjih treninga */
     @GetMapping(value = "/rate", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<RateTrainingDTO>> getRate(){
@@ -116,20 +133,12 @@ public class TrainingController {
         return new ResponseEntity<>(checkTrainingDTO1, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/addRate/{grade}/{memberId}/{termsId}", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RateTrainingDTO> createRate(@PathVariable Integer grade, @PathVariable Long memberId, @PathVariable Long termsId, @RequestBody RateTrainingDTO rateTrainingDTO) throws Exception {
-        Member member = this.memberService.findOneById(memberId);
-        Terms terms = this.termsService.findOneById(termsId);
-        if (member == null || terms == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-        RateTraining rateTraining = new RateTraining(grade, member, terms);
-        RateTraining newRateTraining = trainingService.createRate(rateTraining);
-
-        RateTrainingDTO rateTrainingDTO1 = new RateTrainingDTO(newRateTraining.getId(), newRateTraining.getGrade(), newRateTraining.getMembers(), newRateTraining.getTerms());
-
-        return new ResponseEntity<>(rateTrainingDTO1, HttpStatus.CREATED);
+    @GetMapping(value = "/rate")
+    public ResponseEntity<RateTraining> rateTraining(@RequestParam Long id, @RequestParam int grade){
+        RateTraining rateTraining = trainingService.findRateOne(id);
+        rateTraining.setGrade(grade);
+        trainingService.createRate(rateTraining);
+        return new ResponseEntity<>(rateTraining, HttpStatus.OK);
     }
 
 

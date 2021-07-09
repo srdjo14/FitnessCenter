@@ -1,13 +1,9 @@
 package com.classproject.FitnessCenter.Service;
 
-import com.classproject.FitnessCenter.controller.TrainingController;
 import com.classproject.FitnessCenter.entity.CheckTraining;
 import com.classproject.FitnessCenter.entity.DoneTraining;
 import com.classproject.FitnessCenter.entity.RateTraining;
 import com.classproject.FitnessCenter.entity.Training;
-import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
-import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +23,10 @@ public interface TrainingService {
 
     List<RateTraining> findAllRate();
 
-    Optional<RateTraining> findRateOne(Long id);
+    RateTraining findRateOne(Long id);
 
     RateTraining createRate(RateTraining rateTraining);
+
+    DoneTraining findOneDone(Long id);
 }
 

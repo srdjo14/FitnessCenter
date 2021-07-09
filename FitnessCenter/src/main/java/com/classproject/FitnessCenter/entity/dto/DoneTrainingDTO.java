@@ -11,6 +11,7 @@ public class DoneTrainingDTO {
     private Integer length;
     private Double price;
     private Date trainingDay;
+    private Integer grade;
 
     public DoneTrainingDTO() {
     }
@@ -31,6 +32,26 @@ public class DoneTrainingDTO {
         this.length = length;
         this.price = price;
         this.trainingDay = trainingDay;
+    }
+
+    public DoneTrainingDTO(Long id, String username, String name, String aboutTraining, String typeOfTraining, Integer length, Double price, Date trainingDay, Integer grade) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.aboutTraining = aboutTraining;
+        this.typeOfTraining = typeOfTraining;
+        this.length = length;
+        this.price = price;
+        this.trainingDay = trainingDay;
+        this.grade = grade;
+    }
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
     public String getAboutTraining() {

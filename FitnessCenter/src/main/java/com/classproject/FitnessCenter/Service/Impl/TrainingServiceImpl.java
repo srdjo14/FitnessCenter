@@ -1,12 +1,8 @@
 package com.classproject.FitnessCenter.Service.Impl;
 
-import com.classproject.FitnessCenter.Service.MemberService;
-import com.classproject.FitnessCenter.Service.TermsService;
 import com.classproject.FitnessCenter.Service.TrainingService;
 
 import com.classproject.FitnessCenter.entity.*;
-import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
-import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import com.classproject.FitnessCenter.repository.CheckTrainingRepository;
 import com.classproject.FitnessCenter.repository.DoneTrainingRepository;
 import com.classproject.FitnessCenter.repository.RateTrainingRepository;
@@ -82,13 +78,18 @@ public class TrainingServiceImpl implements TrainingService {
     }
 
     @Override
-    public Optional<RateTraining> findRateOne(Long id) {
-        return this.rateTrainingRepository.findById(id);
+    public RateTraining findRateOne(Long id) {
+        return this.rateTrainingRepository.findOneById(id);
     }
 
     @Override
     public RateTraining createRate(RateTraining rateTraining) {
         return this.rateTrainingRepository.save(rateTraining);
+    }
+
+    @Override
+    public DoneTraining findOneDone(Long id) {
+        return this.doneTrainingRepository.findOneById(id);
     }
 
 }
