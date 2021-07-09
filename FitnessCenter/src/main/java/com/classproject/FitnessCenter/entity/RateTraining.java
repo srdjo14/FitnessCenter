@@ -1,5 +1,7 @@
 package com.classproject.FitnessCenter.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -21,7 +23,7 @@ public class RateTraining implements Serializable {
 
     /* Razbijanje @ManyToMany veze izmedju Clana i Termina pomocu nove klase Ocjene */
     @ManyToOne(fetch = FetchType.EAGER)
-    private Training trainings;
+    private Terms terms;
 
     public Long getId() {
         return id;
@@ -47,11 +49,11 @@ public class RateTraining implements Serializable {
         this.members = members;
     }
 
-    public Training getTrainings() {
-        return trainings;
+    public Terms getTerms() {
+        return terms;
     }
 
-    public void setTrainings(Training trainings) {
-        this.trainings = trainings;
+    public void setTerms(Terms terms) {
+        this.terms = terms;
     }
 }

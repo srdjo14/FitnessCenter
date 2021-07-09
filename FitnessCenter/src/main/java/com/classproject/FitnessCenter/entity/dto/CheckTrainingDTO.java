@@ -1,6 +1,8 @@
 package com.classproject.FitnessCenter.entity.dto;
 
 import com.classproject.FitnessCenter.entity.CheckTraining;
+import com.classproject.FitnessCenter.entity.Member;
+import com.classproject.FitnessCenter.entity.Terms;
 
 import java.util.Date;
 
@@ -13,6 +15,8 @@ public class CheckTrainingDTO {
     private Integer length;
     private Double price;
     private Date trainingDay;
+    private Member member;
+    private Terms terms;
 
     public CheckTrainingDTO() {}
 
@@ -25,6 +29,28 @@ public class CheckTrainingDTO {
         this.length = length;
         this.price = price;
         this.trainingDay = trainingDay;
+    }
+
+    public CheckTrainingDTO(Long id, Member members, Terms terms) {
+        this.id = id;
+        this.member = members;
+        this.terms = terms;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Terms getTerms() {
+        return terms;
+    }
+
+    public void setTerms(Terms terms) {
+        this.terms = terms;
     }
 
     public String getAboutTraining() {

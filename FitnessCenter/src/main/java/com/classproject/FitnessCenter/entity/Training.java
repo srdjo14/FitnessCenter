@@ -34,14 +34,8 @@ public class Training implements Serializable {
         @OneToMany(mappedBy = "training", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         private Set<Terms> terms = new HashSet<>();
 
-        /*
-        -- LISTA OCJENA ZA ODRADJENE TRENINGE --
-        Razbijanje ManyToMany(Clan-Trening) zbog liste ocjena za odradjene treninge,
-        pomocu pomocne klase RateTraining.
-        Jedan clan moze da ima vise ocijenjenih treninga, a jedan trening moze da ocjeni vise clanova.
-        */
-    @OneToMany(mappedBy="members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<RateTraining> rateTraining = new ArrayList<>();
+
+
 
     public Long getId() {
         return id;
@@ -99,13 +93,7 @@ public class Training implements Serializable {
         this.terms = terms;
     }
 
-    public List<RateTraining> getRateTraining() {
-        return rateTraining;
-    }
 
-    public void setRateTraining(List<RateTraining> rateTraining) {
-        this.rateTraining = rateTraining;
-    }
 
     @Override
         public String toString(){

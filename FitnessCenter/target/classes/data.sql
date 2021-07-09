@@ -27,9 +27,9 @@ INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, h
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 270, '2021-5-21', 1, 1, 2)
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 450, '2021-5-24', 1, 1, 3)
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 270, '2021-5-21', 1, 1, 4)
-INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 230, '2021-7-21', 1, 1, 5)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 230, '2021-7-21', 1, 1, 5)------------------
 
-INSERT INTO RATE_TRAINING(grade, members_id, trainings_id) VALUES (5, 2, 1)
+INSERT INTO RATE_TRAINING(members_id, terms_id, grade) VALUES (2,3,4)
 
 INSERT INTO DONE_TRAINING(members_id, terms_id) VALUES(2,1)
 INSERT INTO DONE_TRAINING(members_id, terms_id) VALUES(2,2)
@@ -41,10 +41,12 @@ INSERT INTO DONE_TRAINING(members_id, terms_id) VALUES(7,2)
 INSERT INTO DONE_TRAINING(members_id, terms_id) VALUES(7,4)
 INSERT INTO DONE_TRAINING(members_id, terms_id) VALUES(7,3)
 
-INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(2,4)
 INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(2,1)
 INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(2,2)
 INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(2,5)
+INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(2,4)
+INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(2,3)
+
 INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(7,2)
 INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(7,3)
 INSERT INTO CHECK_TRAINING(members_id, terms_id) VALUES(7,1)

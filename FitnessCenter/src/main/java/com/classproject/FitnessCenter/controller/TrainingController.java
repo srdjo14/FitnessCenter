@@ -1,16 +1,17 @@
 package com.classproject.FitnessCenter.controller;
 
 
+import com.classproject.FitnessCenter.Service.MemberService;
+import com.classproject.FitnessCenter.Service.TermsService;
 import com.classproject.FitnessCenter.Service.TrainingService;
-import com.classproject.FitnessCenter.entity.CheckTraining;
-import com.classproject.FitnessCenter.entity.DoneTraining;
-import com.classproject.FitnessCenter.entity.Terms;
-import com.classproject.FitnessCenter.entity.Training;
+import com.classproject.FitnessCenter.Service.UserService;
+import com.classproject.FitnessCenter.entity.*;
 import com.classproject.FitnessCenter.entity.dto.CheckTrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.TermsDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import com.classproject.FitnessCenter.repository.DoneTrainingRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,19 +27,23 @@ import java.util.List;
 public class TrainingController {
 
     private final TrainingService trainingService;
+    private final MemberService memberService;
+    private final TermsService termsService;
 
     @Autowired
-    public TrainingController(TrainingService trainingService) {
+    public TrainingController(TrainingService trainingService, MemberService memberService, TermsService termsService) {
         this.trainingService = trainingService;
+        this.memberService = memberService;
+        this.termsService = termsService;
     }
 
     /* Dobavljanje svih odradjenih treninga */
     @GetMapping(value = "/done", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<DoneTrainingDTO>> getDone(){
+    public ResponseEntity<List<DoneTrainingDTO>> getDone() {
         List<DoneTraining> doneTrainings = this.trainingService.findSve();
         List<DoneTrainingDTO> doneTrainingDTOS = new ArrayList<>();
 
-        for(DoneTraining doneTraining : doneTrainings){
+        for (DoneTraining doneTraining : doneTrainings) {
             DoneTrainingDTO doneTrainingDTO = new DoneTrainingDTO(
                     doneTraining.getId(),
                     doneTraining.getMembers().getUsername(),
@@ -53,13 +58,13 @@ public class TrainingController {
         }
         return new ResponseEntity<>(doneTrainingDTOS, HttpStatus.OK);
     }
-    
+
     @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CheckTrainingDTO>> getCheck(){
+    public ResponseEntity<List<CheckTrainingDTO>> getCheck() {
         List<CheckTraining> checkTrainings = this.trainingService.findAllCheck();
         List<CheckTrainingDTO> checkTrainingDTOS = new ArrayList<>();
 
-        for(CheckTraining checkTraining : checkTrainings){
+        for (CheckTraining checkTraining : checkTrainings) {
             CheckTrainingDTO checkTrainingDTO = new CheckTrainingDTO(
                     checkTraining.getId(),
                     checkTraining.getMembers().getUsername(),
@@ -75,20 +80,44 @@ public class TrainingController {
         return new ResponseEntity<>(checkTrainingDTOS, HttpStatus.OK);
     }
 
-    /*@PostMapping(value ="/addCheck", consumes = MediaType.APPLICATION_JSON_VALUE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CheckTrainingDTO> createCheck(@RequestBody CheckTrainingDTO checkTrainingDTO) throws Exception{
-        CheckTraining checkTraining = new CheckTraining(checkTrainingDTO.get, checkTrainingDTO.getName(), checkTrainingDTO.getTypeOfTraining());
+    @JsonIgnore
+    @PostMapping(value = "/addCheck/{memberId}/{termsId}", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CheckTrainingDTO> createCheck(@PathVariable Long memberId, @PathVariable Long termsId, @RequestBody CheckTrainingDTO checkTrainingDTO) throws Exception {
+        Member member = this.memberService.findOneById(memberId);
+        Terms terms = this.termsService.findOneById(termsId);
+        if (member == null || terms == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
+        CheckTraining checkTraining = new CheckTraining(member, terms);
         CheckTraining newCheckTraining = trainingService.create(checkTraining);
 
-        CheckTrainingDTO checkTrainingDTO1 = new CheckTrainingDTO(newCheckTraining., newCheckTraining.getTraining().getName(), newCheckTraining.getTraining().getAboutTraining(),
-                );
-    }*/
+        CheckTrainingDTO checkTrainingDTO1 = new CheckTrainingDTO(newCheckTraining.getId(), newCheckTraining.getMembers(), newCheckTraining.getTerms());
+
+        return new ResponseEntity<>(checkTrainingDTO1, HttpStatus.CREATED);
+    }
+
+    /*    @PostMapping(value = "/prijava/{memberId}/{termsId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CheckTrainingDTO> prijaviTermin(@PathVariable Long memberId, @PathVariable Long termsId, @RequestBody CheckTrainingDTO checkTrainingDTO){
+
+        Member member = this.memberService.findOneById(memberId);
+        Terms terms = this.termsService.findOneById(termsId);
+
+        if(member == null || terms == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        CheckTraining checkTraining = new CheckTraining(checkTrainingDTO.getMemberId(), checkTrainingDTO.getTermId());
+        CheckTraining newCheck = trainingService.create(checkTraining);
+
+        CheckTrainingDTO newCheckTrainingDTO = new CheckTrainingDTO(member, terms);
+
+        return new ResponseEntity<>(newCheckTrainingDTO, HttpStatus.CREATED);
+    */
 
     @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteFC(@PathVariable Long id){
-        trainingService.delete(id);
+    public ResponseEntity deleteFC(@PathVariable Long id) {
+        trainingService.deleteCheck(id);
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }
+

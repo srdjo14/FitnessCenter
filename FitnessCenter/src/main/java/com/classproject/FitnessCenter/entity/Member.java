@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
+
 @DiscriminatorValue("member")
 public class Member extends User{
 
@@ -22,6 +23,7 @@ public class Member extends User{
     /* -- LISTA PRIJAVLJENIH TRENINGA --
         Koristenje direktne MTM veze.
     */
+
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CheckTraining> checkTraining = new ArrayList<>();
 
@@ -29,7 +31,7 @@ public class Member extends User{
         Druga strana 1:n veze izmedju odradjenih treninga i clana.
     */
     @OneToMany(mappedBy = "members", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CheckTraining> doneTraining = new ArrayList<>();
+    private List<DoneTraining> doneTraining = new ArrayList<>();
 
     public Member(String firstName, String lastName, String username, String password, String email, String contact, Date birthDate, Boolean active, String position) {
         super(firstName, lastName, username, password, email, contact, birthDate, active, position);
@@ -55,11 +57,11 @@ public class Member extends User{
         this.checkTraining = checkTraining;
     }
 
-    public List<CheckTraining> getDoneTraining() {
+    public List<DoneTraining> getDoneTraining() {
         return doneTraining;
     }
 
-    public void setDoneTraining(List<CheckTraining> doneTraining) {
+    public void setDoneTraining(List<DoneTraining> doneTraining) {
         this.doneTraining = doneTraining;
     }
 

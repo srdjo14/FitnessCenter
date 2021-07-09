@@ -5,12 +5,11 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
     var object1 = localStorage.getItem('username');
     $.ajax({
         type: "GET",                                                // HTTP metoda
-        url: "http://localhost:8080/api/training/check",                 // URL koji se gađa
+        url: "http://localhost:8080/api/training/done",                 // URL koji se gađa
         dataType: "json",                                           // tip povratne vrednosti
         success: function (response) {
             // ova f-ja se izvršava posle uspešnog zahteva
             console.log("SUCCESS:\n", response);                    // ispisujemo u konzoli povratnu vrednost radi provere
-
 
             for (let fitness of response) {                        // prolazimo kroz listu svih zaposlenih
 
@@ -24,7 +23,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                     row += "<td>" + fitness.length + "</td>";
                     row += "<td>" + fitness.price + "</td>";
                     row += "<td>" + fitness.trainingDay + "</td>";
-                    btn = "<button class='btnCheckk' data-id=" + fitness.id + ">Otkazi</button>";
+                    btn = "<button class='btnCheckk' data-id=" + fitness.id + ">Oceni</button>";
                     row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
@@ -38,19 +37,18 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 });
 
 $(document).on('click', '.btnCheckk', function () {
-    // preuzimamo vrednosti unete u formi
+
     let idFc = this.dataset.id;
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/training/delete/" + idFc,
+        url: "http://localhost:8080/api/training/delete/"+ idFc,
         success: function (response) {
             console.log(response);
             $('[data-id="' + idFc + '"]').parent().parent().remove();
         },
         error: function () {
             console.log("Greska!");
-            // window.location.href = "adminHomePage.html";
         }
     });
 });

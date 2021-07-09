@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Lista fitnesa</title>
-  <link rel="stylesheet" href="css/training.css">
+  <link rel="stylesheet" href="css/training.css" >
   <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
   <!-- 1. Ukljucivanje jQuery biblioteke -->
   <script src="js/jquery.min.js"></script>
@@ -15,6 +15,21 @@
 
 </head>
 <body>
+<div class="home">
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="checkTraining.html">Checked</a>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Ocijenjeni</a>
+      <a href="no-rate-training.html">Neocijenjeni</a>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <table id="trainings">
     <tr>
@@ -26,9 +41,9 @@
       <th>Trajanje(min)</th>
       <th>Cena</th>
       <th>Datum</th>
-      <th></th>
     </tr>
   </table>
 </div>
+
 </body>
 </html>

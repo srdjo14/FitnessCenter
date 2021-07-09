@@ -9,6 +9,7 @@ import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
 import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
 import com.classproject.FitnessCenter.repository.CheckTrainingRepository;
 import com.classproject.FitnessCenter.repository.DoneTrainingRepository;
+import com.classproject.FitnessCenter.repository.RateTrainingRepository;
 import com.classproject.FitnessCenter.repository.TrainingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +22,13 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingRepository trainingRepository;
     private final DoneTrainingRepository doneTrainingRepository;
     private final CheckTrainingRepository checkTrainingRepository;
-    private final MemberService memberService;
-
+    private final RateTrainingRepository rateTrainingRepository;
     @Autowired
-    public TrainingServiceImpl(TrainingRepository trainingRepository, DoneTrainingRepository doneTrainingRepository, CheckTrainingRepository checkTrainingRepository, MemberService memberService) {
+    public TrainingServiceImpl(TrainingRepository trainingRepository, DoneTrainingRepository doneTrainingRepository, CheckTrainingRepository checkTrainingRepository, RateTrainingRepository rateTrainingRepository) {
         this.trainingRepository = trainingRepository;
         this.doneTrainingRepository = doneTrainingRepository;
         this.checkTrainingRepository = checkTrainingRepository;
-        this.memberService = memberService;
+        this.rateTrainingRepository = rateTrainingRepository;
     }
 
     /* Prikaz svih treninga */
@@ -61,13 +61,18 @@ public class TrainingServiceImpl implements TrainingService {
     }
 
     @Override
-    public void delete(Long id) {
-        this.checkTrainingRepository.deleteById(id);
+    public void deleteRate(Long id) {
+        this.rateTrainingRepository.deleteById(id);
     }
 
     @Override
     public CheckTraining create(CheckTraining checkTraining) {
         return this.checkTrainingRepository.save(checkTraining);
+    }
+
+    @Override
+    public void deleteCheck(Long id) {
+        this.checkTrainingRepository.deleteById(id);
     }
 
 }

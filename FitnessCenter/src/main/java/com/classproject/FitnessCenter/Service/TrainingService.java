@@ -17,8 +17,10 @@ public interface TrainingService {
     Training findOneById(Long trainingId);
     List<DoneTraining> findSve();
     List<CheckTraining> findAllCheck();
-    void delete(Long id);
+    void deleteRate(Long id);
 
     CheckTraining create(CheckTraining checkTraining);
+
+    void deleteCheck(Long id);
 }
 

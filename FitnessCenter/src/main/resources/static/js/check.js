@@ -43,7 +43,7 @@ $(document).on('click', '.btnCheckk', function () {
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/training/delete/"+ idFc,
+        url: "http://localhost:8080/api/training/delete/" + idFc,
         success: function (response) {
             console.log(response);
             $('[data-id="' + idFc + '"]').parent().parent().remove();

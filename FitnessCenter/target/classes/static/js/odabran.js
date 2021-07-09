@@ -10,6 +10,10 @@ $(document).ready(function () {
 
                 window.localStorage.setItem("naziv", response.name);
                 window.localStorage.setItem("opis", response.aboutTraining);
+                window.localStorage.setItem("tip", response.typeOfTraining);
+                window.localStorage.setItem("trajanje", response.length);
+                window.localStorage.setItem("cena", response.price);
+                window.localStorage.setItem("datum", response.trainingDay);
 
                 let row = "<tr>";
                 row += "<td>" + response.id + "</td>";
@@ -39,22 +43,40 @@ $(document).on('click', '.prijava', function myFunction(event) {
         window.location.href = "termini.html";
     }
     else {
-        console.log(localStorage.getItem("ID"),localStorage.getItem("termin"));
+
+        let naziv = localStorage.getItem('naziv');
+        let opis = localStorage.getItem('opis');
+        let tip = localStorage.getItem('tip');
+        let trajanje = localStorage.getItem('trajanje');
+        let cena = localStorage.getItem('cena');
+        let datum = localStorage.getItem('datum');
+
+        let newCheck = {
+            naziv,
+            opis,
+            tip,
+            trajanje,
+            cena,
+            datum
+        }
+
+        console.log(localStorage.getItem('id'), localStorage.getItem('terms'))
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/termini/prijavaNaTrening/"+localStorage.getItem("ID")+"/"+ localStorage.getItem("termin"),
+            url: "http://localhost:8080/api/training/addCheck/"+ localStorage.getItem('id') +"/"+ localStorage.getItem('terms'),
             dataType: "json",
             contentType: "application/json",
-            data: JSON.stringify(),
+            data: JSON.stringify(newCheck),
             success: function (response) {
                 console.log(response);
-                alert("PROSLO SVE OK");
+                alert("Uspjesno!");
+                window.location.href = "checkTraining.html"
             },
             error: function(response) {
-                console.log("NEUSPJESNO: \n", response);
-                alert("PROSLO SVE KAKO TREBA");
+                console.log("Error: \n", response);
+                alert("Nije uspjesno!");
             }
         });
-        window.location.href = "korisnikTermin.html";
+        window.location.href = "checkTraining.html";
     }
 });

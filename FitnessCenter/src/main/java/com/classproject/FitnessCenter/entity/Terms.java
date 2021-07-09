@@ -2,9 +2,7 @@ package com.classproject.FitnessCenter.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Terms implements Serializable {
@@ -41,6 +39,15 @@ public class Terms implements Serializable {
     /* -- LISTA ODRADJENIH TRENINGA -- */
     @OneToMany(mappedBy = "terms", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<DoneTraining> doneTraining = new HashSet<>();
+
+    /*        -- LISTA OCJENA ZA ODRADJENE TRENINGE --
+    Razbijanje ManyToMany(Clan-Trening) zbog liste ocjena za odradjene treninge,
+    pomocu pomocne klase RateTraining.
+    Jedan clan moze da ima vise ocijenjenih treninga, a jedan trening moze da ocjeni vise clanova.
+        */
+    @OneToMany(mappedBy="terms", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<RateTraining> rateTraining = new ArrayList<>();
+
 
     public Terms(Long id, Double price, Date trainingDay, Training training) {
         this.id = id;
@@ -116,6 +123,14 @@ public class Terms implements Serializable {
 
     public void setHall(Hall hall) {
         this.hall = hall;
+    }
+
+    public List<RateTraining> getRateTraining() {
+        return rateTraining;
+    }
+
+    public void setRateTraining(List<RateTraining> rateTraining) {
+        this.rateTraining = rateTraining;
     }
 
     @Override
