@@ -4,10 +4,7 @@ import com.classproject.FitnessCenter.Service.*;
 import com.classproject.FitnessCenter.entity.Terms;
 import com.classproject.FitnessCenter.entity.Training;
 import com.classproject.FitnessCenter.entity.User;
-import com.classproject.FitnessCenter.entity.dto.LoginDTO;
-import com.classproject.FitnessCenter.entity.dto.TermsDTO;
-import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
-import com.classproject.FitnessCenter.entity.dto.UserDTO;
+import com.classproject.FitnessCenter.entity.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -56,7 +53,6 @@ public class UserController {
     @GetMapping(value = "/training", produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TrainingDTO>> getTraining() {
 
-
             // Pozivanjem metode servisa dobavljamo sve treninge
             List<Training> trainingList = this.trainingService.findAll();
 
@@ -93,6 +89,16 @@ public class UserController {
             termsDTOS.add(termsDTO);
         }
         return new ResponseEntity<>(termsDTOS, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/termsSe", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity <TermsAddDTO> setTerms(@RequestBody TermsAddDTO termsAddDTO){
+        Terms terms = new Terms(termsAddDTO.getNumberCheckedUser(), termsAddDTO.getPrice(), termsAddDTO.getTrainingDay(), termsAddDTO.getFitnessCenter(),
+                termsAddDTO.getHall(),termsAddDTO.getTraining());
+
+        terms = termsService.addTerms(terms);
+        termsAddDTO.setId(terms.getId());
+        return new ResponseEntity<>(termsAddDTO, HttpStatus.CREATED);
     }
 
     /* Dobavljanje odabranog termina */

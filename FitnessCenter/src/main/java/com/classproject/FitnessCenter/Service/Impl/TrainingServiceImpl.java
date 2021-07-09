@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrainingServiceImpl implements TrainingService {
@@ -73,6 +74,21 @@ public class TrainingServiceImpl implements TrainingService {
     @Override
     public void deleteCheck(Long id) {
         this.checkTrainingRepository.deleteById(id);
+    }
+
+    @Override
+    public List<RateTraining> findAllRate() {
+        return this.rateTrainingRepository.findAll();
+    }
+
+    @Override
+    public Optional<RateTraining> findRateOne(Long id) {
+        return this.rateTrainingRepository.findById(id);
+    }
+
+    @Override
+    public RateTraining createRate(RateTraining rateTraining) {
+        return this.rateTrainingRepository.save(rateTraining);
     }
 
 }

@@ -6,27 +6,27 @@ $(document).on("submit", "#addFitCentForm", function (event) {
     event.preventDefault();
 
     // Preuzimamo vrednosti unijete u formi
-    let naziv = $("#name").val();
-    let about = $("#about").val();
-    let tip = $("#tip").val();
-    let duration = $("#duration").val();
-    let price  = $("#price").val();
-    let date = $("#date").val();
+    let price = $("#name").val();
+    let trainingDay = $("#about").val();
+    let fitnessCenter = $("#tip").val();
+    let hall = $("#duration").val();
+    let training  = $("#price").val();
+    let numberCheckedUser = $("#date").val();
 
     // Kreiramo objekat fitnes centra
     let newFitnessCenter = {
-        naziv,
-        about,
-        tip,
-        duration,
         price,
-        date
+        trainingDay,
+        fitnessCenter,
+        hall,
+        training,
+        numberCheckedUser
     }
 
     // ajax poziv za kreiranje novog termina
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/fit-center",                 // URL na koji se šalju podaci
+        url: "http://localhost:8080/api/user/termsSe",                 // URL na koji se šalju podaci
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(newFitnessCenter),

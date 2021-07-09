@@ -1,35 +1,26 @@
-var object = localStorage.getItem('uloga');
-if(object == 'member') {
+// Pregled svih fitnes centara
 $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Object Model) učitan da bi JS mogao sa njim da manipuliše.
     // ajax poziv za dobavljanje svih zaposlenih sa backend-a i prikaz u tabeli
     var object = localStorage.getItem('id');
     var object1 = localStorage.getItem('username');
-    var object2 = localStorage.getItem('terms');
     $.ajax({
         type: "GET",                                                // HTTP metoda
-        url: "http://localhost:8080/api/training/check",                 // URL koji se gađa
+        url: "http://localhost:8080/api/training/rate",                 // URL koji se gađa
         dataType: "json",                                           // tip povratne vrednosti
         success: function (response) {
             // ova f-ja se izvršava posle uspešnog zahteva
             console.log("SUCCESS:\n", response);                    // ispisujemo u konzoli povratnu vrednost radi provere
 
-
             for (let fitness of response) {                        // prolazimo kroz listu svih zaposlenih
 
                 if(fitness.username === object1){
                     let row = "<tr>";                                   // kreiramo red za tabelu
-                    row += "<td>" + fitness.id + "</td>";
+                    row += "<td>" + object + "</td>";
                     row += "<td>" + fitness.username + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
                     row += "<td>" + fitness.name + "</td>";
                     row += "<td>" + fitness.aboutTraining + "</td>";
                     row += "<td>" + fitness.typeOfTraining + "</td>";
-                    row += "<td>" + fitness.length + "</td>";
-                    row += "<td>" + fitness.price + "</td>";
                     row += "<td>" + fitness.trainingDay + "</td>";
-                    btn = "<button class='btnCheckk' data-id=" + fitness.id + ">Otkazi</button>";
-                    row += "<td>" + btn + "</td>";
-                    btn = "<button class='btnCheckkk' data-id=" + fitness.id + ">Odradi</button>";
-                    row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
                     $('#trainings').append(row);     }                   // ubacujemo kreirani red u tabelu čiji je id = trainings
@@ -39,28 +30,21 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
             console.log("ERROR:\n", response);
         }
     });
-
 });
 
 $(document).on('click', '.btnCheckk', function () {
-    // preuzimamo vrednosti unete u formi
+
     let idFc = this.dataset.id;
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/training/delete/" + idFc,
+        url: "http://localhost:8080/api/training/delete/"+ idFc,
         success: function (response) {
             console.log(response);
             $('[data-id="' + idFc + '"]').parent().parent().remove();
         },
         error: function () {
             console.log("Greska!");
-            // window.location.href = "adminHomePage.html";
         }
     });
 });
-
-} else {
-    alert("Korisnik nema pristupa ovoj stranici!");
-    window.location.href = "index.html";
-}

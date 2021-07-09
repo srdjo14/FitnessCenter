@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Add Hall </title>
-    <link rel="stylesheet">
+    <title> Update Hall </title>
+    <link rel="stylesheet" href="css/hall.css">
     <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
     <!-- 1. Ukljucivanje jQuery biblioteke -->
     <script src="js/jquery.min.js"></script>
@@ -15,8 +15,9 @@
 </head>
 <body>
 <div class = "fitnesCentarForm" id = "registracija">
-    <h1>Updateovanje Sale</h1>
+    <h1>Update Hall</h1>
     <form action="#" method="post">
+        <div class="card">
         <p>ID: </p>
         <input type="number" name="ID" placeholder="ID sale" id ="id" required>
         <p>Kapacitet: </p>
@@ -25,7 +26,8 @@
         <input type="text" name="lname" placeholder="Oznaka" id="oznaka" required>
         <p>FitnesCentar ID: </p>
         <input type="number" name="username" placeholder="Unesite id Fitnes Centra" id="idCentra" required>
-        <button type="submit" id="dugmeRegistruj">Update</button>
+            <br></br><button type="submit" id="dugmeRegistruj">Update</button>
+        </div>
     </form>
 </div>
 </body>

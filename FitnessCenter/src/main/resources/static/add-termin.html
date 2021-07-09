@@ -4,8 +4,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> Fitness Center </title>
-  <link rel="stylesheet" href="css/register.css">
+  <title> Term </title>
+  <link rel="stylesheet" href="css/hall.css">
   <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
   <!-- 1. Ukljucivanje jQuery biblioteke -->
   <script src="js/jquery.min.js"></script>
@@ -21,31 +21,33 @@
 <div class="termini" id="term">
 <!-- Kada korisnik klikne Add, poziva se metoda addNewEmployee, koja se nalazi u employees.js -->
 <form id="addFitCentForm">
+  <div class="card">
   <p>
-    <label for="name">Naziv:</label>
-    <input id="name" type="text" /><br>
+    <label for="name">Cena:</label><br>
+    <input id="name" type="number" /><br>
   </p>
   <p>
-    <label for="about">Opis:</label>
-    <input id="about" type="text" /><br>
+    <label for="about">Datum:</label><br>
+    <input id="about" type="date" /><br>
   </p>
   <p>
-    <label for="tip">Tip:</label>
+    <label for="tip">Fitnes Centar:</label><br>
     <input id="tip" type="text" /><br>
   </p>
   <p>
-    <label for="duration">Trajanje:</label>
+    <label for="duration">Sala:</label><br>
     <input id="duration" type="text" /><br>
   </p>
   <p>
-    <label for="price">Cena:</label>
+    <label for="price">Trening:</label><br>
     <input id="price" type="text" /><br>
   </p>
   <p>
-    <label for="date">Datum:</label>
+    <label for="date">Broj Korisnika:</label><br>
     <input id="date" type="text" /><br>
   </p>
   <input type="submit" value="Add" >
+  </div>
 </form>
 </div>
 </body>

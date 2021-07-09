@@ -1,9 +1,11 @@
 package com.classproject.FitnessCenter.entity;
 
+import com.classproject.FitnessCenter.entity.dto.RateTrainingDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,6 +26,17 @@ public class RateTraining implements Serializable {
     /* Razbijanje @ManyToMany veze izmedju Clana i Termina pomocu nove klase Ocjene */
     @ManyToOne(fetch = FetchType.EAGER)
     private Terms terms;
+
+    public RateTraining(Long id, String name, String aboutTraining, String typeOfTraining, Integer length, Double price, Date trainingDay, Integer grade) {
+    }
+
+    public RateTraining(Integer grade, Member member, Terms terms) {
+        this.grade = grade;
+        this.members = member;
+        this.terms = terms;
+    }
+
+    public RateTraining() {}
 
     public Long getId() {
         return id;

@@ -19,6 +19,7 @@ INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VAL
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Noge', 'Plyometric', 'Medium-Hard', 20, 6)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Stomak', 'Back', 'Medium', 45, 6)
 INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Grudi', 'Full-strength', 'Hard', 65, 4)
+INSERT INTO TRAINING(training_name, type, about, length, fitness_trainer_id) VALUES('Grudi-Rame', 'Full-strength', 'Easy', 60, 5)
 
 INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (12, 'h4', 1)
 INSERT INTO HALL(capacity, number_of_hall, fitness_center_id) VALUES (13, 'h5', 2)
@@ -27,7 +28,11 @@ INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, h
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 270, '2021-5-21', 1, 1, 2)
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 450, '2021-5-24', 1, 1, 3)
 INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 270, '2021-5-21', 1, 1, 4)
-INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 230, '2021-7-21', 1, 1, 5)------------------
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(9, 230, '2021-7-21', 1, 1, 5)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(4, 380, '2021-6-19', 2, 2, 5)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(4, 550, '2021-7-19', 2, 1, 6)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(4, 130, '2021-8-19', 2, 2, 7)
+INSERT INTO TERMS(number_checked_user, price, training_day, fitness_Center_id, hall_id, training_id) VALUES(4, 200, '2021-9-19', 2, 1, 6)
 
 INSERT INTO RATE_TRAINING(members_id, terms_id, grade) VALUES (2,3,4)
 

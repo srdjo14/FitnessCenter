@@ -10,6 +10,5 @@ public interface TermsRepository extends JpaRepository<Terms, Long> {
 
     List<Terms> findByPrice(Double price);
     List<Terms> findByTrainingDay(Date trainingDay);
-
     Terms findOneById(Long id);
 }

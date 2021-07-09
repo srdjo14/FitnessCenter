@@ -6,10 +6,7 @@ import com.classproject.FitnessCenter.Service.TermsService;
 import com.classproject.FitnessCenter.Service.TrainingService;
 import com.classproject.FitnessCenter.Service.UserService;
 import com.classproject.FitnessCenter.entity.*;
-import com.classproject.FitnessCenter.entity.dto.CheckTrainingDTO;
-import com.classproject.FitnessCenter.entity.dto.DoneTrainingDTO;
-import com.classproject.FitnessCenter.entity.dto.TermsDTO;
-import com.classproject.FitnessCenter.entity.dto.TrainingDTO;
+import com.classproject.FitnessCenter.entity.dto.*;
 import com.classproject.FitnessCenter.repository.DoneTrainingRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Check;
@@ -17,10 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/training")
@@ -57,6 +56,26 @@ public class TrainingController {
             doneTrainingDTOS.add(doneTrainingDTO);
         }
         return new ResponseEntity<>(doneTrainingDTOS, HttpStatus.OK);
+    }
+
+    /* Dobavljanje ocijenjenjih treninga */
+    @GetMapping(value = "/rate", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<RateTrainingDTO>> getRate(){
+        List<RateTraining> rateTrainings = this.trainingService.findAllRate();
+        List<RateTrainingDTO> rateTrainingDTOS = new ArrayList<>();
+
+        for (RateTraining rateTraining : rateTrainings){
+            RateTrainingDTO rateTrainingDTO = new RateTrainingDTO(
+                    rateTraining.getId(),
+                    rateTraining.getMembers().getUsername(),
+                    rateTraining.getTerms().getTraining().getName(),
+                    rateTraining.getTerms().getTraining().getAboutTraining(),
+                    rateTraining.getTerms().getTraining().getTypeOfTraining(),
+                    rateTraining.getGrade()
+            );
+            rateTrainingDTOS.add(rateTrainingDTO);
+        }
+        return new ResponseEntity<>(rateTrainingDTOS, HttpStatus.OK);
     }
 
     @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -97,22 +116,22 @@ public class TrainingController {
         return new ResponseEntity<>(checkTrainingDTO1, HttpStatus.CREATED);
     }
 
-    /*    @PostMapping(value = "/prijava/{memberId}/{termsId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CheckTrainingDTO> prijaviTermin(@PathVariable Long memberId, @PathVariable Long termsId, @RequestBody CheckTrainingDTO checkTrainingDTO){
-
+    @PostMapping(value = "/addRate/{grade}/{memberId}/{termsId}", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RateTrainingDTO> createRate(@PathVariable Integer grade, @PathVariable Long memberId, @PathVariable Long termsId, @RequestBody RateTrainingDTO rateTrainingDTO) throws Exception {
         Member member = this.memberService.findOneById(memberId);
         Terms terms = this.termsService.findOneById(termsId);
-
-        if(member == null || terms == null)
+        if (member == null || terms == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-        CheckTraining checkTraining = new CheckTraining(checkTrainingDTO.getMemberId(), checkTrainingDTO.getTermId());
-        CheckTraining newCheck = trainingService.create(checkTraining);
+        RateTraining rateTraining = new RateTraining(grade, member, terms);
+        RateTraining newRateTraining = trainingService.createRate(rateTraining);
 
-        CheckTrainingDTO newCheckTrainingDTO = new CheckTrainingDTO(member, terms);
+        RateTrainingDTO rateTrainingDTO1 = new RateTrainingDTO(newRateTraining.getId(), newRateTraining.getGrade(), newRateTraining.getMembers(), newRateTraining.getTerms());
 
-        return new ResponseEntity<>(newCheckTrainingDTO, HttpStatus.CREATED);
-    */
+        return new ResponseEntity<>(rateTrainingDTO1, HttpStatus.CREATED);
+    }
+
 
     @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteFC(@PathVariable Long id) {

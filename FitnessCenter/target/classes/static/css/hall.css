@@ -1,0 +1,31 @@
+*{
+    background: #00CED1;
+}
+
+
+
+.card, p{
+    padding-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    background: #777777;
+
+}
+
+input{
+    block-size: 30px;
+    background: #f2f2f2;
+
+}
+
+
+h1{
+    text-align: center;
+}
+
+label{
+    font-size: 20px;
+    background: #777777;
+}

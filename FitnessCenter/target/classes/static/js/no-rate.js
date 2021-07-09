@@ -23,8 +23,6 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                     row += "<td>" + fitness.length + "</td>";
                     row += "<td>" + fitness.price + "</td>";
                     row += "<td>" + fitness.trainingDay + "</td>";
-                    btn = "<button class='btnCheckk' data-id=" + fitness.id + ">Oceni</button>";
-                    row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
 
                     $('#trainings').append(row);     }                   // ubacujemo kreirani red u tabelu čiji je id = trainings

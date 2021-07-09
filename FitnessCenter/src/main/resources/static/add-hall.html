@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title> Add Hall </title>
-  <link rel="stylesheet">
+  <link rel="stylesheet" href="css/hall.css">
   <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
   <!-- 1. Ukljucivanje jQuery biblioteke -->
   <script src="js/jquery.min.js"></script>
@@ -15,14 +15,18 @@
 </head>
 <body>
 <div class="reg" id="reff">
+  <h1>Add Hall</h1>
 <form action="#" method="post">
+  <div class="card">
   <p>Kapacitet: </p>
   <input type="number" name="fname" placeholder="Kapacitet" id ="kapacitet" required>
-  <p>Oznaka: </p>
+  <p>Oznaka:</p>
   <input type="text" name="lname" placeholder="Oznaka" id="oznaka" required>
-  <p>FitnesCentar ID: </p>
-  <input type="number" name="username" placeholder="Unesite id Fitnes Centra" id="idFCentra" required>
-  <button type="submit" id="dugmeRegistruj">Dodaj</button>
+  <p>FitnesCentar ID:</p>
+  <input type="number" name="username" placeholder="Id fitnes centra" id="idFCentra" required>
+  <br></br>
+    <button type="submit" id="dugmeRegistruj">Dodaj</button>
+  </div>
 </form>
 </div>
 

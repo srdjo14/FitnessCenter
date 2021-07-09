@@ -1,5 +1,8 @@
 package com.classproject.FitnessCenter.entity.dto;
 
+import com.classproject.FitnessCenter.entity.Member;
+import com.classproject.FitnessCenter.entity.Terms;
+
 import java.util.Date;
 
 public class RateTrainingDTO {
@@ -12,6 +15,8 @@ public class RateTrainingDTO {
     private Double price;
     private Date trainingDay;
     private Integer grade;
+    private Member member;
+    private Terms terms;
 
     public RateTrainingDTO() {
     }
@@ -26,6 +31,38 @@ public class RateTrainingDTO {
         this.price = price;
         this.trainingDay = trainingDay;
         this.grade = grade;
+    }
+
+    public RateTrainingDTO(Long id, String username, String name, String aboutTraining, String typeOfTraining, Integer grade) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.aboutTraining = aboutTraining;
+        this.typeOfTraining = typeOfTraining;
+        this.grade = grade;
+    }
+
+    public RateTrainingDTO(Long id, Integer grade, Member members, Terms terms) {
+        this.id = id;
+        this.grade = grade;
+        this.member = members;
+        this.terms = terms;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Terms getTerms() {
+        return terms;
+    }
+
+    public void setTerms(Terms terms) {
+        this.terms = terms;
     }
 
     public Long getId() {

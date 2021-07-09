@@ -11,10 +11,10 @@ public class Terms implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private Double price;
 
-    @Column(nullable = false)
+    @Column
     private Date trainingDay;
 
     @Column
@@ -59,6 +59,18 @@ public class Terms implements Serializable {
     public Terms(Double price, Date trainingDay) {
         this.price = price;
         this.trainingDay = trainingDay;
+    }
+
+    public Terms(Integer numberCheckedUser, Double price,  Date trainingDay,FitnessCenter fitnessCenter, Hall hall, Training training) {
+        this.price = price;
+        this.trainingDay = trainingDay;
+        this.numberCheckedUser = numberCheckedUser;
+        this.hall = hall;
+        this.training = training;
+        this.fitnessCenter = fitnessCenter;
+    }
+
+    public Terms(Integer numberCheckedUser, Double price, Date trainingDay, Long fitnessCenter, Long hall, Long training) {
     }
 
     public Set<DoneTraining> getDoneTraining() {

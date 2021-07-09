@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title> Fitness Center </title>
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/hall.css">
     <script src="https://kit.fontawesome.com/0162c77f58.js" crossorigin="anonymous"></script>
     <!-- 1. Ukljucivanje jQuery biblioteke -->
     <script src="js/jquery.min.js"></script>
@@ -19,23 +19,25 @@
 
 <!-- Kada korisnik klikne Add, poziva se metoda addNewEmployee, koja se nalazi u employees.js -->
 <form id="addFitCentForm" position="center">
+    <div class = "card">
     <p>
-        <label for="Name">Name:</label>
+        <label for="Name">Name:</label><br>
         <input id="Name" type="text" /><br>
     </p>
     <p>
-        <label for="address">Address:</label>
+        <label for="address">Address:</label><br>
         <input id="address" type="text" /><br>
     </p>
     <p>
-        <label for="email">Email:</label>
+        <label for="email">Email:</label><br>
         <input id="email" type="email" /><br>
     </p>
     <p>
-        <label for="contact">Contact:</label>
+        <label for="contact">Contact:</label><br>
         <input id="contact" type="text" /><br>
     </p>
     <input type="submit" value="Add" >
+    </div>
 </form>
 
 </body>

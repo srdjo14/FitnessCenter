@@ -3,8 +3,7 @@ package com.classproject.FitnessCenter.Service.Impl;
 import com.classproject.FitnessCenter.Service.TermsService;
 import com.classproject.FitnessCenter.Service.TrainingService;
 import com.classproject.FitnessCenter.entity.Terms;
-import com.classproject.FitnessCenter.entity.Training;
-import com.classproject.FitnessCenter.entity.dto.TermsDTO;
+import com.classproject.FitnessCenter.entity.dto.TermsAddDTO;
 import com.classproject.FitnessCenter.repository.TermsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,16 +30,8 @@ public class TermsServiceImpl implements TermsService {
     }
 
     @Override
-    public Terms addTerms(TermsDTO termsDTO) {
-        Terms terms = new Terms(termsDTO.getPrice(), termsDTO.getTrainingDay());
-        //terms.setPrice(termsDTO.getPrice());
-        //terms.setTrainingDay(termsDTO.getTrainingDay());
-
-        Training training = trainingService.findOneById(termsDTO.getTrainingId());
-
-        terms.setTraining(training);
-        termsRepository.save(terms);
-        return terms;
+    public Terms addTerms(Terms terms) {
+        return this.termsRepository.save(terms);
     }
 
     @Override

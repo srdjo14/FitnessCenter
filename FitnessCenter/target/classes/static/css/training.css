@@ -125,3 +125,8 @@ h3 {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+#allEmployees .nav{
+    text-align: center;
+    align-content: center;
+}
