@@ -22,6 +22,8 @@ $(document).ready(function () {
             row += "<td>" + response.length + "</td>";
             row += "<td>" + response.price + "</td>";
             row += "<td>" + response.trainingDay + "</td>";
+            let btn = "<input type='number' id='ocena'>";
+            row += "<td>" + btn + "</td>";
             row += "<td>" + "<button class='ocena' id=" + response.id + "> Ocijeni </button>" + "</td>";
             row += "</tr>";
             row += "</tr>";                                     // završavamo kreiranje reda
@@ -32,5 +34,10 @@ $(document).ready(function () {
         error: function (response) {
             console.log("ERROR:\n", response);
         }
+    });
+
+    $(document).on('click', '.ocena', function (event){
+
+        window.location.href = "dodaj-ocjenu.html";
     });
 });

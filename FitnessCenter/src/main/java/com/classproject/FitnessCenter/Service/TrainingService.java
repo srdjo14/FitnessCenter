@@ -4,6 +4,7 @@ import com.classproject.FitnessCenter.entity.CheckTraining;
 import com.classproject.FitnessCenter.entity.DoneTraining;
 import com.classproject.FitnessCenter.entity.RateTraining;
 import com.classproject.FitnessCenter.entity.Training;
+import com.classproject.FitnessCenter.entity.dto.RateTrainingDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +26,7 @@ public interface TrainingService {
 
     RateTraining findRateOne(Long id);
 
-    RateTraining createRate(RateTraining rateTraining);
+    RateTraining createRate(RateTrainingDTO rateTrainingDTO);
 
     DoneTraining findOneDone(Long id);
 }

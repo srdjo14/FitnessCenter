@@ -95,6 +95,14 @@ public class TrainingController {
         return new ResponseEntity<>(rateTrainingDTOS, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/rate/add", consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RateTrainingDTO> createRate(@RequestBody RateTrainingDTO rateTrainingDTO) throws  Exception{
+        RateTraining rateTraining = trainingService.createRate(rateTrainingDTO);
+        rateTrainingDTO.setId(rateTraining.getId());
+        return new ResponseEntity<>(rateTrainingDTO, HttpStatus.CREATED);
+    }
+
     @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CheckTrainingDTO>> getCheck() {
         List<CheckTraining> checkTrainings = this.trainingService.findAllCheck();
@@ -131,14 +139,6 @@ public class TrainingController {
         CheckTrainingDTO checkTrainingDTO1 = new CheckTrainingDTO(newCheckTraining.getId(), newCheckTraining.getMembers(), newCheckTraining.getTerms());
 
         return new ResponseEntity<>(checkTrainingDTO1, HttpStatus.CREATED);
-    }
-
-    @GetMapping(value = "/rate")
-    public ResponseEntity<RateTraining> rateTraining(@RequestParam Long id, @RequestParam int grade){
-        RateTraining rateTraining = trainingService.findRateOne(id);
-        rateTraining.setGrade(grade);
-        trainingService.createRate(rateTraining);
-        return new ResponseEntity<>(rateTraining, HttpStatus.OK);
     }
 
 

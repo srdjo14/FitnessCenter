@@ -23,6 +23,7 @@ $(document).ready(function () {
                 row += "<td>" + response.length + "</td>";
                 row += "<td>" + response.price + "</td>";
                 row += "<td>" + response.trainingDay + "</td>";
+
                 row += "<td>" + "<button class='prijava' id=" + response.id + "> Prijava </button>" + "</td>";
                 row += "</tr>";
                 row += "</tr>";                                     // završavamo kreiranje reda

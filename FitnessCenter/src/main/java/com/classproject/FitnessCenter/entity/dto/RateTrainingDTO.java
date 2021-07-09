@@ -15,8 +15,10 @@ public class RateTrainingDTO {
     private Double price;
     private Date trainingDay;
     private Integer grade;
-    private Member member;
-    private Terms terms;
+    private Long member;
+    private Long terms;
+    private Member members;
+    private Terms term;
 
     public RateTrainingDTO() {
     }
@@ -42,26 +44,43 @@ public class RateTrainingDTO {
         this.grade = grade;
     }
 
-    public RateTrainingDTO(Long id, Integer grade, Member members, Terms terms) {
+
+    public RateTrainingDTO(Long id, Integer grade, Long id1, Long id2) {
         this.id = id;
         this.grade = grade;
-        this.member = members;
-        this.terms = terms;
+        this.member = id1;
+        this.terms = id2;
     }
 
-    public Member getMember() {
+    public Member getMembers() {
+        return members;
+    }
+
+    public void setMembers(Member members) {
+        this.members = members;
+    }
+
+    public Terms getTerm() {
+        return term;
+    }
+
+    public void setTerm(Terms term) {
+        this.term = term;
+    }
+
+    public Long getMember() {
         return member;
     }
 
-    public void setMember(Member member) {
+    public void setMember(Long member) {
         this.member = member;
     }
 
-    public Terms getTerms() {
+    public Long getTerms() {
         return terms;
     }
 
-    public void setTerms(Terms terms) {
+    public void setTerms(Long terms) {
         this.terms = terms;
     }
 

@@ -15,11 +15,10 @@ import java.util.Optional;
 public class TermsServiceImpl implements TermsService {
 
     private final TermsRepository termsRepository;
-    private final TrainingService trainingService;
+
     @Autowired
-    public TermsServiceImpl(TermsRepository termsRepository, TrainingService trainingService) {
+    public TermsServiceImpl(TermsRepository termsRepository) {
         this.termsRepository = termsRepository;
-        this.trainingService = trainingService;
     }
 
     /* Dobavljanje svih termina */
