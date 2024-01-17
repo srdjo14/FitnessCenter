@@ -1,5 +1,4 @@
-# FitnessCenter
-Predmetni  projekat 
+# Fitness Center
 Fitness Center Management System
 ## Table of Contents
 
