@@ -10,7 +10,7 @@ Fitness Center Management System
 6. [How To Use](#vi-how-to-use)
 
 ## 1. Introduction
-This project is a web-based fitness center management system developed as part of the Web Programming course in the academic year 2020/2021. The system provides a platform for fitness center administrators, trainers, and members to streamline various aspects of fitness center operations.
+This project is a web-based fitness center management system that provides a platform for fitness center administrators, trainers, and members to streamline various aspects of fitness center operations.
 
 ## 2. Project Overview
 The system includes features for user authentication, member and trainer management, class scheduling, and more. It leverages a robust data model to capture essential information about members, trainers, fitness centers, classes, and facilities.
